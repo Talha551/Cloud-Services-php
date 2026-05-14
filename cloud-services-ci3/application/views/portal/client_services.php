@@ -1,0 +1,12 @@
+<div class="mb-6"><h1 class="text-2xl font-bold text-white">My Services</h1><p class="text-slate-400 mt-1">All your VPS and cloud services</p></div>
+<?php if (empty($services)): ?>
+    <div class="bg-[#13151f] border border-[#2a2d3e] rounded-xl p-5"><div class="text-center py-12"><i data-lucide="server" class="w-12 h-12 mx-auto text-slate-600 mb-4"></i><p class="text-slate-500 mb-4">You don't have any services yet</p><a href="<?php echo site_url('store'); ?>" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm rounded-lg transition-colors">Browse Plans</a></div></div>
+<?php else: ?>
+    <div class="bg-[#13151f] border border-[#2a2d3e] rounded-xl overflow-hidden">
+        <div class="grid grid-cols-5 px-5 py-3 text-xs uppercase tracking-wide text-slate-500 border-b border-[#2a2d3e]"><div>Service Name</div><div>IP Address</div><div>Plan</div><div>Status</div><div>Created</div></div>
+        <?php foreach ($services as $svc): ?>
+            <?php $status = strtolower((string) $svc['status']); $cls = ($status === 'running' || $status === 'active') ? 'bg-green-500/15 text-green-400 border-green-500/30' : (($status === 'stopped') ? 'bg-red-500/15 text-red-400 border-red-500/30' : 'bg-slate-500/15 text-slate-400 border-slate-500/30'); ?>
+            <a href="<?php echo site_url('client/services/'.(int) $svc['id']); ?>" class="grid grid-cols-5 px-5 py-3 text-sm border-b border-[#1e2130] last:border-0 hover:bg-[#1e2130] transition-colors cursor-pointer"><div class="font-medium text-indigo-400 hover:text-indigo-300"><?php echo html_escape($svc['name'] ? $svc['name'] : $svc['hostname']); ?></div><div class="font-mono text-sm text-slate-300"><?php echo html_escape($svc['ip_address'] ? $svc['ip_address'] : '—'); ?></div><div class="text-slate-400"><?php echo html_escape(isset($svc['plan_name']) ? $svc['plan_name'] : '—'); ?></div><div><span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium border <?php echo $cls; ?>"><?php echo html_escape($svc['status']); ?></span></div><div class="text-slate-400 flex items-center gap-2"><?php echo html_escape(substr($svc['created_at'], 0, 10)); ?> <i data-lucide="chevron-right" class="w-3 h-3 text-slate-600"></i></div></a>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>

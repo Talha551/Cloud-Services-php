@@ -1,0 +1,3396 @@
+{
+    "list_servers": {
+        "ok": true,
+        "status": 200,
+        "error": null,
+        "data": {
+            "data": [
+                {
+                    "id": 18,
+                    "name": "testr.example.com",
+                    "description": "",
+                    "specifications": {
+                        "vcpu": 4,
+                        "ram": 2147483648,
+                        "disk": 100
+                    },
+                    "uuid": "eaefcb0a-96f8-4abd-bfb4-500550f51fbb",
+                    "os_type": "Linux",
+                    "settings": {
+                        "firmware": "bios",
+                        "os_image": {
+                            "url": "https:\/\/images.prod.solus.io\/CentOS-Stream-GenericCloud-9-20230410.0.x86_64.qcow2",
+                            "icon": "https:\/\/45.82.65.93\/shared\/icons\/centos.svg",
+                            "name": "CentOS 9 Stream",
+                            "type": "os_image",
+                            "cloud_init_version": "v2-centos",
+                            "application_login_link": {
+                                "type": "url",
+                                "content": "https:\/\/{{ hostname }}:2087\/"
+                            }
+                        },
+                        "disk_driver": "scsi",
+                        "mac_address": "52:54:00:6f:fd:51",
+                        "vnc_enabled": true,
+                        "vnc_password": "iNkPOAPs",
+                        "disk_cache_mode": "none",
+                        "guest_agent_available": true,
+                        "guest_tools_installed": true,
+                        "application_login_link": {
+                            "type": "url",
+                            "content": "https:\/\/testr.example.com:2087\/"
+                        },
+                        "user": "root"
+                    },
+                    "status": "started",
+                    "real_status": "started",
+                    "plan": {
+                        "id": 1,
+                        "name": "Pakistan VPS Basic",
+                        "params": {
+                            "vcpu": 4,
+                            "ram": 2147483648,
+                            "disk": 100
+                        },
+                        "virtualization_type": "kvm",
+                        "storage_type": "fb",
+                        "image_format": "qcow2",
+                        "is_default": false,
+                        "is_snapshot_available": true,
+                        "is_snapshots_enabled": false,
+                        "is_backup_available": false,
+                        "backup_settings": {
+                            "is_incremental_backup_enabled": false,
+                            "incremental_backups_limit": 3
+                        },
+                        "is_additional_ips_available": true,
+                        "is_visible": true,
+                        "is_thin_provisioned": true,
+                        "is_custom": false,
+                        "position": 16384,
+                        "reset_limit_policy": "never",
+                        "network_traffic_limit_type": "separate",
+                        "limits": {
+                            "disk_iops": {
+                                "unit": "iops",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "backups_number": {
+                                "unit": "units",
+                                "limit": 7,
+                                "is_enabled": true
+                            },
+                            "disk_bandwidth": {
+                                "unit": "Bps",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "snapshots_size": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "snapshots_count": {
+                                "unit": "units",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_total_traffic": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "additional_disks_number": {
+                                "unit": "units",
+                                "limit": 7,
+                                "is_enabled": true
+                            },
+                            "network_incoming_traffic": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_outgoing_traffic": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_reduce_bandwidth": {
+                                "unit": "Kbps",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_incoming_bandwidth": {
+                                "unit": "Mbps",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_outgoing_bandwidth": {
+                                "unit": "Mbps",
+                                "limit": 1,
+                                "is_enabled": false
+                            }
+                        },
+                        "tokens_per_hour": 0,
+                        "tokens_per_month": 0,
+                        "ip_tokens_per_month": 0,
+                        "ip_tokens_per_hour": 0,
+                        "iso_image_tokens_per_hour": 0,
+                        "iso_image_tokens_per_month": 0,
+                        "backup_price": 0,
+                        "is_disaster_recovery_enabled": false,
+                        "disaster_recovery_price": 0
+                    },
+                    "fqdns": [],
+                    "boot_mode": "disk",
+                    "user": {
+                        "id": 2,
+                        "email": "support@pace-tel.com"
+                    },
+                    "usage": {
+                        "cpu": 0,
+                        "network": {
+                            "incoming": {
+                                "value": 241502124,
+                                "prev": 241502124,
+                                "is_exceeded": false
+                            },
+                            "outgoing": {
+                                "value": 2434365,
+                                "prev": 2434365,
+                                "is_exceeded": false
+                            }
+                        },
+                        "disk": {
+                            "actual_size": 1856176128
+                        }
+                    },
+                    "is_suspended": false,
+                    "backup_settings": {
+                        "enabled": false,
+                        "schedule": {
+                            "type": "daily",
+                            "time": {
+                                "hour": 0,
+                                "minutes": 0
+                            },
+                            "days": []
+                        },
+                        "limit": {
+                            "limit": 7,
+                            "is_enabled": true,
+                            "unit": "units"
+                        },
+                        "next_backup_type": null
+                    },
+                    "is_processing": false,
+                    "progress": 0,
+                    "next_scheduled_backup_at": null,
+                    "ips": [
+                        {
+                            "id": 17,
+                            "ip": "38.117.65.5",
+                            "issued_for": "vm",
+                            "is_reverse_dns_enabled": false,
+                            "is_primary": true,
+                            "is_reserved": true,
+                            "comment": null,
+                            "ip_block": {
+                                "id": 3,
+                                "name": "Cogent-SatTown1",
+                                "gateway": "38.117.65.1",
+                                "netmask": "255.255.255.128",
+                                "ns_1": "8.8.8.8",
+                                "ns_2": "8.8.4.4",
+                                "from": "38.117.65.3",
+                                "to": "38.117.65.126",
+                                "type": "IPv4",
+                                "list_type": "range",
+                                "range": "38.117.65.0\/25",
+                                "subnet": null,
+                                "reverse_dns": {
+                                    "zone": "",
+                                    "enabled": false,
+                                    "template": ""
+                                },
+                                "reserved_ips_count": 3,
+                                "total_ips_count": "38.117.65.3 - 38.117.65.126"
+                            }
+                        }
+                    ],
+                    "ip_addresses": {
+                        "ipv4": [
+                            {
+                                "id": 17,
+                                "ip": "38.117.65.5",
+                                "is_primary": true,
+                                "issued_for": "vm",
+                                "is_reverse_dns_enabled": false,
+                                "gateway": "38.117.65.1",
+                                "netmask": "255.255.255.128",
+                                "cidr": "38.117.65.3\/25",
+                                "ns_1": "8.8.8.8",
+                                "ns_2": "8.8.4.4"
+                            }
+                        ],
+                        "ipv6": []
+                    },
+                    "created_at": "2026-05-13T09:37:39.000000Z",
+                    "has_incremental_backups": false,
+                    "virtualization_type": "kvm",
+                    "vnc_url": "ZTAwNGY4ZDZiYjFkYjllNDYwYmVjMWM2N2E3ZTIzYjE2MzAxMGYxYmVmMWYxMTk3MjQ2MDhmMTVmYzYyNGYwOGQzYjk2MGRmNWQ3OTIxZGY2NGVlNjgwMzEzYmE5Mjk5MWZjY2Y1ZTE0MTE2MmI1YjI5NjNiZDg1YmNjMDRhZWExNWQ3YzQ3NjViMzM1ZDAxZDNhNzc3NDVkYmE5ZjM1ODU1ZDEyOTg4N2Y2YzQ1NzQ",
+                    "product": "solusvm2",
+                    "is_disaster_recovery_enabled": false,
+                    "storage_id": 8,
+                    "cpu_usage": 0.25,
+                    "last_backup_date": null,
+                    "ha_priority": 0,
+                    "compute_resource": {
+                        "id": 7,
+                        "name": "SAT-TOWN1",
+                        "host": "38.117.65.2",
+                        "capabilities": {
+                            "kvm": true,
+                            "vz": false,
+                            "is_management_node": false,
+                            "is_mem_balloon_free_page_reporting_supported": true,
+                            "is_virtio_discard_supported": true
+                        },
+                        "is_in_maintenance": false,
+                        "status": "active",
+                        "storages": [
+                            {
+                                "id": 8,
+                                "name": null,
+                                "type": {
+                                    "name": "fb",
+                                    "formats": [
+                                        "raw",
+                                        "qcow2"
+                                    ]
+                                },
+                                "mount": "\/",
+                                "path": "\/var\/lib\/libvirt\/images\/",
+                                "thin_pool": null,
+                                "is_available_for_balancing": true,
+                                "credentials": null,
+                                "free_space": 10497.77,
+                                "storage_tag": null,
+                                "status": "available",
+                                "status_details": null
+                            }
+                        ]
+                    },
+                    "compute_resource_name": "SAT-TOWN1"
+                },
+                {
+                    "id": 17,
+                    "name": "lead-demo-vps-3519",
+                    "description": "",
+                    "specifications": {
+                        "vcpu": 4,
+                        "ram": 2147483648,
+                        "disk": 100
+                    },
+                    "uuid": "11e0967f-5c88-4a09-ad71-41bc437f0c55",
+                    "os_type": "Linux",
+                    "settings": {
+                        "firmware": "bios",
+                        "os_image": {
+                            "url": "https:\/\/images.prod.solus.io\/noble-server-cloudimg-amd64.img",
+                            "icon": "https:\/\/45.82.65.93\/shared\/icons\/ubuntu.svg",
+                            "name": "Ubuntu 24.04",
+                            "type": "os_image",
+                            "cloud_init_version": "v2"
+                        },
+                        "disk_driver": "scsi",
+                        "mac_address": "52:54:00:d4:08:87",
+                        "vnc_enabled": true,
+                        "vnc_password": "UchI52kx",
+                        "disk_cache_mode": "none",
+                        "guest_agent_available": true,
+                        "guest_tools_installed": true,
+                        "application_login_link": [],
+                        "user": "root"
+                    },
+                    "status": "started",
+                    "real_status": "started",
+                    "plan": {
+                        "id": 1,
+                        "name": "Pakistan VPS Basic",
+                        "params": {
+                            "vcpu": 4,
+                            "ram": 2147483648,
+                            "disk": 100
+                        },
+                        "virtualization_type": "kvm",
+                        "storage_type": "fb",
+                        "image_format": "qcow2",
+                        "is_default": false,
+                        "is_snapshot_available": true,
+                        "is_snapshots_enabled": false,
+                        "is_backup_available": false,
+                        "backup_settings": {
+                            "is_incremental_backup_enabled": false,
+                            "incremental_backups_limit": 3
+                        },
+                        "is_additional_ips_available": true,
+                        "is_visible": true,
+                        "is_thin_provisioned": true,
+                        "is_custom": false,
+                        "position": 16384,
+                        "reset_limit_policy": "never",
+                        "network_traffic_limit_type": "separate",
+                        "limits": {
+                            "disk_iops": {
+                                "unit": "iops",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "backups_number": {
+                                "unit": "units",
+                                "limit": 7,
+                                "is_enabled": true
+                            },
+                            "disk_bandwidth": {
+                                "unit": "Bps",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "snapshots_size": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "snapshots_count": {
+                                "unit": "units",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_total_traffic": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "additional_disks_number": {
+                                "unit": "units",
+                                "limit": 7,
+                                "is_enabled": true
+                            },
+                            "network_incoming_traffic": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_outgoing_traffic": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_reduce_bandwidth": {
+                                "unit": "Kbps",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_incoming_bandwidth": {
+                                "unit": "Mbps",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_outgoing_bandwidth": {
+                                "unit": "Mbps",
+                                "limit": 1,
+                                "is_enabled": false
+                            }
+                        },
+                        "tokens_per_hour": 0,
+                        "tokens_per_month": 0,
+                        "ip_tokens_per_month": 0,
+                        "ip_tokens_per_hour": 0,
+                        "iso_image_tokens_per_hour": 0,
+                        "iso_image_tokens_per_month": 0,
+                        "backup_price": 0,
+                        "is_disaster_recovery_enabled": false,
+                        "disaster_recovery_price": 0
+                    },
+                    "fqdns": [],
+                    "boot_mode": "disk",
+                    "user": {
+                        "id": 2,
+                        "email": "support@pace-tel.com"
+                    },
+                    "usage": {
+                        "cpu": 0,
+                        "network": {
+                            "incoming": {
+                                "value": 241396049,
+                                "prev": 241396049,
+                                "is_exceeded": false
+                            },
+                            "outgoing": {
+                                "value": 9718995,
+                                "prev": 9718995,
+                                "is_exceeded": false
+                            }
+                        },
+                        "disk": {
+                            "actual_size": 2964979712
+                        }
+                    },
+                    "is_suspended": false,
+                    "backup_settings": {
+                        "enabled": false,
+                        "schedule": {
+                            "type": "daily",
+                            "time": {
+                                "hour": 0,
+                                "minutes": 0
+                            },
+                            "days": []
+                        },
+                        "limit": {
+                            "limit": 7,
+                            "is_enabled": true,
+                            "unit": "units"
+                        },
+                        "next_backup_type": null
+                    },
+                    "is_processing": false,
+                    "progress": 0,
+                    "next_scheduled_backup_at": null,
+                    "ips": [
+                        {
+                            "id": 16,
+                            "ip": "38.117.65.4",
+                            "issued_for": "vm",
+                            "is_reverse_dns_enabled": false,
+                            "is_primary": true,
+                            "is_reserved": true,
+                            "comment": null,
+                            "ip_block": {
+                                "id": 3,
+                                "name": "Cogent-SatTown1",
+                                "gateway": "38.117.65.1",
+                                "netmask": "255.255.255.128",
+                                "ns_1": "8.8.8.8",
+                                "ns_2": "8.8.4.4",
+                                "from": "38.117.65.3",
+                                "to": "38.117.65.126",
+                                "type": "IPv4",
+                                "list_type": "range",
+                                "range": "38.117.65.0\/25",
+                                "subnet": null,
+                                "reverse_dns": {
+                                    "zone": "",
+                                    "enabled": false,
+                                    "template": ""
+                                },
+                                "reserved_ips_count": 3,
+                                "total_ips_count": "38.117.65.3 - 38.117.65.126"
+                            }
+                        }
+                    ],
+                    "ip_addresses": {
+                        "ipv4": [
+                            {
+                                "id": 16,
+                                "ip": "38.117.65.4",
+                                "is_primary": true,
+                                "issued_for": "vm",
+                                "is_reverse_dns_enabled": false,
+                                "gateway": "38.117.65.1",
+                                "netmask": "255.255.255.128",
+                                "cidr": "38.117.65.3\/25",
+                                "ns_1": "8.8.8.8",
+                                "ns_2": "8.8.4.4"
+                            }
+                        ],
+                        "ipv6": []
+                    },
+                    "created_at": "2026-05-12T11:55:41.000000Z",
+                    "has_incremental_backups": false,
+                    "virtualization_type": "kvm",
+                    "vnc_url": "ZGVlYzhkZGFlZDk2ZGY0OTU1ZDIxNjZkMTIxYTMxOWNiODg2N2ZhOWQ1M2RlMDlmZmM5YzY3NjY0ZWM3OTk2YjA0MGVmNDA3MmEzMjI5MjJlOTE4ZDdlMGFmNzU0MTljYzc2ZWRlODc2MjhlYzI5YWFjYTQwNTc2NTVlMGQ2ZmVmOWVhMDRmNDU4NTVlZmVjNWY2NzcxNTNkMmE4ZmQxMGFkOGY1NjNiNTM0Zjc0YjA",
+                    "product": "solusvm2",
+                    "is_disaster_recovery_enabled": false,
+                    "storage_id": 8,
+                    "cpu_usage": 0.12,
+                    "last_backup_date": null,
+                    "ha_priority": 0,
+                    "compute_resource": {
+                        "id": 7,
+                        "name": "SAT-TOWN1",
+                        "host": "38.117.65.2",
+                        "capabilities": {
+                            "kvm": true,
+                            "vz": false,
+                            "is_management_node": false,
+                            "is_mem_balloon_free_page_reporting_supported": true,
+                            "is_virtio_discard_supported": true
+                        },
+                        "is_in_maintenance": false,
+                        "status": "active",
+                        "storages": [
+                            {
+                                "id": 8,
+                                "name": null,
+                                "type": {
+                                    "name": "fb",
+                                    "formats": [
+                                        "raw",
+                                        "qcow2"
+                                    ]
+                                },
+                                "mount": "\/",
+                                "path": "\/var\/lib\/libvirt\/images\/",
+                                "thin_pool": null,
+                                "is_available_for_balancing": true,
+                                "credentials": null,
+                                "free_space": 10497.77,
+                                "storage_tag": null,
+                                "status": "available",
+                                "status_details": null
+                            }
+                        ]
+                    },
+                    "compute_resource_name": "SAT-TOWN1"
+                },
+                {
+                    "id": 16,
+                    "name": "test-vps-01",
+                    "description": "",
+                    "specifications": {
+                        "vcpu": 4,
+                        "ram": 2147483648,
+                        "disk": 100
+                    },
+                    "uuid": "4cd625be-730f-4e16-b4e9-8b26f684e5f6",
+                    "os_type": "Linux",
+                    "settings": {
+                        "firmware": "bios",
+                        "os_image": {
+                            "url": "https:\/\/images.prod.solus.io\/noble-server-cloudimg-amd64.img",
+                            "icon": "https:\/\/45.82.65.93\/shared\/icons\/ubuntu.svg",
+                            "name": "Ubuntu 24.04",
+                            "type": "os_image",
+                            "cloud_init_version": "v2",
+                            "application_login_link": {
+                                "type": "js-code",
+                                "content": "fetch('https:\/\/{{ domain }}:8443\/api\/v2\/cli\/admin\/call', {\n  body: '{ \"params\": [ \"--get-login-link\" ] }',\n  headers: {\n    Authorization: 'Basic '+ btoa('admin:{{ passwd }}'),\n    \"Content-Type\": \"application\/json\"\n  },\n  method: \"POST\"\n})\n  .then(function(response) {\n    if (!response.ok) {\n      throw Error(response.statusText);\n    }\n    return response.json();\n  })\n  .then(function(data) {\n    var link = data.stdout.split(\/\\r?\\n\/);\n    openWindow(link[0]);\n  })\n  .catch(function() {\n      openWindow('https:\/\/{{domain}}:8443\/');\n  });"
+                            }
+                        },
+                        "disk_driver": "scsi",
+                        "mac_address": "52:54:00:10:f0:6e",
+                        "vnc_enabled": true,
+                        "vnc_password": "r80s1tQg",
+                        "disk_cache_mode": "none",
+                        "guest_agent_available": true,
+                        "guest_tools_installed": true,
+                        "application_login_link": {
+                            "type": "js-code",
+                            "content": "fetch('https:\/\/demo.local:8443\/api\/v2\/cli\/admin\/call', {\n  body: '{ \"params\": [ \"--get-login-link\" ] }',\n  headers: {\n    Authorization: 'Basic '+ btoa('admin:'),\n    \"Content-Type\": \"application\/json\"\n  },\n  method: \"POST\"\n})\n  .then(function(response) {\n    if (!response.ok) {\n      throw Error(response.statusText);\n    }\n    return response.json();\n  })\n  .then(function(data) {\n    var link = data.stdout.split(\/\\r?\\n\/);\n    openWindow(link[0]);\n  })\n  .catch(function() {\n      openWindow('https:\/\/demo.local:8443\/');\n  });"
+                        },
+                        "user": "root"
+                    },
+                    "status": "started",
+                    "real_status": "started",
+                    "plan": {
+                        "id": 1,
+                        "name": "Pakistan VPS Basic",
+                        "params": {
+                            "vcpu": 4,
+                            "ram": 2147483648,
+                            "disk": 100
+                        },
+                        "virtualization_type": "kvm",
+                        "storage_type": "fb",
+                        "image_format": "qcow2",
+                        "is_default": false,
+                        "is_snapshot_available": true,
+                        "is_snapshots_enabled": false,
+                        "is_backup_available": false,
+                        "backup_settings": {
+                            "is_incremental_backup_enabled": false,
+                            "incremental_backups_limit": 3
+                        },
+                        "is_additional_ips_available": true,
+                        "is_visible": true,
+                        "is_thin_provisioned": true,
+                        "is_custom": false,
+                        "position": 16384,
+                        "reset_limit_policy": "never",
+                        "network_traffic_limit_type": "separate",
+                        "limits": {
+                            "disk_iops": {
+                                "unit": "iops",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "backups_number": {
+                                "unit": "units",
+                                "limit": 7,
+                                "is_enabled": true
+                            },
+                            "disk_bandwidth": {
+                                "unit": "Bps",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "snapshots_size": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "snapshots_count": {
+                                "unit": "units",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_total_traffic": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "additional_disks_number": {
+                                "unit": "units",
+                                "limit": 7,
+                                "is_enabled": true
+                            },
+                            "network_incoming_traffic": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_outgoing_traffic": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_reduce_bandwidth": {
+                                "unit": "Kbps",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_incoming_bandwidth": {
+                                "unit": "Mbps",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_outgoing_bandwidth": {
+                                "unit": "Mbps",
+                                "limit": 1,
+                                "is_enabled": false
+                            }
+                        },
+                        "tokens_per_hour": 0,
+                        "tokens_per_month": 0,
+                        "ip_tokens_per_month": 0,
+                        "ip_tokens_per_hour": 0,
+                        "iso_image_tokens_per_hour": 0,
+                        "iso_image_tokens_per_month": 0,
+                        "backup_price": 0,
+                        "is_disaster_recovery_enabled": false,
+                        "disaster_recovery_price": 0
+                    },
+                    "fqdns": [],
+                    "boot_mode": "disk",
+                    "user": {
+                        "id": 2,
+                        "email": "support@pace-tel.com"
+                    },
+                    "usage": {
+                        "cpu": 0,
+                        "network": {
+                            "incoming": {
+                                "value": 294343508,
+                                "prev": 294343508,
+                                "is_exceeded": false
+                            },
+                            "outgoing": {
+                                "value": 15503267,
+                                "prev": 15503267,
+                                "is_exceeded": false
+                            }
+                        },
+                        "disk": {
+                            "actual_size": 3034382336
+                        }
+                    },
+                    "is_suspended": false,
+                    "backup_settings": {
+                        "enabled": false,
+                        "schedule": {
+                            "type": "daily",
+                            "time": {
+                                "hour": 0,
+                                "minutes": 0
+                            },
+                            "days": []
+                        },
+                        "limit": {
+                            "limit": 7,
+                            "is_enabled": true,
+                            "unit": "units"
+                        },
+                        "next_backup_type": null
+                    },
+                    "is_processing": false,
+                    "progress": 0,
+                    "next_scheduled_backup_at": null,
+                    "ips": [
+                        {
+                            "id": 15,
+                            "ip": "38.117.65.3",
+                            "issued_for": "vm",
+                            "is_reverse_dns_enabled": false,
+                            "is_primary": true,
+                            "is_reserved": true,
+                            "comment": null,
+                            "ip_block": {
+                                "id": 3,
+                                "name": "Cogent-SatTown1",
+                                "gateway": "38.117.65.1",
+                                "netmask": "255.255.255.128",
+                                "ns_1": "8.8.8.8",
+                                "ns_2": "8.8.4.4",
+                                "from": "38.117.65.3",
+                                "to": "38.117.65.126",
+                                "type": "IPv4",
+                                "list_type": "range",
+                                "range": "38.117.65.0\/25",
+                                "subnet": null,
+                                "reverse_dns": {
+                                    "zone": "",
+                                    "enabled": false,
+                                    "template": ""
+                                },
+                                "reserved_ips_count": 3,
+                                "total_ips_count": "38.117.65.3 - 38.117.65.126"
+                            }
+                        }
+                    ],
+                    "ip_addresses": {
+                        "ipv4": [
+                            {
+                                "id": 15,
+                                "ip": "38.117.65.3",
+                                "is_primary": true,
+                                "issued_for": "vm",
+                                "is_reverse_dns_enabled": false,
+                                "gateway": "38.117.65.1",
+                                "netmask": "255.255.255.128",
+                                "cidr": "38.117.65.3\/25",
+                                "ns_1": "8.8.8.8",
+                                "ns_2": "8.8.4.4"
+                            }
+                        ],
+                        "ipv6": []
+                    },
+                    "created_at": "2026-05-12T11:08:05.000000Z",
+                    "has_incremental_backups": false,
+                    "virtualization_type": "kvm",
+                    "vnc_url": "YmI5ZjY3ZjExOGZhMGY3MTA4YWZhZTRiM2FhNWRmZWZmOTZhZTAxZWEyY2I1Yjc1NDViNzg5NTkyMGYxYTA1MjlmMWY5MDQ1NGU2YWUyYTlhNzRlYWI2NDA1ZWZjYzU2MWVlNDFkZTY1OTJhOGRhYjQ5YzZlZjFlNjMwNzQ0N2U1YTk4YjUxMTdlZDFlOGY0Y2JkYzdmMWJhMzQzZDRjOGE3NzFhYTkyY2YxYjcwZmU",
+                    "product": "solusvm2",
+                    "is_disaster_recovery_enabled": false,
+                    "storage_id": 8,
+                    "cpu_usage": 0.06,
+                    "last_backup_date": null,
+                    "ha_priority": 0,
+                    "compute_resource": {
+                        "id": 7,
+                        "name": "SAT-TOWN1",
+                        "host": "38.117.65.2",
+                        "capabilities": {
+                            "kvm": true,
+                            "vz": false,
+                            "is_management_node": false,
+                            "is_mem_balloon_free_page_reporting_supported": true,
+                            "is_virtio_discard_supported": true
+                        },
+                        "is_in_maintenance": false,
+                        "status": "active",
+                        "storages": [
+                            {
+                                "id": 8,
+                                "name": null,
+                                "type": {
+                                    "name": "fb",
+                                    "formats": [
+                                        "raw",
+                                        "qcow2"
+                                    ]
+                                },
+                                "mount": "\/",
+                                "path": "\/var\/lib\/libvirt\/images\/",
+                                "thin_pool": null,
+                                "is_available_for_balancing": true,
+                                "credentials": null,
+                                "free_space": 10497.77,
+                                "storage_tag": null,
+                                "status": "available",
+                                "status_details": null
+                            }
+                        ]
+                    },
+                    "compute_resource_name": "SAT-TOWN1"
+                }
+            ],
+            "links": {
+                "first": "https:\/\/45.82.65.93\/api\/v1\/servers?page=1",
+                "last": "https:\/\/45.82.65.93\/api\/v1\/servers?page=1",
+                "prev": null,
+                "next": null
+            },
+            "meta": {
+                "current_page": 1,
+                "from": 1,
+                "last_page": 1,
+                "links": [
+                    {
+                        "url": null,
+                        "label": "&laquo; Previous",
+                        "active": false
+                    },
+                    {
+                        "url": "https:\/\/45.82.65.93\/api\/v1\/servers?page=1",
+                        "label": "1",
+                        "active": true
+                    },
+                    {
+                        "url": null,
+                        "label": "Next &raquo;",
+                        "active": false
+                    }
+                ],
+                "path": "https:\/\/45.82.65.93\/api\/v1\/servers",
+                "per_page": 50,
+                "to": 3,
+                "total": 3
+            }
+        }
+    },
+    "list_applications": {
+        "ok": true,
+        "status": 200,
+        "error": null,
+        "data": {
+            "data": [
+                {
+                    "id": 1,
+                    "name": "WordPress on Plesk",
+                    "icon": {
+                        "id": 76,
+                        "name": "WordPress",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/wordpress.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/autoinstall.plesk.com\/images\/plesk-centos-7-latest.qcow2",
+                    "cloud_init_version": "v2-centos",
+                    "user_data_template": "#cloud-config\nwrite_files:\n  - path: \/root\/config.ini\n    permissions: '0755'\n    content: |\n      domain='{{ domain }}'\n      rootpw='{{ passwd }}'\n      user='{{ user }}'\n      rootmail='{{ email }}'\n      passwd='{{ passwd }}'\n      activation_key='{{ license }}'\n      wp_title='{{ wptitle }}'\n      wp_passwd='{{ wppasswd }}'\n      wp_mail='{{ wpusermail }}'\nruncmd:\n  - [ curl, -L, \"https:\/\/raw.githubusercontent.com\/solusio\/applications\/master\/WordPress\/setup\", -o, \"\/root\/setup.sh\" ]\n  - [ chmod, +x, \"\/root\/setup.sh\" ]\n  - \/bin\/bash \/root\/setup.sh | while IFS= read -r line; do printf \"%s %s\\n\" \"$(date)\" \"$line\"; done >> \/var\/log\/logfile\n  - echo \"complete\" > \/var\/www\/vhosts\/default\/htdocs\/__setup_complete.html\n  - rm -r \/root\/config.ini\n  - rm -r \/root\/setup.sh",
+                    "login_link": {
+                        "type": "js-code",
+                        "content": "fetch('https:\/\/{{ domain }}:8443\/api\/v2\/cli\/admin\/call', {\n  body: '{ \"params\": [ \"--get-login-link\" ] }',\n  headers: {\n    Authorization: 'Basic '+ btoa('admin:{{ passwd }}'),\n    \"Content-Type\": \"application\/json\"\n  },\n  method: \"POST\"\n})\n  .then(function(response) {\n    if (!response.ok) {\n      throw Error(response.statusText);\n    }\n    return response.json();\n  })\n  .then(function(data) {\n    var link = data.stdout.split(\/\\r?\\n\/);\n    openWindow(link[0]);\n  })\n  .catch(function() {\n      openWindow('https:\/\/{{domain}}:8443\/');\n  });"
+                    },
+                    "json_schema": "{\n  \"title\": \"WordPress on Plesk\",\n  \"description\": \"Harvest the power of the Plesk WordPress Toolkit. This application comes with a pre-installed WordPress and Plesk instance.\",\n  \"type\": \"object\",\n  \"required\": [\n    \"domain\",\n    \"user\",\n    \"email\",\n    \"passwd\",\n    \"wpuser\",\n    \"wpusermail\",\n    \"wppasswd\",\n    \"wptitle\"\n  ],\n  \"properties\": {\n    \"license\": {\n      \"title\": \"Plesk Activation Key (Leave blank if not available)\",\n      \"type\": \"string\",\n      \"default\": \" \"\n    },\n    \"domain\": {\n      \"type\": \"string\",\n      \"title\": \"Domain & Hostname\"\n    },\n    \"user\": {\n      \"type\": \"string\",\n      \"title\": \"Username\",\n      \"default\": \"admin\"\n    },\n    \"email\": {\n      \"type\": \"string\",\n      \"format\": \"email\",\n      \"title\": \"Administrator Email\"\n    },\n    \"passwd\": {\n      \"type\": \"string\",\n      \"title\": \"Password\",\n      \"format\": \"password\",\n      \"pattern\": \"^[a-zA-Z0-9_!@#$%^&*?_~-]*$\",\n      \"minLength\": 8,\n      \"help\": \"At least 1 capital letter, 1 lowercase letter, 2 digits and 2 special chars.\"\n    },\n    \"wpuser\": {\n      \"type\": \"string\",\n      \"title\": \"WordPress Username\"\n    },\n    \"wpusermail\": {\n      \"type\": \"string\",\n      \"title\": \"WordPress User Email\"\n    },\n    \"wppasswd\": {\n      \"type\": \"string\",\n      \"title\": \"WordPress Password\",\n      \"format\": \"password\"\n    },\n    \"wptitle\": {\n      \"type\": \"string\",\n      \"title\": \"Title for your Wordpress Website\"\n    }\n  }\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 1,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 2,
+                    "name": "NextCloud",
+                    "icon": {
+                        "id": 48,
+                        "name": "NextCloud",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/nextcloud.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/cloud-images.ubuntu.com\/bionic\/current\/bionic-server-cloudimg-amd64.img",
+                    "cloud_init_version": "v2",
+                    "user_data_template": "#cloud-config\nruncmd:\n  - snap install nextcloud\n  - echo 'y' > \/tmp\/vars.txt\n  - echo {{ email }}  >> \/tmp\/vars.txt\n  - echo {{ domain }} >> \/tmp\/vars.txt\n  - sleep 30s\n  - 'cat \/tmp\/vars.txt | nextcloud.enable-https lets-encrypt'\n  - sleep 10s\n  - sed -i '\/^$AUTOCONFIG.*\/a \"adminlogin\" => \"{{ user }}\",\\n\\n\"adminpass\" => \"{{ pw }}\",\\n' \/var\/snap\/nextcloud\/current\/nextcloud\/config\/autoconfig.php",
+                    "login_link": {
+                        "type": "url",
+                        "content": "https:\/\/{{ domain }}\/login"
+                    },
+                    "json_schema": "{\n  \"title\": \"NextCloud\",\n  \"description\": \"Be in control of all your data\",\n  \"type\": \"object\",\n  \"required\": [\n    \"email\",\n    \"domain\",\n    \"user\",\n    \"pw\"\n  ],\n  \"properties\": {\n    \"email\": {\n      \"type\": \"string\",\n      \"title\": \"Email\"\n    },\n    \"domain\": {\n      \"type\": \"string\",\n      \"title\": \"Domain\"\n    },\n    \"user\": {\n      \"type\": \"string\",\n      \"title\": \"User\"\n    },\n    \"pw\": {\n      \"type\": \"string\",\n      \"title\": \"Password\",\n      \"format\": \"password\"\n    }\n  }\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 2,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 3,
+                    "name": "OpenVPN",
+                    "icon": {
+                        "id": 51,
+                        "name": "OpenVPN",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/openvpn.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/cloud-images.ubuntu.com\/bionic\/current\/bionic-server-cloudimg-amd64.img",
+                    "cloud_init_version": "v2",
+                    "user_data_template": "#cloud-config\nruncmd:\n  - [ curl, -O, https:\/\/raw.githubusercontent.com\/angristan\/openvpn-install\/master\/openvpn-install.sh, -o, .\/openvpn-install.sh ]\n  - chmod +x .\/openvpn-install.sh\n  - export AUTO_INSTALL=y\n  - export APPROVE_INSTALL=y\n  - export APPROVE_IP=y\n  - export MENU_OPTION='1'\n  - export CLIENT='{{ client }}'\n  - export PASS='1'\n  - .\/openvpn-install.sh\n  - echo \"Done, please download your profile via SFTP\"",
+                    "login_link": {
+                        "type": "none",
+                        "content": ""
+                    },
+                    "json_schema": "{\n  \"title\": \"OpenVPN\",\n  \"description\": \"Get your OpenVPN Server in seconds\",\n  \"type\": \"object\",\n  \"required\": [\n    \"domain\",\n    \"client\"\n  ],\n  \"properties\": {\n    \"domain\": {\n      \"type\": \"string\",\n      \"title\": \"Domain\"\n    },\n    \"client\": {\n      \"type\": \"string\",\n      \"title\": \"Client\",\n      \"default\": \"default\"\n    }\n  }\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 3,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 4,
+                    "name": "Cloudron",
+                    "icon": {
+                        "id": 11,
+                        "name": "Cloudron",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/cloudron.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/cloud-images.ubuntu.com\/bionic\/current\/bionic-server-cloudimg-amd64.img",
+                    "cloud_init_version": "v2",
+                    "user_data_template": "#cloud-config\nwrite_files:\n  - path: \/var\/lib\/cloud\/instance\/scripts\/api\/setup\n    permissions: '0755'\n    content: |\n      {\n       \"dnsConfig\": {\n        \"provider\": \"wildcard\",\n        \"domain\": '{{ domain }}',\n        \"config\": {\n          \"token\": \"\"\n        },\n       \"tlsConfig\": {\n        \"provider\": \"letsencrypt-prod\",\n        \"wildcard\": false\n       },\n       \"sysinfoConfig\": {\n        \"provider\": \"generic\"\n        }\n       }\n      }\nruncmd:\n  - [ curl, -L, https:\/\/cloudron.io\/cloudron-setup, -o, \/root\/setup ]\n  - chmod +x \/root\/setup\n  - echo \"n\" | \/root\/setup --provider generic\n  - curl -X POST -H \"Content-Type: application\/json\" -d @\/var\/lib\/cloud\/instance\/scripts\/api\/setup http:\/\/localhost\/api\/v1\/cloudron\/setup\npower_state:\n  delay: \"+2\"\n  mode: reboot\n  message: Bye Bye\n  timeout: 30\n  condition: True",
+                    "login_link": {
+                        "type": "url",
+                        "content": "https:\/\/{{ address }}"
+                    },
+                    "json_schema": "{\n  \"title\": \"Cloudron\",\n  \"description\": \"Run popular alternatives to SaaS apps on your own server.\",\n  \"type\": \"object\"\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 4,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 5,
+                    "name": "GitLab",
+                    "icon": {
+                        "id": 30,
+                        "name": "Gitlab",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/gitlab.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/cloud-images.ubuntu.com\/bionic\/current\/bionic-server-cloudimg-amd64.img",
+                    "cloud_init_version": "v2",
+                    "user_data_template": "#cloud-config\nruncmd:\n  - apt update\n  - apt install -yq curl openssh-server ca-certificates\n  - curl https:\/\/packages.gitlab.com\/install\/repositories\/gitlab\/gitlab-ee\/script.deb.sh |  bash\n  - export EXTERNAL_URL=\"http:\/\/{{ address }}\"\n  - apt install -yq gitlab-ee",
+                    "login_link": {
+                        "type": "url",
+                        "content": "https:\/\/{{ address }}"
+                    },
+                    "json_schema": "{\n  \"title\": \"Gitlab\",\n  \"description\": \"From project planning and source code management to CI\/CD and monitoring, GitLab is a complete DevOps platform, delivered as a single application. Note: Gitlab needs at least 4GB of RAM and 20GB of free space\",\n  \"type\": \"object\"\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 5,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 6,
+                    "name": "MariaDB",
+                    "icon": {
+                        "id": 47,
+                        "name": "MariaDB",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/mariadb.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/cloud-images.ubuntu.com\/bionic\/current\/bionic-server-cloudimg-amd64.img",
+                    "cloud_init_version": "v2",
+                    "user_data_template": "#cloud-config\nwrite_files:\n  - path: \/var\/lib\/cloud\/instance\/scripts\/mariadb.sh\n    permissions: '0755'\n    content: |\n      #!\/usr\/bin\/env bash\n      export DEBIAN_FRONTEND=\"noninteractive\"\n      export PASSWORD='{{ passwd }}'\n\n      apt-get install software-properties-common\n      apt update\n      apt install -yq mariadb-server\n  - path: \/var\/lib\/cloud\/instance\/scripts\/mariadbvars\n    permissions: '0755'\n    content: |\n\n      Y\n      {{ passwd }}\n      {{ passwd }}\n      Y\n      n\n      Y\n      Y\n\nruncmd:\n  - apt update\n  - export DEBIAN_FRONTEND=noninteractive\n  - apt -yq upgrade\n  - ufw enable\n  - ufw allow 22\n  - ufw allow 3306\n  - chmod +x \/var\/lib\/cloud\/instance\/scripts\/mariadb.sh\n  - \/var\/lib\/cloud\/instance\/scripts\/mariadb.sh\n  - 'cat \/var\/lib\/cloud\/instance\/scripts\/mariadbvars | mysql_secure_installation'\n  - sed -i 's\/127\\.0\\.0\\.1\/0\\.0\\.0\\.0\/g' \/etc\/mysql\/mariadb.conf.d\/50-server.cnf\n  - mysql -uroot -e 'USE mysql; UPDATE `user` SET `Host`=\"%\" WHERE `User`=\"root\"; DELETE FROM `user` WHERE `Host` != \"%\" AND `User`=\"root\"; GRANT ALL PRIVILEGES ON *.* TO \"root\"@\"%\"  IDENTIFIED BY \"{{ passwd }}\" WITH GRANT OPTION; FLUSH PRIVILEGES;'\n  - service mysql restart\n  - rm -r \/var\/lib\/cloud\/instance\/scripts\/*",
+                    "login_link": {
+                        "type": "info",
+                        "content": "<h2>MariaDB<\/h2>\nYour MariaDB installation can be reached via {{ ip }}:3306.\n<ul>\n    <li>\n        User: root\n    <\/li>\n    <li>\n        Initial Password: {{ passwd }}\n    <\/li>\n<\/ul>"
+                    },
+                    "json_schema": "{\n  \"title\": \"MariaDB\",\n  \"description\": \"MariaDB is a community-developed, commercially supported fork of the MySQL relational database management system, intended to remain free and open-source software under the GNU General Public License.\",\n  \"type\": \"object\",\n  \"required\": [\n    \"passwd\"\n  ],\n  \"properties\": {\n    \"passwd\": {\n      \"type\": \"string\",\n      \"title\": \"Password\",\n      \"format\": \"password\"\n    }\n  }\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 6,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 7,
+                    "name": "NGINX",
+                    "icon": {
+                        "id": 49,
+                        "name": "Nginx",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/nginx.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/cloud-images.ubuntu.com\/bionic\/current\/bionic-server-cloudimg-amd64.img",
+                    "cloud_init_version": "v2",
+                    "user_data_template": "#cloud-config\nwrite_files:\n  - path: \/var\/lib\/cloud\/instance\/scripts\/{{ domain }}\n    permissions: '0755'\n    content: |\n      server {\n       listen 80;\n        listen [::]:80;\n        root \/var\/www\/{{ domain }}\/html;\n        index index.php index.html index.htm index.nginx-debian.html;\n        server_name {{ domain }} www.{{ domain }};\n        location \/ {\n                try_files $uri $uri\/ =404;\n        }\n         location ~ \\.php$ {\n        include snippets\/fastcgi-php.conf;\n        fastcgi_pass unix:\/run\/php\/php-fpm.sock;\n        }\n        location ~ \/\\.ht {\n        deny all;\n        }\n      }\n  - path: \/var\/lib\/cloud\/instance\/scripts\/mariadb.sh\n    permissions: '0755'\n    content: |\n      #!\/usr\/bin\/env bash\n      export DEBIAN_FRONTEND=\"noninteractive\"\n      export PASSWORD=\"{{ passwd }}\"\n      debconf-set-selections <<< \"mariadb-server mysql-server\/root_password password $PASSWORD\"\n      debconf-set-selections <<< \"mariadb-server mysql-server\/root_password_again password $PASSWORD\"\n      apt-get install -y software-properties-common\n      apt update\n      apt install -yq mariadb-server\n  - path: \/var\/lib\/cloud\/instance\/scripts\/mariadbvars\n    permissions: '0755'\n    content: |\n\n      Y\n      {{ passwd }}\n      {{ passwd }}\n      Y\n      n\n      Y\n      Y\n\n  - owner: root:root\n    path: \/etc\/cron.d\/your_cronjob\n    content: 12 0 2 * * root certbot certonly -n -d {{ domain }} -d {{ domain }}\nruncmd:\n  - apt update\n  - export DEBIAN_FRONTEND=noninteractive\n  - apt -yq upgrade\n  - ufw enable\n  - ufw allow 22\n  - ufw allow 3306\n  - apt install -yq zsh htop\n  - apt install -yq nginx certbot python-certbot-nginx php-fpm php-mysql\n  - ufw allow 'Nginx FULL'\n  - adduser --system --no-create-home --disabled-login --disabled-password nginx\n  - mkdir -p \/var\/www\/{{ domain }}\/html\n  - chown -R www-data:www-data \/var\/www\/{{ domain }}\/html\n  - chmod -R 755 \/var\/www\/{{ domain }}\n  - cp \/var\/lib\/cloud\/instance\/scripts\/{{ domain }} \/etc\/nginx\/sites-available\/{{ domain }}\n  - ln -s \/etc\/nginx\/sites-available\/{{ domain }} \/etc\/nginx\/sites-enabled\/\n  - systemctl restart nginx\n  - phpp=$(ls \/etc\/php\/ | tr -d '\\r')\n  - echo \"cgi.fix_pathinfo=0\" >> \/etc\/php\/$phpp\/fpm\/php.ini\n  - systemctl restart php7.2-fpm.service\n  - echo \"<?php phpinfo();\" > \/var\/www\/{{ domain }}\/html\/info.php\n  - phpv=$(ls \/run\/php\/php7.*-fpm.sock)\n  - sed -i 's,\/run\/php\/php-fpm.sock,'\"$phpv\"',' \"\/etc\/nginx\/sites-available\/{{ domain }}\"\n  - systemctl restart nginx\n  - chmod +x \/var\/lib\/cloud\/instance\/scripts\/mariadb.sh\n  - \/var\/lib\/cloud\/instance\/scripts\/mariadb.sh\n  - 'cat \/var\/lib\/cloud\/instance\/scripts\/mariadbvars | mysql_secure_installation'\n  - sed -i 's\/127\\.0\\.0\\.1\/0\\.0\\.0\\.0\/g' \/etc\/mysql\/mariadb.conf.d\/50-server.cnf\n  - mysql -uroot -e 'USE mysql; UPDATE `user` SET `Host`=\"%\" WHERE `User`=\"root\"; DELETE FROM `user` WHERE `Host` != \"%\" AND `User`=\"root\"; GRANT ALL PRIVILEGES ON *.* TO \"root\"@\"%\"  IDENTIFIED BY \"{{ passwd }}\" WITH GRANT OPTION; FLUSH PRIVILEGES;'\n  - service mysql restart\n  - certbot --nginx --agree-tos --register-unsafely-without-email -d {{ domain }} -d www.{{ domain }}\n  - rm -r \/var\/lib\/cloud\/instance\/scripts\/*",
+                    "login_link": {
+                        "type": "info",
+                        "content": "<h2>NGINX<\/h2>\nYour Nginx Server is running on port 80 and 443.\nYour MariaDB installation can be reached via {{ ip }}:3306.\n<ul>\n    <li>\n        User: root\n    <\/li>\n    <li>\n        Initial Password: {{ passwd }}\n    <\/li>\n<\/ul>"
+                    },
+                    "json_schema": "{\n  \"title\": \"NGINX\",\n  \"description\": \"NGINX is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP\/POP3 proxy server\",\n  \"type\": \"object\",\n  \"required\": [\n    \"domain\",\n    \"passwd\"\n  ],\n  \"properties\": {\n    \"domain\": {\n      \"type\": \"string\",\n      \"title\": \"Domainname\",\n      \"default\": \"\"\n    },\n    \"passwd\": {\n      \"type\": \"string\",\n      \"title\": \"Password\",\n      \"format\": \"password\"\n    }\n  }\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 7,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 8,
+                    "name": "Jenkins",
+                    "icon": {
+                        "id": 37,
+                        "name": "Jenkins",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/jenkins.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/cloud-images.ubuntu.com\/bionic\/current\/bionic-server-cloudimg-amd64.img",
+                    "cloud_init_version": "v2",
+                    "user_data_template": "#cloud-config\nruncmd:\n  - wget -q -O - https:\/\/pkg.jenkins.io\/debian\/jenkins-ci.org.key | sudo apt-key add -\n  - sudo sh -c 'echo deb http:\/\/pkg.jenkins.io\/debian-stable binary\/ > \/etc\/apt\/sources.list.d\/jenkins.list'\n  - sudo apt-get update\n  - apt install -yq openjdk-11-jre-headless\n  - sudo apt-get install -yq jenkins",
+                    "login_link": {
+                        "type": "url",
+                        "content": "http:\/\/{{ address }}:8080\/"
+                    },
+                    "json_schema": "{\n  \"title\": \"Jenkins\",\n  \"description\": \"Jenkins \u2013 an open source automation server which enables developers around the world to reliably build, test, and deploy their software.\",\n  \"type\": \"object\"\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 8,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 9,
+                    "name": "cPanel on CloudLinux",
+                    "icon": {
+                        "id": 73,
+                        "name": "cPanel",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/cp.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/images.prod.solus.io\/solus-io-cloudlinux-8-cpanel.qcow2",
+                    "cloud_init_version": "v2-centos",
+                    "user_data_template": "#cloud-config\nwrite_files:\n  - path: \/root\/setup.sh\n    permissions: '0755'\n    content: |\n      #!\/bin\/bash\n      HOSTNAME='{{ hostname }}'\n      match=$(echo \"${HOSTNAME}\" | grep -oP '^(?!\\-)(?:[a-zA-Z\\d\\-]{0,62}[a-zA-Z\\d]\\.){1,126}(?!\\d+)[a-zA-Z\\d]{1,63}$')\n      if [ -z \"$match\" ]; then\n        hostnamectl set-hostname \"${HOSTNAME}.local.domain\"\n        HOSTNAME=\"${HOSTNAME}.local.domain\"\n      fi\n      setenforce 0\n      \/usr\/local\/cpanel\/bin\/set_hostname \"${HOSTNAME}\"\n      \/usr\/local\/cpanel\/scripts\/regenerate_tokens\n      \/usr\/local\/cpanel\/cpkeyclt\nruncmd:\n  - sh \/root\/setup.sh\n  - rm -f \/root\/setup.sh",
+                    "login_link": {
+                        "type": "url",
+                        "content": "https:\/\/{{ hostname }}:2087\/"
+                    },
+                    "json_schema": "{\n  \"title\": \"cPanel\",\n  \"description\": \"Create an exceptional hosting experience.\\nIndustry leading hosting platform with world-class support.\",\n  \"type\": \"object\"\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 9,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 10,
+                    "name": "cPanel",
+                    "icon": {
+                        "id": 73,
+                        "name": "cPanel",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/cp.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/images.prod.solus.io\/solusvm2-almalinux-8-cpanel.qcow2",
+                    "cloud_init_version": "v2-centos",
+                    "user_data_template": "#cloud-config\nwrite_files:\n  - path: \/root\/setup.sh\n    permissions: '0755'\n    content: |\n      #!\/bin\/bash\n      HOSTNAME='{{ hostname }}'\n      match=$(echo \"${HOSTNAME}\" | grep -oP '^(?!\\-)(?:[a-zA-Z\\d\\-]{0,62}[a-zA-Z\\d]\\.){1,126}(?!\\d+)[a-zA-Z\\d]{1,63}$')\n      if [ -z \"$match\" ]; then\n        hostnamectl set-hostname \"${HOSTNAME}.local.domain\"\n        HOSTNAME=\"${HOSTNAME}.local.domain\"\n      fi\n      setenforce 0\n      \/usr\/local\/cpanel\/bin\/set_hostname \"${HOSTNAME}\"\n      \/usr\/local\/cpanel\/cpkeyclt\nruncmd:\n  - sh \/root\/setup.sh\n  - rm -f \/root\/setup.sh",
+                    "login_link": {
+                        "type": "url",
+                        "content": "https:\/\/{{ hostname }}:2087\/"
+                    },
+                    "json_schema": "{\n  \"title\": \"cPanel\",\n  \"description\": \"Create an exceptional hosting experience.\\nIndustry leading hosting platform with world-class support.\",\n  \"type\": \"object\"\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 10,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 11,
+                    "name": "cPanel on Ubuntu 20.04",
+                    "icon": {
+                        "id": 73,
+                        "name": "cPanel",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/cp.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/images.prod.solus.io\/solusvm2-ubuntu-20-cpanel.qcow2",
+                    "cloud_init_version": "v2",
+                    "user_data_template": "#cloud-config\nwrite_files:\n  - path: \/root\/setup.sh\n    permissions: '0755'\n    content: |\n      #!\/bin\/bash\n      HOSTNAME='{{ hostname }}'\n      match=$(echo \"${HOSTNAME}\" | grep -oP '^(?!\\-)(?:[a-zA-Z\\d\\-]{0,62}[a-zA-Z\\d]\\.){1,126}(?!\\d+)[a-zA-Z\\d]{1,63}$')\n      if [ -z \"$match\" ]; then\n        hostnamectl set-hostname \"${HOSTNAME}.local.domain\"\n        HOSTNAME=\"${HOSTNAME}.local.domain\"\n      fi\n      \/usr\/local\/cpanel\/bin\/set_hostname \"${HOSTNAME}\"\n      \/usr\/local\/cpanel\/cpkeyclt\nruncmd:\n  - sh \/root\/setup.sh\n  - rm -f \/root\/setup.sh",
+                    "login_link": {
+                        "type": "url",
+                        "content": "https:\/\/{{ hostname }}:2087\/"
+                    },
+                    "json_schema": "{\n  \"title\": \"cPanel\",\n  \"description\": \"Create an exceptional hosting experience.\\nIndustry leading hosting platform with world-class support.\",\n  \"type\": \"object\"\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 11,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 12,
+                    "name": "Plesk",
+                    "icon": {
+                        "id": 74,
+                        "name": "Plesk",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/plesk.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/autoinstall.plesk.com\/images\/plesk-centos-7-latest.qcow2",
+                    "cloud_init_version": "v2-centos",
+                    "user_data_template": "#cloud-config\nwrite_files:\n  - path: \/root\/config.ini\n    permissions: '0755'\n    content: |\n      domain='{{ domain }}'\n      rootpw='{{ passwd }}'\n      user='{{ user }}'\n      passwd='{{ passwd }}'\n      activation_key='{{ license }}'\n      rootmail='{{ email }}'\nruncmd:\n  - [ curl, \"https:\/\/raw.githubusercontent.com\/solusio\/applications\/master\/plesk\/setup\", -o, \"\/root\/setup.sh\" ]\n  - [ chmod, +x, \"\/root\/setup.sh\" ]\n  - \/bin\/bash \/root\/setup.sh | while IFS= read -r line; do printf \"%s %s\\n\" \"$(date)\" \"$line\"; done >>\/var\/log\/logfile\n  - echo \"complete\" > \/var\/www\/vhosts\/default\/htdocs\/__setup_complete.html\n  - rm -r \/root\/config.ini\n  - rm -r \/root\/setup.sh",
+                    "login_link": {
+                        "type": "js-code",
+                        "content": "fetch('https:\/\/{{ domain }}:8443\/api\/v2\/cli\/admin\/call', {\n  body: '{ \"params\": [ \"--get-login-link\" ] }',\n  headers: {\n    Authorization: 'Basic '+ btoa('admin:{{ passwd }}'),\n    \"Content-Type\": \"application\/json\"\n  },\n  method: \"POST\"\n})\n  .then(function(response) {\n    if (!response.ok) {\n      throw Error(response.statusText);\n    }\n    return response.json();\n  })\n  .then(function(data) {\n    var link = data.stdout.split(\/\\r?\\n\/);\n    openWindow(link[0]);\n  })\n  .catch(function() {\n      openWindow('https:\/\/{{domain}}:8443\/');\n  });"
+                    },
+                    "json_schema": "{\n  \"title\": \"Plesk\",\n  \"description\": \"Next-level server management platform\",\n  \"type\": \"object\",\n  \"required\": [\n    \"domain\",\n    \"user\",\n    \"email\",\n    \"passwd\"\n  ],\n  \"properties\": {\n    \"license\": {\n      \"title\": \"Plesk Activation Key (Leave blank if not available)\",\n      \"type\": \"string\"\n    },\n    \"domain\": {\n      \"type\": \"string\",\n      \"title\": \"Hostname\"\n    },\n    \"user\": {\n      \"type\": \"string\",\n      \"title\": \"Username\",\n      \"default\": \"admin\"\n    },\n    \"email\": {\n      \"type\": \"string\",\n      \"format\": \"email\",\n      \"title\": \"Administrator Email\"\n    },\n    \"passwd\": {\n      \"type\": \"string\",\n      \"title\": \"Password\",\n      \"format\": \"password\",\n      \"pattern\": \"^[a-zA-Z0-9_!@#$%^&*?_~-]*$\",\n      \"minLength\": 5\n    }\n  }\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 12,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 13,
+                    "name": "Plesk on AlmaLinux",
+                    "icon": {
+                        "id": 74,
+                        "name": "Plesk",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/plesk.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/images.prod.solus.io\/solus-io-almalinux-8-plesk.qcow2",
+                    "cloud_init_version": "v2-centos",
+                    "user_data_template": "#cloud-config\nwrite_files:\n  - path: \/root\/config.ini\n    permissions: '0755'\n    content: |\n      domain='{{ domain }}'\n      rootpw='{{ passwd }}'\n      user='{{ user }}'\n      passwd='{{ passwd }}'\n      activation_key='{{ license }}'\n      rootmail='{{ email }}'\nruncmd:\n  - [ curl, \"https:\/\/raw.githubusercontent.com\/solusio\/applications\/master\/plesk\/setup\", -o, \"\/root\/setup.sh\" ]\n  - [ chmod, +x, \"\/root\/setup.sh\" ]\n  - \/bin\/bash \/root\/setup.sh | while IFS= read -r line; do printf \"%s %s\\n\" \"$(date)\" \"$line\"; done >>\/var\/log\/logfile\n  - echo \"complete\" > \/var\/www\/vhosts\/default\/htdocs\/__setup_complete.html\n  - rm -r \/root\/config.ini\n  - rm -r \/root\/setup.sh",
+                    "login_link": {
+                        "type": "js-code",
+                        "content": "fetch('https:\/\/{{ domain }}:8443\/api\/v2\/cli\/admin\/call', {\n  body: '{ \"params\": [ \"--get-login-link\" ] }',\n  headers: {\n    Authorization: 'Basic '+ btoa('admin:{{ passwd }}'),\n    \"Content-Type\": \"application\/json\"\n  },\n  method: \"POST\"\n})\n  .then(function(response) {\n    if (!response.ok) {\n      throw Error(response.statusText);\n    }\n    return response.json();\n  })\n  .then(function(data) {\n    var link = data.stdout.split(\/\\r?\\n\/);\n    openWindow(link[0]);\n  })\n  .catch(function() {\n      openWindow('https:\/\/{{domain}}:8443\/');\n  });"
+                    },
+                    "json_schema": "{\n  \"title\": \"Plesk\",\n  \"description\": \"Next-level server management platform\",\n  \"type\": \"object\",\n  \"required\": [\n    \"domain\",\n    \"user\",\n    \"email\",\n    \"passwd\"\n  ],\n  \"properties\": {\n    \"license\": {\n      \"title\": \"Plesk Activation Key (Leave blank if not available)\",\n      \"type\": \"string\"\n    },\n    \"domain\": {\n      \"type\": \"string\",\n      \"title\": \"Hostname\"\n    },\n    \"user\": {\n      \"type\": \"string\",\n      \"title\": \"Username\",\n      \"default\": \"admin\"\n    },\n    \"email\": {\n      \"type\": \"string\",\n      \"format\": \"email\",\n      \"title\": \"Administrator Email\"\n    },\n    \"passwd\": {\n      \"type\": \"string\",\n      \"title\": \"Password\",\n      \"format\": \"password\",\n      \"pattern\": \"^[a-zA-Z0-9_!@#$%^&*?_~-]*$\",\n      \"minLength\": 5\n    }\n  }\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 13,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 14,
+                    "name": "Plesk on Windows 2022",
+                    "icon": {
+                        "id": 69,
+                        "name": "Windows",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/windows.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/images.prod.solus.io\/solus-io-windows-server-2022-plesk.qcow2",
+                    "cloud_init_version": "cloudbase",
+                    "user_data_template": "#cloud-config\nwrite_files:\n  - path: C:\\Windows\\Temp\\config.ini\n    permissions: '0755'\n    content: |\n      domain={{ domain }}\n      rootpw={{ passwd }}\n      user={{ user }}\n      passwd={{ passwd }}\n      activation_key={{ license }}\n      rootmail={{ email }}\nruncmd:\n  - powershell -Command [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -URI https:\/\/raw.githubusercontent.com\/solusio\/applications\/master\/plesk\/setup.ps1 -OutFile 'C:\\Windows\\Temp\\setup.ps1'\n  - powershell C:\\Windows\\Temp\\setup.ps1\n  - del \/f C:\\Windows\\Temp\\setup.ps1,C:\\Windows\\Temp\\config.ini",
+                    "login_link": {
+                        "type": "js-code",
+                        "content": "fetch('https:\/\/{{ domain }}:8443\/api\/v2\/cli\/admin\/call', {\n  body: '{ \"params\": [ \"--get-login-link\" ] }',\n  headers: {\n    Authorization: 'Basic '+ btoa('admin:{{ passwd }}'),\n    \"Content-Type\": \"application\/json\"\n  },\n  method: \"POST\"\n})\n  .then(function(response) {\n    if (!response.ok) {\n      throw Error(response.statusText);\n    }\n    return response.json();\n  })\n  .then(function(data) {\n    var link = data.stdout.split(\/\\r?\\n\/);\n    openWindow(link[0]);\n  })\n  .catch(function() {\n      openWindow('https:\/\/{{domain}}:8443\/');\n  });"
+                    },
+                    "json_schema": "{\n  \"title\": \"Plesk\",\n  \"description\": \"Next-level server management platform\",\n  \"type\": \"object\",\n  \"required\": [\n    \"domain\",\n    \"user\",\n    \"email\",\n    \"passwd\"\n  ],\n  \"properties\": {\n    \"license\": {\n      \"title\": \"Plesk Activation Key (Leave blank if not available)\",\n      \"type\": \"string\"\n    },\n    \"domain\": {\n      \"type\": \"string\",\n      \"title\": \"Hostname\"\n    },\n    \"user\": {\n      \"type\": \"string\",\n      \"title\": \"Username\",\n      \"default\": \"admin\"\n    },\n    \"email\": {\n      \"type\": \"string\",\n      \"format\": \"email\",\n      \"title\": \"Administrator Email\"\n    },\n    \"passwd\": {\n      \"type\": \"string\",\n      \"title\": \"Password\",\n      \"format\": \"password\",\n      \"pattern\": \"^[a-zA-Z0-9_!@#$%^&*?_~-]*$\",\n      \"minLength\": 5\n    }\n  }\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 14,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 15,
+                    "name": "Plesk on Windows 2025",
+                    "icon": {
+                        "id": 69,
+                        "name": "Windows",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/windows.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/images.prod.solus.io\/solusvm2-windows-server-2025-plesk.qcow2",
+                    "cloud_init_version": "cloudbase",
+                    "user_data_template": "#cloud-config\nwrite_files:\n- path: C:\\Windows\\Temp\\config.ini\n  permissions: '0755'\n  content: |\n    domain={{ domain }}\n    rootpw={{ passwd }}\n    user={{ user }}\n    passwd={{ passwd }}\n    activation_key={{ license }}\n    rootmail={{ email }}\nruncmd:\n- powershell -Command [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; Invoke-WebRequest -URI https:\/\/raw.githubusercontent.com\/solusio\/applications\/master\/plesk\/setup.ps1 -OutFile 'C:\\Windows\\Temp\\setup.ps1'\n- powershell C:\\Windows\\Temp\\setup.ps1\n- del \/f C:\\Windows\\Temp\\setup.ps1,C:\\Windows\\Temp\\config.ini",
+                    "login_link": {
+                        "type": "js-code",
+                        "content": "fetch('https:\/\/{{ domain }}:8443\/api\/v2\/cli\/admin\/call', {\nbody: '{ \"params\": [ \"--get-login-link\" ] }',\nheaders: {\n  Authorization: 'Basic '+ btoa('admin:{{ passwd }}'),\n  \"Content-Type\": \"application\/json\"\n},\nmethod: \"POST\"\n})\n.then(function(response) {\n  if (!response.ok) {\n    throw Error(response.statusText);\n  }\n  return response.json();\n})\n.then(function(data) {\n  var link = data.stdout.split(\/\\r?\\n\/);\n  openWindow(link[0]);\n})\n.catch(function() {\n    openWindow('https:\/\/{{domain}}:8443\/');\n});"
+                    },
+                    "json_schema": "{\n\"title\": \"Plesk\",\n\"description\": \"Next-level server management platform\",\n\"type\": \"object\",\n\"required\": [\n  \"domain\",\n  \"user\",\n  \"email\",\n  \"passwd\"\n],\n\"properties\": {\n  \"license\": {\n    \"title\": \"Plesk Activation Key (Leave blank if not available)\",\n    \"type\": \"string\"\n  },\n  \"domain\": {\n    \"type\": \"string\",\n    \"title\": \"Hostname\"\n  },\n  \"user\": {\n    \"type\": \"string\",\n    \"title\": \"Username\",\n    \"default\": \"admin\"\n  },\n  \"email\": {\n    \"type\": \"string\",\n    \"format\": \"email\",\n    \"title\": \"Administrator Email\"\n  },\n  \"passwd\": {\n    \"type\": \"string\",\n    \"title\": \"Password\",\n    \"format\": \"password\",\n    \"pattern\": \"^[a-zA-Z0-9_!@#$%^&*?_~-]*$\",\n    \"minLength\": 5\n  }\n}\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 15,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": "virtio",
+                    "vs_firmware": "efi",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 16,
+                    "name": "Jitsi Meet",
+                    "icon": {
+                        "id": 39,
+                        "name": "Jitsi",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/jitsi.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/cloud-images.ubuntu.com\/focal\/current\/focal-server-cloudimg-amd64.img",
+                    "cloud_init_version": "v2",
+                    "user_data_template": "#cloud-config\nwrite_files:\n  - path: \/root\/jitsi_installer.sh\n    permissions: '0755'\n    content: |\n      #!\/bin\/bash\n      hostname='{{ hostname }}'\n      hostname1='{{ domain }}'\n      address='{{ address }}'\n      length=$($hostname1 | wc -c)\n      if [ \"$length\" -eq \"0\" ]; then\n      hostnamectl set-hostname $hostname\n      else\n      hostnamectl set-hostname $domain\n      fi\n      curl https:\/\/download.jitsi.org\/jitsi-key.gpg.key | sudo sh -c 'gpg --dearmor > \/usr\/share\/keyrings\/jitsi-keyring.gpg'\n      echo 'deb [signed-by=\/usr\/share\/keyrings\/jitsi-keyring.gpg] https:\/\/download.jitsi.org stable\/' | sudo tee \/etc\/apt\/sources.list.d\/jitsi-stable.list > \/dev\/null\n      apt-add-repository universe\n      apt update\n      ufw allow 80\/tcp\n      ufw allow 80\/tcp\n      ufw allow 443\/tcp\n      ufw allow 4443\/tcp\n      ufw allow 10000\/udp\n      ufw allow 22\/tcp\n      ufw enable\n      if [ \"$length\" -eq \"0\" ]; then\n      echo \"jitsi-videobridge jitsi-videobridge\/jvb-hostname string $address\" | debconf-set-selections\n      else\n      echo \"jitsi-videobridge jitsi-videobridge\/jvb-hostname string $domain\" | debconf-set-selections\n      fi\n      echo \"jitsi-meet-web-config   jitsi-meet\/cert-choice  select  Generate a new self-signed certificate (You will later get a chance to obtain a Let's encrypt certificate)\" | debconf-set-selections\n      apt install jitsi-meet -y\nruncmd:\n  - apt-get install gnupg2 curl apt-transport-https debconf-utils ufw -y\n  - sh \/root\/jitsi_installer.sh 2>&1 >> \/tmp\/jitsi-installer.log",
+                    "login_link": {
+                        "type": "js-code",
+                        "content": "let domain = '{{ domain }}';\nlet address = '{{ address }}';\nif (domain.length == '0') {\n  openWindow(\"https:\/\/{{ address }}:443\/\");\n} else {\n  openWindow(\"https:\/\/{{ domain }}:443\/\");\n};"
+                    },
+                    "json_schema": "{\n  \"title\": \"Jitsi Meet Self-Host Server\",\n  \"description\": \"Jitsi is a collection of Open Source projects which provide state-of-the-art video conferencing capabilities that are secure, easy to use and easy to self-host.\",\n  \"type\": \"object\",\n  \"properties\": {\n    \"domain\": {\n      \"type\": \"string\",\n      \"title\": \"Jitsi Server Hostname\",\n      \"format\": \"domain\",\n      \"description\": \"Recommended to leave the field blank if hostname is not DNS resolvable, application will be configured with server's IP address.\"\n    }\n  }\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 16,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 17,
+                    "name": "Windows 2019",
+                    "icon": {
+                        "id": 69,
+                        "name": "Windows",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/windows.svg"
+                    },
+                    "external_integration": null,
+                    "url": "http:\/\/images.prod.solus.io\/solus.io-windows-server-2019.qcow2",
+                    "cloud_init_version": "cloudbase",
+                    "user_data_template": "#cloud-config\nruncmd:\n  - DISM \/online \/Set-Edition:ServerStandard \/ProductKey:\"{{ license }}\" \/AcceptEula \/Quiet",
+                    "login_link": {
+                        "type": "none",
+                        "content": ""
+                    },
+                    "json_schema": "{\n  \"title\": \"Windows Server 2019 Standard Edition\",\n  \"description\": \"This application allows you to convert Windows Server 2019 Standard Evaluation Edition into Standard Edition using purchased Retail Windows license key\",\n  \"type\": \"object\",\n  \"required\": [\n    \"license\"\n  ],\n  \"properties\": {\n    \"license\": {\n      \"type\": \"string\",\n      \"title\": \"Windows Retail Activation Key (Leave blank if not available)\",\n      \"default\": \"\"\n    }\n  }\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 17,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                },
+                {
+                    "id": 18,
+                    "name": "OpenClaw",
+                    "icon": {
+                        "id": 2,
+                        "name": "Application",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/application.svg"
+                    },
+                    "external_integration": null,
+                    "url": "https:\/\/images.prod.solus.io\/noble-server-cloudimg-amd64.img",
+                    "cloud_init_version": "v2",
+                    "user_data_template": "#cloud-config\nruncmd:\n  - [curl, -fsSL, \"https:\/\/raw.githubusercontent.com\/solusio\/applications\/master\/OpenClaw\/setup\", -o, \"\/root\/setup.sh\"]\n  - [chmod, +x, \"\/root\/setup.sh\"]\n  - \/bin\/bash \/root\/setup.sh 2>&1 | while IFS= read -r line; do printf \"%s %s\\n\" \"$(date)\" \"$line\"; done >> \/var\/log\/openclaw-install.log\n  - rm -f \/root\/setup.sh",
+                    "login_link": {
+                        "type": "info",
+                        "content": "<h2>OpenClaw<\/h2>\n<p>Your OpenClaw AI assistant is running at <b>https:\/\/{{ ip }}:18789<\/b><\/p>\n<h3>First-time access<\/h3>\n<ol>\n  <li>Open <a href=\"https:\/\/{{ ip }}:18789\" target=\"_blank\">https:\/\/{{ ip }}:18789<\/a><\/li>\n  <li>Accept the self-signed certificate warning in your browser<\/li>\n  <li>Retrieve the Gateway Token via SSH:\n    <pre>ssh root@{{ ip }}\ngrep token \/home\/openclaw\/.openclaw\/openclaw.json<\/pre>\n  <\/li>\n  <li>Paste the token into the Gateway Token field and click Connect<\/li>\n  <li>Approve the device pairing when prompted:\n    <pre>su - openclaw -c \"openclaw devices list\"\nsu - openclaw -c \"openclaw devices approve &lt;requestId&gt;\"<\/pre>\n  <\/li>\n<\/ol>\n<p><b>Installation log:<\/b> \/var\/log\/openclaw-install.log<\/p>"
+                    },
+                    "json_schema": "{\n  \"title\": \"OpenClaw\",\n  \"description\": \"Personal AI assistant platform. Requires 4+ vCPU and 8 GB RAM. After deployment, connect via SSH to retrieve the Gateway Token for first-time access.\",\n  \"type\": \"object\"\n}",
+                    "is_default": false,
+                    "is_visible": true,
+                    "is_buildin": true,
+                    "position": 18,
+                    "available_plans": [
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "vs_disk_driver": null,
+                    "vs_firmware": "bios",
+                    "is_deprecated": false
+                }
+            ],
+            "links": {
+                "first": "https:\/\/45.82.65.93\/api\/v1\/applications?page=1",
+                "last": "https:\/\/45.82.65.93\/api\/v1\/applications?page=1",
+                "prev": null,
+                "next": null
+            },
+            "meta": {
+                "current_page": 1,
+                "from": 1,
+                "last_page": 1,
+                "links": [
+                    {
+                        "url": null,
+                        "label": "&laquo; Previous",
+                        "active": false
+                    },
+                    {
+                        "url": "https:\/\/45.82.65.93\/api\/v1\/applications?page=1",
+                        "label": "1",
+                        "active": true
+                    },
+                    {
+                        "url": null,
+                        "label": "Next &raquo;",
+                        "active": false
+                    }
+                ],
+                "path": "https:\/\/45.82.65.93\/api\/v1\/applications",
+                "per_page": 50,
+                "to": 18,
+                "total": 18
+            }
+        }
+    },
+    "list_os_images": {
+        "ok": true,
+        "status": 200,
+        "error": null,
+        "data": {
+            "data": [
+                {
+                    "id": 1,
+                    "name": "AlmaLinux",
+                    "icon": {
+                        "id": 90,
+                        "name": "AlmaLinux",
+                        "type": "os",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/almalinux.svg"
+                    },
+                    "versions": [
+                        {
+                            "id": 6,
+                            "version": "10.0",
+                            "position": 1,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 1,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solus-almalinux-10.0.qcow2"
+                        },
+                        {
+                            "id": 5,
+                            "version": "9.6",
+                            "position": 2,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 1,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solus-almalinux-9.6.qcow2"
+                        },
+                        {
+                            "id": 4,
+                            "version": "9.4",
+                            "position": 3,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 1,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solus-almalinux-9.4.qcow2"
+                        },
+                        {
+                            "id": 3,
+                            "version": "9.2",
+                            "position": 4,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 1,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solus-almalinux-9.2.qcow2"
+                        },
+                        {
+                            "id": 2,
+                            "version": "9.0",
+                            "position": 5,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 1,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solus-almalinux-9.qcow2"
+                        },
+                        {
+                            "id": 1,
+                            "version": "8.9",
+                            "position": 6,
+                            "cloud_init_version": "v2-centos",
+                            "os_image_id": 1,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": true,
+                            "url": "https:\/\/images.prod.solus.io\/solus-almalinux-8.9.qcow2"
+                        }
+                    ],
+                    "is_default": false,
+                    "is_visible": true,
+                    "position": 1
+                },
+                {
+                    "id": 2,
+                    "name": "AlpineLinux",
+                    "icon": null,
+                    "versions": [
+                        {
+                            "id": 7,
+                            "version": "3.15",
+                            "position": 1,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 2,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solus-alpine-3.15.qcow2"
+                        }
+                    ],
+                    "is_default": false,
+                    "is_visible": true,
+                    "position": 2
+                },
+                {
+                    "id": 3,
+                    "name": "CentOS",
+                    "icon": {
+                        "id": 83,
+                        "name": "CentOS",
+                        "type": "os",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/centos.svg"
+                    },
+                    "versions": [
+                        {
+                            "id": 11,
+                            "version": "9 Stream",
+                            "position": 1,
+                            "cloud_init_version": "v2-centos",
+                            "os_image_id": 3,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/CentOS-Stream-GenericCloud-9-20230410.0.x86_64.qcow2"
+                        },
+                        {
+                            "id": 10,
+                            "version": "8 Stream",
+                            "position": 2,
+                            "cloud_init_version": "v2-centos",
+                            "os_image_id": 3,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": true,
+                            "url": "https:\/\/images.prod.solus.io\/CentOS-Stream-GenericCloud-8-20230404.0.x86_64.qcow2"
+                        },
+                        {
+                            "id": 9,
+                            "version": "8",
+                            "position": 3,
+                            "cloud_init_version": "v2-centos",
+                            "os_image_id": 3,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": true,
+                            "url": "https:\/\/images.prod.solus.io\/CentOS-8-GenericCloud-8.1.1911-20200113.3.x86_64.qcow2"
+                        },
+                        {
+                            "id": 8,
+                            "version": "7",
+                            "position": 4,
+                            "cloud_init_version": "v2-centos",
+                            "os_image_id": 3,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": true,
+                            "url": "https:\/\/images.prod.solus.io\/CentOS-7-x86_64-GenericCloud.qcow2"
+                        }
+                    ],
+                    "is_default": true,
+                    "is_visible": true,
+                    "position": 3
+                },
+                {
+                    "id": 4,
+                    "name": "Debian",
+                    "icon": {
+                        "id": 77,
+                        "name": "Debian",
+                        "type": "os",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/debian.svg"
+                    },
+                    "versions": [
+                        {
+                            "id": 16,
+                            "version": "13",
+                            "position": 1,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 4,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solusvm2-debian-13.qcow2"
+                        },
+                        {
+                            "id": 15,
+                            "version": "12",
+                            "position": 2,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 4,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solusvm2-debian-12.qcow2"
+                        },
+                        {
+                            "id": 14,
+                            "version": "11",
+                            "position": 3,
+                            "cloud_init_version": "v2-debian10",
+                            "os_image_id": 4,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": true,
+                            "url": "https:\/\/images.prod.solus.io\/solus-io-debian-11.qcow2"
+                        },
+                        {
+                            "id": 13,
+                            "version": "10",
+                            "position": 4,
+                            "cloud_init_version": "v2-debian10",
+                            "os_image_id": 4,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": true,
+                            "url": "http:\/\/images.dev.solusvm.com\/solus.io-debian-10.qcow2"
+                        },
+                        {
+                            "id": 12,
+                            "version": "9",
+                            "position": 5,
+                            "cloud_init_version": "v0-debian9",
+                            "os_image_id": 4,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": true,
+                            "url": "https:\/\/images.prod.solus.io\/debian-9-openstack-amd64.qcow2"
+                        }
+                    ],
+                    "is_default": false,
+                    "is_visible": true,
+                    "position": 4
+                },
+                {
+                    "id": 5,
+                    "name": "Fedora",
+                    "icon": {
+                        "id": 78,
+                        "name": "Fedora",
+                        "type": "os",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/fedora.svg"
+                    },
+                    "versions": [
+                        {
+                            "id": 29,
+                            "version": "Latest",
+                            "position": 1,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 5,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solusvm2-fedora-latest.qcow2"
+                        },
+                        {
+                            "id": 17,
+                            "version": "Latest",
+                            "position": 1,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 5,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solusvm2-fedora-latest.qcow2"
+                        }
+                    ],
+                    "is_default": false,
+                    "is_visible": true,
+                    "position": 5
+                },
+                {
+                    "id": 6,
+                    "name": "OpenSUSE",
+                    "icon": null,
+                    "versions": [
+                        {
+                            "id": 18,
+                            "version": "15",
+                            "position": 1,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 6,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solusvm2-opensuse-latest.qcow2"
+                        },
+                        {
+                            "id": 19,
+                            "version": "16",
+                            "position": 2,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 6,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solusvm2-opensuse-16.qcow2"
+                        }
+                    ],
+                    "is_default": false,
+                    "is_visible": true,
+                    "position": 6
+                },
+                {
+                    "id": 7,
+                    "name": "RockyLinux",
+                    "icon": {
+                        "id": 92,
+                        "name": "RockyLinux",
+                        "type": "os",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/rocky-linux.svg"
+                    },
+                    "versions": [
+                        {
+                            "id": 20,
+                            "version": "8.4",
+                            "position": 1,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 7,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solus-io-rockylinux-8.4.qcow2"
+                        },
+                        {
+                            "id": 21,
+                            "version": "9",
+                            "position": 2,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 7,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "http:\/\/images.prod.solus.io\/Rocky-9-GenericCloud-Base.latest.x86_64.qcow2"
+                        }
+                    ],
+                    "is_default": false,
+                    "is_visible": true,
+                    "position": 7
+                },
+                {
+                    "id": 8,
+                    "name": "Ubuntu",
+                    "icon": {
+                        "id": 81,
+                        "name": "Ubuntu",
+                        "type": "os",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/ubuntu.svg"
+                    },
+                    "versions": [
+                        {
+                            "id": 25,
+                            "version": "24.04",
+                            "position": 1,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 8,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/noble-server-cloudimg-amd64.img"
+                        },
+                        {
+                            "id": 24,
+                            "version": "22.04",
+                            "position": 2,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 8,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/jammy-server-cloudimg-amd64.img"
+                        },
+                        {
+                            "id": 23,
+                            "version": "20.04",
+                            "position": 3,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 8,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": true,
+                            "url": "https:\/\/images.prod.solus.io\/focal-server-cloudimg-amd64.img"
+                        },
+                        {
+                            "id": 22,
+                            "version": "18.04",
+                            "position": 4,
+                            "cloud_init_version": "v2",
+                            "os_image_id": 8,
+                            "is_ssh_keys_supported": true,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": true,
+                            "url": "https:\/\/images.prod.solus.io\/bionic-server-cloudimg-amd64.img"
+                        }
+                    ],
+                    "is_default": false,
+                    "is_visible": true,
+                    "position": 8
+                },
+                {
+                    "id": 9,
+                    "name": "windows",
+                    "icon": {
+                        "id": 69,
+                        "name": "Windows",
+                        "type": "application",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/windows.svg"
+                    },
+                    "versions": [
+                        {
+                            "id": 28,
+                            "version": "2025 Evaluation",
+                            "position": 1,
+                            "cloud_init_version": "cloudbase",
+                            "os_image_id": 9,
+                            "is_ssh_keys_supported": false,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "efi",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solusvm2-windows-server-2025.qcow2"
+                        },
+                        {
+                            "id": 27,
+                            "version": "2022 Evaluation",
+                            "position": 2,
+                            "cloud_init_version": "cloudbase",
+                            "os_image_id": 9,
+                            "is_ssh_keys_supported": false,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solus-io-windows-server-2022.qcow2"
+                        },
+                        {
+                            "id": 26,
+                            "version": "2019",
+                            "position": 3,
+                            "cloud_init_version": "cloudbase",
+                            "os_image_id": 9,
+                            "is_ssh_keys_supported": false,
+                            "is_visible": true,
+                            "virtualization_type": "kvm",
+                            "available_plans": [
+                                {
+                                    "id": 2,
+                                    "name": "Pakistan VPS Storage"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Pakistan VPS Basic"
+                                }
+                            ],
+                            "vs_disk_driver": null,
+                            "vs_firmware": "bios",
+                            "image_presets": [
+                                {
+                                    "id": 1,
+                                    "name": "Default KVM OS image versions image preset"
+                                }
+                            ],
+                            "is_deprecated": false,
+                            "url": "https:\/\/images.prod.solus.io\/solus.io-windows-server-2019.qcow2"
+                        }
+                    ],
+                    "is_default": false,
+                    "is_visible": true,
+                    "position": 9
+                }
+            ],
+            "links": {
+                "first": "https:\/\/45.82.65.93\/api\/v1\/os_images?page=1",
+                "last": "https:\/\/45.82.65.93\/api\/v1\/os_images?page=1",
+                "prev": null,
+                "next": null
+            },
+            "meta": {
+                "current_page": 1,
+                "from": 1,
+                "last_page": 1,
+                "links": [
+                    {
+                        "url": null,
+                        "label": "&laquo; Previous",
+                        "active": false
+                    },
+                    {
+                        "url": "https:\/\/45.82.65.93\/api\/v1\/os_images?page=1",
+                        "label": "1",
+                        "active": true
+                    },
+                    {
+                        "url": null,
+                        "label": "Next &raquo;",
+                        "active": false
+                    }
+                ],
+                "path": "https:\/\/45.82.65.93\/api\/v1\/os_images",
+                "per_page": 50,
+                "to": 9,
+                "total": 9
+            }
+        }
+    },
+    "list_plans": {
+        "ok": true,
+        "status": 200,
+        "error": null,
+        "data": {
+            "data": [
+                {
+                    "id": 2,
+                    "name": "Pakistan VPS Storage",
+                    "params": {
+                        "vcpu": 8,
+                        "ram": 8589934592,
+                        "disk": 2000
+                    },
+                    "virtualization_type": "kvm",
+                    "storage_type": "thinlvm",
+                    "image_format": "raw",
+                    "is_default": false,
+                    "is_snapshot_available": true,
+                    "is_snapshots_enabled": false,
+                    "is_backup_available": false,
+                    "backup_settings": {
+                        "is_incremental_backup_enabled": false,
+                        "incremental_backups_limit": 3
+                    },
+                    "is_additional_ips_available": false,
+                    "is_visible": true,
+                    "is_thin_provisioned": true,
+                    "is_custom": false,
+                    "position": 16383.99,
+                    "reset_limit_policy": "never",
+                    "network_traffic_limit_type": "separate",
+                    "limits": {
+                        "disk_iops": {
+                            "unit": "iops",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "backups_number": {
+                            "unit": "units",
+                            "limit": 7,
+                            "is_enabled": true
+                        },
+                        "disk_bandwidth": {
+                            "unit": "Bps",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "snapshots_size": {
+                            "unit": "GiB",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "snapshots_count": {
+                            "unit": "units",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "network_total_traffic": {
+                            "unit": "GiB",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "additional_disks_number": {
+                            "unit": "units",
+                            "limit": 7,
+                            "is_enabled": true
+                        },
+                        "network_incoming_traffic": {
+                            "unit": "GiB",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "network_outgoing_traffic": {
+                            "unit": "GiB",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "network_reduce_bandwidth": {
+                            "unit": "Kbps",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "network_incoming_bandwidth": {
+                            "unit": "Mbps",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "network_outgoing_bandwidth": {
+                            "unit": "Mbps",
+                            "limit": 1,
+                            "is_enabled": false
+                        }
+                    },
+                    "available_os_image_versions": [
+                        {
+                            "id": 6,
+                            "name": "AlmaLinux 10.0"
+                        },
+                        {
+                            "id": 7,
+                            "name": "AlpineLinux 3.15"
+                        },
+                        {
+                            "id": 11,
+                            "name": "CentOS 9 Stream"
+                        },
+                        {
+                            "id": 16,
+                            "name": "Debian 13"
+                        },
+                        {
+                            "id": 29,
+                            "name": "Fedora Latest"
+                        },
+                        {
+                            "id": 17,
+                            "name": "Fedora Latest"
+                        },
+                        {
+                            "id": 18,
+                            "name": "OpenSUSE 15"
+                        },
+                        {
+                            "id": 20,
+                            "name": "RockyLinux 8.4"
+                        },
+                        {
+                            "id": 25,
+                            "name": "Ubuntu 24.04"
+                        },
+                        {
+                            "id": 28,
+                            "name": "windows 2025 Evaluation"
+                        },
+                        {
+                            "id": 19,
+                            "name": "OpenSUSE 16"
+                        },
+                        {
+                            "id": 5,
+                            "name": "AlmaLinux 9.6"
+                        },
+                        {
+                            "id": 21,
+                            "name": "RockyLinux 9"
+                        },
+                        {
+                            "id": 10,
+                            "name": "CentOS 8 Stream"
+                        },
+                        {
+                            "id": 27,
+                            "name": "windows 2022 Evaluation"
+                        },
+                        {
+                            "id": 15,
+                            "name": "Debian 12"
+                        },
+                        {
+                            "id": 24,
+                            "name": "Ubuntu 22.04"
+                        },
+                        {
+                            "id": 9,
+                            "name": "CentOS 8"
+                        },
+                        {
+                            "id": 26,
+                            "name": "windows 2019"
+                        },
+                        {
+                            "id": 23,
+                            "name": "Ubuntu 20.04"
+                        },
+                        {
+                            "id": 14,
+                            "name": "Debian 11"
+                        },
+                        {
+                            "id": 4,
+                            "name": "AlmaLinux 9.4"
+                        },
+                        {
+                            "id": 13,
+                            "name": "Debian 10"
+                        },
+                        {
+                            "id": 3,
+                            "name": "AlmaLinux 9.2"
+                        },
+                        {
+                            "id": 8,
+                            "name": "CentOS 7"
+                        },
+                        {
+                            "id": 22,
+                            "name": "Ubuntu 18.04"
+                        },
+                        {
+                            "id": 2,
+                            "name": "AlmaLinux 9.0"
+                        },
+                        {
+                            "id": 12,
+                            "name": "Debian 9"
+                        },
+                        {
+                            "id": 1,
+                            "name": "AlmaLinux 8.9"
+                        }
+                    ],
+                    "available_locations": [
+                        {
+                            "id": 2,
+                            "name": "Pakistan"
+                        }
+                    ],
+                    "available_applications": [],
+                    "tokens_per_hour": 0,
+                    "tokens_per_month": 0,
+                    "ip_tokens_per_month": 0,
+                    "ip_tokens_per_hour": 0,
+                    "iso_image_tokens_per_hour": 0,
+                    "iso_image_tokens_per_month": 0,
+                    "backup_price": 0,
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        },
+                        {
+                            "id": 1,
+                            "name": "Default KVM OS image versions image preset"
+                        }
+                    ],
+                    "is_disaster_recovery_enabled": false,
+                    "disaster_recovery_price": 0,
+                    "gpu_profile": null
+                },
+                {
+                    "id": 1,
+                    "name": "Pakistan VPS Basic",
+                    "params": {
+                        "vcpu": 4,
+                        "ram": 2147483648,
+                        "disk": 100
+                    },
+                    "virtualization_type": "kvm",
+                    "storage_type": "fb",
+                    "image_format": "qcow2",
+                    "is_default": false,
+                    "is_snapshot_available": true,
+                    "is_snapshots_enabled": false,
+                    "is_backup_available": false,
+                    "backup_settings": {
+                        "is_incremental_backup_enabled": false,
+                        "incremental_backups_limit": 3
+                    },
+                    "is_additional_ips_available": true,
+                    "is_visible": true,
+                    "is_thin_provisioned": true,
+                    "is_custom": false,
+                    "position": 16384,
+                    "reset_limit_policy": "never",
+                    "network_traffic_limit_type": "separate",
+                    "limits": {
+                        "disk_iops": {
+                            "unit": "iops",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "backups_number": {
+                            "unit": "units",
+                            "limit": 7,
+                            "is_enabled": true
+                        },
+                        "disk_bandwidth": {
+                            "unit": "Bps",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "snapshots_size": {
+                            "unit": "GiB",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "snapshots_count": {
+                            "unit": "units",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "network_total_traffic": {
+                            "unit": "GiB",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "additional_disks_number": {
+                            "unit": "units",
+                            "limit": 7,
+                            "is_enabled": true
+                        },
+                        "network_incoming_traffic": {
+                            "unit": "GiB",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "network_outgoing_traffic": {
+                            "unit": "GiB",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "network_reduce_bandwidth": {
+                            "unit": "Kbps",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "network_incoming_bandwidth": {
+                            "unit": "Mbps",
+                            "limit": 1,
+                            "is_enabled": false
+                        },
+                        "network_outgoing_bandwidth": {
+                            "unit": "Mbps",
+                            "limit": 1,
+                            "is_enabled": false
+                        }
+                    },
+                    "available_os_image_versions": [
+                        {
+                            "id": 6,
+                            "name": "AlmaLinux 10.0"
+                        },
+                        {
+                            "id": 7,
+                            "name": "AlpineLinux 3.15"
+                        },
+                        {
+                            "id": 11,
+                            "name": "CentOS 9 Stream"
+                        },
+                        {
+                            "id": 16,
+                            "name": "Debian 13"
+                        },
+                        {
+                            "id": 29,
+                            "name": "Fedora Latest"
+                        },
+                        {
+                            "id": 17,
+                            "name": "Fedora Latest"
+                        },
+                        {
+                            "id": 18,
+                            "name": "OpenSUSE 15"
+                        },
+                        {
+                            "id": 20,
+                            "name": "RockyLinux 8.4"
+                        },
+                        {
+                            "id": 25,
+                            "name": "Ubuntu 24.04"
+                        },
+                        {
+                            "id": 28,
+                            "name": "windows 2025 Evaluation"
+                        },
+                        {
+                            "id": 19,
+                            "name": "OpenSUSE 16"
+                        },
+                        {
+                            "id": 21,
+                            "name": "RockyLinux 9"
+                        },
+                        {
+                            "id": 24,
+                            "name": "Ubuntu 22.04"
+                        },
+                        {
+                            "id": 27,
+                            "name": "windows 2022 Evaluation"
+                        },
+                        {
+                            "id": 5,
+                            "name": "AlmaLinux 9.6"
+                        },
+                        {
+                            "id": 10,
+                            "name": "CentOS 8 Stream"
+                        },
+                        {
+                            "id": 15,
+                            "name": "Debian 12"
+                        },
+                        {
+                            "id": 26,
+                            "name": "windows 2019"
+                        },
+                        {
+                            "id": 4,
+                            "name": "AlmaLinux 9.4"
+                        },
+                        {
+                            "id": 14,
+                            "name": "Debian 11"
+                        },
+                        {
+                            "id": 23,
+                            "name": "Ubuntu 20.04"
+                        },
+                        {
+                            "id": 9,
+                            "name": "CentOS 8"
+                        },
+                        {
+                            "id": 8,
+                            "name": "CentOS 7"
+                        },
+                        {
+                            "id": 13,
+                            "name": "Debian 10"
+                        },
+                        {
+                            "id": 22,
+                            "name": "Ubuntu 18.04"
+                        },
+                        {
+                            "id": 3,
+                            "name": "AlmaLinux 9.2"
+                        },
+                        {
+                            "id": 2,
+                            "name": "AlmaLinux 9.0"
+                        },
+                        {
+                            "id": 12,
+                            "name": "Debian 9"
+                        },
+                        {
+                            "id": 1,
+                            "name": "AlmaLinux 8.9"
+                        }
+                    ],
+                    "available_locations": [
+                        {
+                            "id": 2,
+                            "name": "Pakistan"
+                        }
+                    ],
+                    "available_applications": [
+                        {
+                            "id": 1,
+                            "name": "WordPress on Plesk"
+                        },
+                        {
+                            "id": 2,
+                            "name": "NextCloud"
+                        },
+                        {
+                            "id": 3,
+                            "name": "OpenVPN"
+                        },
+                        {
+                            "id": 4,
+                            "name": "Cloudron"
+                        },
+                        {
+                            "id": 5,
+                            "name": "GitLab"
+                        },
+                        {
+                            "id": 6,
+                            "name": "MariaDB"
+                        },
+                        {
+                            "id": 7,
+                            "name": "NGINX"
+                        },
+                        {
+                            "id": 8,
+                            "name": "Jenkins"
+                        },
+                        {
+                            "id": 9,
+                            "name": "cPanel on CloudLinux"
+                        },
+                        {
+                            "id": 10,
+                            "name": "cPanel"
+                        },
+                        {
+                            "id": 11,
+                            "name": "cPanel on Ubuntu 20.04"
+                        },
+                        {
+                            "id": 12,
+                            "name": "Plesk"
+                        },
+                        {
+                            "id": 13,
+                            "name": "Plesk on AlmaLinux"
+                        },
+                        {
+                            "id": 14,
+                            "name": "Plesk on Windows 2022"
+                        },
+                        {
+                            "id": 15,
+                            "name": "Plesk on Windows 2025"
+                        },
+                        {
+                            "id": 16,
+                            "name": "Jitsi Meet"
+                        },
+                        {
+                            "id": 17,
+                            "name": "Windows 2019"
+                        },
+                        {
+                            "id": 18,
+                            "name": "OpenClaw"
+                        }
+                    ],
+                    "tokens_per_hour": 0,
+                    "tokens_per_month": 0,
+                    "ip_tokens_per_month": 0,
+                    "ip_tokens_per_hour": 0,
+                    "iso_image_tokens_per_hour": 0,
+                    "iso_image_tokens_per_month": 0,
+                    "backup_price": 0,
+                    "image_presets": [
+                        {
+                            "id": 3,
+                            "name": "Default applications image preset"
+                        }
+                    ],
+                    "is_disaster_recovery_enabled": false,
+                    "disaster_recovery_price": 0,
+                    "gpu_profile": null
+                }
+            ],
+            "links": {
+                "first": "https:\/\/45.82.65.93\/api\/v1\/plans?page=1",
+                "last": "https:\/\/45.82.65.93\/api\/v1\/plans?page=1",
+                "prev": null,
+                "next": null
+            },
+            "meta": {
+                "current_page": 1,
+                "from": 1,
+                "last_page": 1,
+                "links": [
+                    {
+                        "url": null,
+                        "label": "&laquo; Previous",
+                        "active": false
+                    },
+                    {
+                        "url": "https:\/\/45.82.65.93\/api\/v1\/plans?page=1",
+                        "label": "1",
+                        "active": true
+                    },
+                    {
+                        "url": null,
+                        "label": "Next &raquo;",
+                        "active": false
+                    }
+                ],
+                "path": "https:\/\/45.82.65.93\/api\/v1\/plans",
+                "per_page": 50,
+                "to": 2,
+                "total": 2
+            }
+        }
+    },
+    "list_locations": {
+        "ok": true,
+        "status": 200,
+        "error": null,
+        "data": {
+            "data": [
+                {
+                    "id": 2,
+                    "name": "Pakistan",
+                    "description": "Islamabad Pakistan",
+                    "icon": {
+                        "id": 270,
+                        "name": "Pakistan",
+                        "type": "flags",
+                        "url": "https:\/\/45.82.65.93\/shared\/icons\/flags\/pakistan.svg"
+                    },
+                    "is_default": false,
+                    "is_visible": true,
+                    "position": 0.99,
+                    "available_plans": [
+                        {
+                            "id": 2,
+                            "name": "Pakistan VPS Storage"
+                        },
+                        {
+                            "id": 1,
+                            "name": "Pakistan VPS Basic"
+                        }
+                    ],
+                    "compute_resources": [
+                        {
+                            "id": 7,
+                            "name": "SAT-TOWN1",
+                            "host": "38.117.65.2",
+                            "agent_port": 8080,
+                            "version": "2.0.0-41401",
+                            "status": "active",
+                            "storages": [
+                                {
+                                    "id": 8,
+                                    "name": null,
+                                    "type": {
+                                        "name": "fb",
+                                        "formats": [
+                                            "raw",
+                                            "qcow2"
+                                        ]
+                                    },
+                                    "mount": "\/",
+                                    "path": "\/var\/lib\/libvirt\/images\/",
+                                    "thin_pool": null,
+                                    "is_available_for_balancing": true,
+                                    "credentials": null,
+                                    "free_space": 10497.77,
+                                    "storage_tag": null,
+                                    "status": "available",
+                                    "status_details": null
+                                }
+                            ],
+                            "capabilities": {
+                                "kvm": true,
+                                "vz": false,
+                                "is_management_node": false,
+                                "is_mem_balloon_free_page_reporting_supported": true,
+                                "is_virtio_discard_supported": true
+                            },
+                            "is_locked": false,
+                            "is_in_maintenance": false,
+                            "last_seen_online": "2026-05-13 18:48:05",
+                            "gpu_driver_version": null,
+                            "has_unhealthy_storages": false,
+                            "has_unknown_status_storages": false,
+                            "vms_count": 3,
+                            "backup_enabled_servers_count": 0,
+                            "disaster_recovery_enabled_servers_count": 0,
+                            "settings": {
+                                "cache_path": "\/usr\/local\/solus\/cache\/",
+                                "iso_path": "\/usr\/local\/solus\/iso_images\/",
+                                "backup_tmp_path": "\/usr\/local\/solus\/tmp\/backups\/",
+                                "vnc_proxy_port": 7778,
+                                "limits": {
+                                    "vm": {
+                                        "total": 0,
+                                        "used": 3,
+                                        "unlimited": true
+                                    },
+                                    "hdd": {
+                                        "total": 0,
+                                        "used": 300,
+                                        "unlimited": true
+                                    },
+                                    "ram": {
+                                        "total": 0,
+                                        "used": 6442450944,
+                                        "unlimited": true
+                                    },
+                                    "vcpu": {
+                                        "total": 0,
+                                        "used": 12,
+                                        "unlimited": true
+                                    }
+                                },
+                                "balance_strategy": "most-storage-available",
+                                "network": {
+                                    "bridges": [
+                                        {
+                                            "type": "bridged",
+                                            "name": "br-int"
+                                        },
+                                        {
+                                            "type": "routed",
+                                            "name": "br-routed"
+                                        }
+                                    ],
+                                    "type": "bridged",
+                                    "ip_for_vpc_network": null
+                                },
+                                "arch": "x86_64",
+                                "virtualization_types": [
+                                    "kvm"
+                                ],
+                                "vs_disk_cache_mode": null,
+                                "concurrent_backups": {
+                                    "create": 1,
+                                    "restore": 1
+                                },
+                                "libvirt_xml_cpu": null,
+                                "use_custom_libvirt": false,
+                                "network_rules": null
+                            },
+                            "metrics": {
+                                "network": {
+                                    "ipv6_available": false
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 1,
+                    "name": "Default",
+                    "description": "Default",
+                    "icon": null,
+                    "is_default": true,
+                    "is_visible": true,
+                    "position": 1,
+                    "available_plans": [],
+                    "compute_resources": []
+                }
+            ],
+            "links": {
+                "first": "https:\/\/45.82.65.93\/api\/v1\/locations?page=1",
+                "last": "https:\/\/45.82.65.93\/api\/v1\/locations?page=1",
+                "prev": null,
+                "next": null
+            },
+            "meta": {
+                "current_page": 1,
+                "from": 1,
+                "last_page": 1,
+                "links": [
+                    {
+                        "url": null,
+                        "label": "&laquo; Previous",
+                        "active": false
+                    },
+                    {
+                        "url": "https:\/\/45.82.65.93\/api\/v1\/locations?page=1",
+                        "label": "1",
+                        "active": true
+                    },
+                    {
+                        "url": null,
+                        "label": "Next &raquo;",
+                        "active": false
+                    }
+                ],
+                "path": "https:\/\/45.82.65.93\/api\/v1\/locations",
+                "per_page": 50,
+                "to": 2,
+                "total": 2
+            }
+        }
+    }
+}

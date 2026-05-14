@@ -1,0 +1,13 @@
+{
+    "server_id": 18,
+    "tested_at": "2026-05-13T20:13:27+02:00",
+    "result": {
+        "ok": true,
+        "status": 200,
+        "error": null,
+        "data": {
+            "url": "NDFiMTIwNzRhZGNjYTU4MTNlYTZkNGY4YWU0ZjNlZDRiMDE2N2Y4ZWVkYjE2Y2IyYTFjNTcxMDVhOWMxMmNmNjVhOGJlZmRiM2M2OTI2NDM1Y2Y4OWU0MGQ2OTI2MDcwZGQ4Zjg2YWFhODZiMjBkYzkwMWNkMmU2NDc4ZTk4NDI3ZTJiNDY5N2NlYzQ5ZjY5ZjVkYTM0MWU2ODA0Njg0MGI0YWIyY2QwNjRlZDBkNDc",
+            "vnc_proxy_url": "https:\/\/45.82.65.93\/vnc?url="
+        }
+    }
+}
