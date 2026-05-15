@@ -37,7 +37,7 @@
     ?>
 
     <?php if ($providerBusy): ?>
-        <div class="mb-4 rounded-lg border border-yellow-500/30 bg-yellow-500/10 px-4 py-3 text-sm text-yellow-300">Server is processing a task. Start/Stop/Restart/Reinstall actions may be temporarily blocked during this time.</div>
+        <div class="mb-4 rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-4 py-3 text-sm text-cyan-300">Server is processing a task. Start/Stop/Restart/Reinstall actions may be temporarily blocked during this time.</div>
     <?php endif; ?>
 
     <div class="flex items-center gap-3 mb-6 flex-wrap gap-4">
@@ -50,7 +50,7 @@
             <a href="<?php echo site_url('admin/servers/'.(int) $service['id'].'/console'); ?>" class="px-3 py-2 bg-[#1e2130] hover:bg-[#252938] text-slate-300 text-sm rounded-lg transition-colors">Console</a>
             <?php if ((int) (isset($service['provider_server_id']) ? $service['provider_server_id'] : 0) <= 0): ?>
                 <form method="post" action="<?php echo site_url('admin/servers/'.(int) $service['id'].'/provision'); ?>" class="inline">
-                    <button type="submit" class="px-3 py-2 bg-amber-600/20 hover:bg-amber-600/30 text-amber-300 text-sm rounded-lg transition-colors">Provision on Provider</button>
+                    <button type="submit" class="px-3 py-2 bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 text-sm rounded-lg transition-colors">Provision on Provider</button>
                 </form>
             <?php endif; ?>
             <a href="<?php echo current_url(); ?>" class="px-3 py-2 bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 text-sm rounded-lg transition-colors">Refresh Data</a>
@@ -177,6 +177,7 @@
             <?php
                 $rows = array();
                 $rows[] = array('Hostname', html_escape($provider_server && isset($provider_server['name']) ? $provider_server['name'] : ($service['hostname'] ? $service['hostname'] : '-')), 'mono');
+                $rows[] = array('Client', html_escape(!empty($service['client_name']) ? $service['client_name'] : (!empty($service['client_email']) ? $service['client_email'] : ('User #'.(int) $service['user_id']))));
                 $rows[] = array('Status', '<span class="'.$cls.' border px-2 py-0.5 rounded text-xs">'.html_escape($resolvedStatus).'</span>', 'raw');
                 $rows[] = array('Plan', html_escape($resolvedPlan));
                 $rows[] = array('OS', html_escape($resolvedOsName));
@@ -255,27 +256,44 @@
 
         <div class="space-y-4">
             <?php
-                $pv = isset($provider_resources['vcpu']) ? (int) $provider_resources['vcpu'] : 0;
-                $pm = isset($provider_resources['memory']) ? (int) $provider_resources['memory'] : 0;
-                $pd = isset($provider_resources['disk']) ? (int) $provider_resources['disk'] : 0;
-                $vcpu = ($pv > 0) ? $pv : (int) $service['vcpu'];
-                $memory = ($pm > 0) ? $pm : (int) $service['memory'];
-                $disk = ($pd > 0) ? $pd : (int) $service['disk'];
-                $resLive = ($pv > 0 || $pm > 0 || $pd > 0);
+                $pv = isset($provider_resources['vcpu']) ? $provider_resources['vcpu'] : null;
+                $pm = isset($provider_resources['memory']) ? $provider_resources['memory'] : null;
+                $pd = isset($provider_resources['disk']) ? $provider_resources['disk'] : null;
+                $allProvider = ($pv !== null && $pv > 0) && ($pm !== null && $pm > 0) && ($pd !== null && $pd > 0);
             ?>
             <div class="bg-[#13151f] border border-[#2a2d3e] rounded-xl p-5">
-                <h3 class="text-lg font-semibold text-white mb-4">Resources <span class="ml-1 text-xs font-normal <?php echo $resLive ? 'text-green-400' : 'text-slate-500'; ?>(<?php echo $resLive ? 'Real-time' : 'Local'; ?>)</span></h3>
+                <h3 class="text-lg font-semibold text-white mb-4">Resources
+                    <span class="ml-1 text-xs font-normal <?php echo $allProvider ? 'text-green-400' : 'text-red-400'; ?>">
+                        (<?php echo $allProvider ? 'Real-time' : 'Data unavailable'; ?>)
+                    </span>
+                </h3>
                 <div class="space-y-3">
-                    <div class="flex items-center gap-3 p-3 bg-[#0f1117] rounded-lg"><i data-lucide="zap" class="w-4 h-4 text-yellow-400 shrink-0"></i><div><p class="text-xs text-slate-500">CPU</p><p class="text-lg font-semibold text-white"><?php echo $vcpu; ?> vCPU</p></div></div>
-                    <div class="flex items-center gap-3 p-3 bg-[#0f1117] rounded-lg"><i data-lucide="memory-stick" class="w-4 h-4 text-blue-400 shrink-0"></i><div><p class="text-xs text-slate-500">RAM</p><p class="text-lg font-semibold text-white"><?php echo $memory >= 1024 ? round($memory/1024, 1).' GB' : $memory.' MB'; ?></p></div></div>
-                    <div class="flex items-center gap-3 p-3 bg-[#0f1117] rounded-lg"><i data-lucide="hard-drive" class="w-4 h-4 text-green-400 shrink-0"></i><div><p class="text-xs text-slate-500">Disk</p><p class="text-lg font-semibold text-white"><?php echo $disk; ?> GB</p></div></div>
+                    <?php if ($allProvider): ?>
+                        <div class="flex items-center gap-3 p-3 bg-[#0f1117] rounded-lg">
+                            <i data-lucide="zap" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                            <div><p class="text-xs text-slate-500">CPU</p><p class="text-lg font-semibold text-white"><?php echo (int)$pv; ?> vCPU</p></div>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-[#0f1117] rounded-lg">
+                            <i data-lucide="memory-stick" class="w-4 h-4 text-blue-400 shrink-0"></i>
+                            <div><p class="text-xs text-slate-500">RAM</p><p class="text-lg font-semibold text-white"><?php echo $pm >= 1024 ? round($pm/1024, 1).' GB' : $pm.' MB'; ?></p></div>
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-[#0f1117] rounded-lg">
+                            <i data-lucide="hard-drive" class="w-4 h-4 text-green-400 shrink-0"></i>
+                            <div><p class="text-xs text-slate-500">Disk</p><p class="text-lg font-semibold text-white"><?php echo (int)$pd; ?> GB</p></div>
+                        </div>
+                    <?php else: ?>
+                        <div class="flex items-center gap-3 p-3 bg-[#0f1117] rounded-lg">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-indigo-400 shrink-0"></i>
+                            <div><p class="text-xs text-slate-500">Resource data unavailable from provider.</p></div>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
 
             <?php if ($hasBandwidth): ?>
             <div class="bg-[#13151f] border border-[#2a2d3e] rounded-xl p-5">
                 <h3 class="text-base font-semibold text-white mb-3">Bandwidth</h3>
-                <?php $pct = $provider_bandwidth_limit > 0 ? min(100, round(($provider_bandwidth_used / $provider_bandwidth_limit) * 100)) : 0; $bwColor = $pct >= 90 ? 'bg-red-500' : ($pct >= 70 ? 'bg-yellow-500' : 'bg-indigo-500'); ?>
+                <?php $pct = $provider_bandwidth_limit > 0 ? min(100, round(($provider_bandwidth_used / $provider_bandwidth_limit) * 100)) : 0; $bwColor = $pct >= 90 ? 'bg-red-500' : ($pct >= 70 ? 'bg-cyan-500' : 'bg-indigo-500'); ?>
                 <div class="mb-2 flex justify-between text-xs text-slate-400"><span>Used: <?php echo number_format($provider_bandwidth_used, 1); ?> GB</span><span>Limit: <?php echo number_format($provider_bandwidth_limit, 1); ?> GB</span></div>
                 <div class="w-full bg-[#0f1117] rounded-full h-2"><div class="<?php echo $bwColor; ?> h-2 rounded-full" style="width:<?php echo $pct; ?>%"></div></div>
                 <p class="text-xs text-slate-500 mt-1 text-right"><?php echo $pct; ?>% used</p>

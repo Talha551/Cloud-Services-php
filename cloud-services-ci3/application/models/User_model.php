@@ -97,6 +97,9 @@ class User_model extends CI_Model
         if (!in_array('reset_token_expiry', $columns)) {
             $this->db->query('ALTER TABLE users ADD COLUMN reset_token_expiry TEXT');
         }
+        if (!in_array('credit_balance', $columns)) {
+            $this->db->query('ALTER TABLE users ADD COLUMN credit_balance REAL NOT NULL DEFAULT 0');
+        }
 
         $admin = $this->find_by_email('admin@example.com');
         if (!$admin) {
@@ -184,6 +187,7 @@ class User_model extends CI_Model
             'name' => $user['full_name'],
             'full_name' => $user['full_name'],
             'role' => $user['role'],
+            'credit_balance' => round((float) (isset($user['credit_balance']) ? $user['credit_balance'] : 0), 2),
             'roles' => array($user['role'])
         );
     }
@@ -367,7 +371,13 @@ class User_model extends CI_Model
         
         foreach ($allowed as $field) {
             if (isset($data[$field])) {
-                $update[$field] = $data[$field];
+                if ($field === 'full_name') {
+                    $update[$field] = trim((string) $data[$field]);
+                } elseif ($field === 'email') {
+                    $update[$field] = strtolower(trim((string) $data[$field]));
+                } else {
+                    $update[$field] = $data[$field];
+                }
             }
         }
         

@@ -38,6 +38,9 @@
             <a href="<?php echo site_url('client/services/'.(int) $service['id'].'/action/restart'); ?>" class="px-3 py-2 <?php echo $providerBusy ? 'bg-[#161926] text-slate-600 pointer-events-none' : 'bg-[#1e2130] hover:bg-[#252938] text-slate-300'; ?> text-sm rounded-lg transition-colors">Restart</a>
             <a href="<?php echo site_url('client/services/'.(int) $service['id'].'/action/delete'); ?>" onclick="return confirm('Delete this server permanently? This action cannot be undone.');" class="px-3 py-2 <?php echo $providerBusy ? 'bg-[#2c1720] text-red-900/60 pointer-events-none' : 'bg-red-600/20 hover:bg-red-600/30 text-red-300'; ?> text-sm rounded-lg transition-colors">Delete Server</a>
             <a href="<?php echo site_url('client/services/'.(int) $service['id'].'/console'); ?>" class="px-3 py-2 bg-[#1e2130] hover:bg-[#252938] text-slate-300 text-sm rounded-lg transition-colors">Console</a>
+            <form method="post" action="<?php echo site_url('client/services/'.(int) $service['id'].'/install-request'); ?>" class="inline">
+                <button type="submit" class="px-3 py-2 bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 text-sm rounded-lg transition-colors">Request Admin Install</button>
+            </form>
             <?php if ((int) (isset($service['provider_server_id']) ? $service['provider_server_id'] : 0) <= 0): ?>
                 <form method="post" action="<?php echo site_url('client/services/'.(int) $service['id'].'/provision'); ?>" class="inline">
                     <button type="submit" class="px-3 py-2 bg-amber-600/20 hover:bg-amber-600/30 text-amber-300 text-sm rounded-lg transition-colors">Provision on Provider</button>

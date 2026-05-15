@@ -38,12 +38,104 @@ class Dashboard extends MY_Controller
         }
         if ($type === 'os_images') {
             return array(
-                array('name' => 'Ubuntu 22.04 LTS', 'type' => 'linux', 'status' => 'available'),
-                array('name' => 'Debian 12', 'type' => 'linux', 'status' => 'available'),
-                array('name' => 'AlmaLinux 9', 'type' => 'linux', 'status' => 'available')
+                array('id' => 1, 'name' => 'Ubuntu 24.04 LTS', 'label' => 'Ubuntu 24.04 LTS', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 2, 'name' => 'Ubuntu 22.04 LTS', 'label' => 'Ubuntu 22.04 LTS', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 3, 'name' => 'Ubuntu 20.04 LTS', 'label' => 'Ubuntu 20.04 LTS', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 4, 'name' => 'Debian 12', 'label' => 'Debian 12', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 5, 'name' => 'Debian 11', 'label' => 'Debian 11', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 6, 'name' => 'AlmaLinux 9', 'label' => 'AlmaLinux 9', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 7, 'name' => 'AlmaLinux 8', 'label' => 'AlmaLinux 8', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 8, 'name' => 'Rocky Linux 9', 'label' => 'Rocky Linux 9', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 9, 'name' => 'Rocky Linux 8', 'label' => 'Rocky Linux 8', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 10, 'name' => 'CentOS Stream 9', 'label' => 'CentOS Stream 9', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 11, 'name' => 'CentOS 8', 'label' => 'CentOS 8', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 12, 'name' => 'Fedora 40', 'label' => 'Fedora 40', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 13, 'name' => 'Fedora 39', 'label' => 'Fedora 39', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 14, 'name' => 'openSUSE Leap 15.6', 'label' => 'openSUSE Leap 15.6', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 15, 'name' => 'Oracle Linux 9', 'label' => 'Oracle Linux 9', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 16, 'name' => 'Oracle Linux 8', 'label' => 'Oracle Linux 8', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 17, 'name' => 'Arch Linux', 'label' => 'Arch Linux', 'type' => 'linux', 'status' => 'available'),
+                array('id' => 18, 'name' => 'Ubuntu 22.04 + Docker', 'label' => 'Ubuntu 22.04 + Docker', 'type' => 'template', 'status' => 'available'),
+                array('id' => 19, 'name' => 'Debian 12 + Docker', 'label' => 'Debian 12 + Docker', 'type' => 'template', 'status' => 'available'),
+                array('id' => 20, 'name' => 'Windows Server 2022', 'label' => 'Windows Server 2022', 'type' => 'windows', 'status' => 'available')
+            );
+        }
+        if ($type === 'applications') {
+            return array(
+                array('id' => 1, 'name' => 'WordPress', 'label' => 'WordPress', 'type' => 'cms', 'status' => 'available'),
+                array('id' => 2, 'name' => 'WooCommerce', 'label' => 'WooCommerce', 'type' => 'ecommerce', 'status' => 'available'),
+                array('id' => 3, 'name' => 'Magento', 'label' => 'Magento', 'type' => 'ecommerce', 'status' => 'available'),
+                array('id' => 4, 'name' => 'OpenCart', 'label' => 'OpenCart', 'type' => 'ecommerce', 'status' => 'available'),
+                array('id' => 5, 'name' => 'PrestaShop', 'label' => 'PrestaShop', 'type' => 'ecommerce', 'status' => 'available'),
+                array('id' => 6, 'name' => 'Joomla', 'label' => 'Joomla', 'type' => 'cms', 'status' => 'available'),
+                array('id' => 7, 'name' => 'Drupal', 'label' => 'Drupal', 'type' => 'cms', 'status' => 'available'),
+                array('id' => 8, 'name' => 'Ghost', 'label' => 'Ghost', 'type' => 'blog', 'status' => 'available'),
+                array('id' => 9, 'name' => 'Nextcloud', 'label' => 'Nextcloud', 'type' => 'cloud', 'status' => 'available'),
+                array('id' => 10, 'name' => 'ownCloud', 'label' => 'ownCloud', 'type' => 'cloud', 'status' => 'available'),
+                array('id' => 11, 'name' => 'Moodle', 'label' => 'Moodle', 'type' => 'education', 'status' => 'available'),
+                array('id' => 12, 'name' => 'phpMyAdmin', 'label' => 'phpMyAdmin', 'type' => 'database', 'status' => 'available'),
+                array('id' => 13, 'name' => 'Node.js Runtime', 'label' => 'Node.js Runtime', 'type' => 'runtime', 'status' => 'available'),
+                array('id' => 14, 'name' => 'Python Runtime', 'label' => 'Python Runtime', 'type' => 'runtime', 'status' => 'available'),
+                array('id' => 15, 'name' => 'Docker CE', 'label' => 'Docker CE', 'type' => 'container', 'status' => 'available'),
+                array('id' => 16, 'name' => 'LAMP Stack', 'label' => 'LAMP Stack', 'type' => 'stack', 'status' => 'available'),
+                array('id' => 17, 'name' => 'LEMP Stack', 'label' => 'LEMP Stack', 'type' => 'stack', 'status' => 'available'),
+                array('id' => 18, 'name' => 'DirectAdmin', 'label' => 'DirectAdmin', 'type' => 'panel', 'status' => 'available'),
+                array('id' => 19, 'name' => 'cPanel/WHM', 'label' => 'cPanel/WHM', 'type' => 'panel', 'status' => 'available'),
+                array('id' => 20, 'name' => 'Plesk', 'label' => 'Plesk', 'type' => 'panel', 'status' => 'available'),
+                array('id' => 21, 'name' => 'Webmin', 'label' => 'Webmin', 'type' => 'panel', 'status' => 'available'),
+                array('id' => 22, 'name' => 'Virtualmin', 'label' => 'Virtualmin', 'type' => 'panel', 'status' => 'available'),
+                array('id' => 23, 'name' => 'HestiaCP', 'label' => 'HestiaCP', 'type' => 'panel', 'status' => 'available'),
+                array('id' => 24, 'name' => 'OpenVPN Access Server', 'label' => 'OpenVPN Access Server', 'type' => 'vpn', 'status' => 'available'),
+                array('id' => 25, 'name' => 'GitLab CE', 'label' => 'GitLab CE', 'type' => 'devops', 'status' => 'available')
             );
         }
         return array();
+    }
+
+    private function location_options()
+    {
+        return array(
+            1 => 'USA - New York',
+            2 => 'USA - Los Angeles',
+            3 => 'USA - Dallas',
+            4 => 'Canada - Toronto',
+            5 => 'Europe - Amsterdam',
+            6 => 'Europe - Frankfurt',
+            7 => 'Europe - London',
+            8 => 'Asia - Singapore',
+            9 => 'Asia - Tokyo',
+            10 => 'Asia - Mumbai',
+            11 => 'Middle East - Dubai',
+            12 => 'Australia - Sydney'
+        );
+    }
+
+    private function os_label_map()
+    {
+        $map = array();
+        $rows = $this->seed_rows('os_images');
+        foreach ($rows as $row) {
+            $id = isset($row['id']) ? (int) $row['id'] : 0;
+            if ($id <= 0) {
+                continue;
+            }
+            $map[$id] = isset($row['label']) ? (string) $row['label'] : (isset($row['name']) ? (string) $row['name'] : ('OS '.$id));
+        }
+        return $map;
+    }
+
+    private function application_label_map()
+    {
+        $map = array();
+        $rows = $this->seed_rows('applications');
+        foreach ($rows as $row) {
+            $id = isset($row['id']) ? (int) $row['id'] : 0;
+            if ($id <= 0) {
+                continue;
+            }
+            $map[$id] = isset($row['label']) ? (string) $row['label'] : (isset($row['name']) ? (string) $row['name'] : ('Application '.$id));
+        }
+        return $map;
     }
 
     private function ensure_admin()
@@ -295,6 +387,10 @@ class Dashboard extends MY_Controller
             'host_name' => $hostname,
             'fqdn' => $hostname,
         );
+        $service_root_password = isset($service['root_password']) ? trim((string) $service['root_password']) : '';
+        if ($service_root_password !== '') {
+            $payload['password'] = $service_root_password;
+        }
         $result = $this->solusvm_client->create_server($payload);
 
         if (!$result['ok']) {
@@ -370,9 +466,10 @@ class Dashboard extends MY_Controller
                 'portal/admin_compute_resources' => 'compute-resources',
                 'portal/admin_plans' => 'plans',
                 'portal/admin_os_images' => 'os-images',
-                'portal/admin_users' => 'users',
+                'portal/admin_users' => 'clients',
                 'portal/admin_projects' => 'projects',
                 'portal/admin_clients' => 'clients',
+                'portal/admin_client_detail' => 'clients',
                 'portal/admin_invoices' => 'invoices',
                 'portal/admin_orders' => 'orders',
                 'portal/admin_domains' => 'domains',
@@ -381,6 +478,7 @@ class Dashboard extends MY_Controller
                 'portal/admin_locations' => 'locations',
                 'portal/admin_backups' => 'backups',
                 'portal/admin_ip_blocks' => 'ip-blocks',
+                'portal/account_profile' => 'profile',
             );
             $data['active_nav'] = isset($admin_nav_map[$view]) ? $admin_nav_map[$view] : 'dashboard';
         }
@@ -402,15 +500,88 @@ class Dashboard extends MY_Controller
                 'portal/client_console' => 'services',
                 'portal/client_orders' => 'orders',
                 'portal/client_invoices' => 'invoices',
+                'portal/client_credits' => 'credits',
                 'portal/client_tickets' => 'tickets',
                 'portal/client_store' => 'store',
                 'portal/client_checkout' => 'store',
+                'portal/account_profile' => 'profile',
             );
             $data['active_nav'] = isset($client_nav_map[$view]) ? $client_nav_map[$view] : 'dashboard';
+        }
+        if (!isset($data['credit_balance']) && isset($data['user']['id'])) {
+            $data['credit_balance'] = $this->Service_model->get_user_credit_balance((int) $data['user']['id']);
         }
         $this->load->view('portal/client_header', $data);
         $this->load->view($view, $data);
         $this->load->view('portal/client_footer');
+    }
+
+    private function handle_profile_update($user, $redirect_path)
+    {
+        if (strtoupper((string) $this->input->method()) !== 'POST') {
+            redirect($redirect_path);
+            return;
+        }
+
+        $full_name = trim((string) $this->input->post('full_name', true));
+        $email = strtolower(trim((string) $this->input->post('email', true)));
+        $current_password = (string) $this->input->post('current_password', true);
+        $new_password = (string) $this->input->post('new_password', true);
+        $confirm_password = (string) $this->input->post('confirm_password', true);
+
+        if ($full_name === '' || strlen($full_name) < 2) {
+            $this->session->set_flashdata('error', 'Name is required (minimum 2 characters).');
+            redirect($redirect_path);
+            return;
+        }
+
+        if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $this->session->set_flashdata('error', 'Please provide a valid email address.');
+            redirect($redirect_path);
+            return;
+        }
+
+        $existing = $this->User_model->find_by_email($email);
+        if ($existing && (int) $existing['id'] !== (int) $user['id']) {
+            $this->session->set_flashdata('error', 'Email is already in use by another account.');
+            redirect($redirect_path);
+            return;
+        }
+
+        $password_requested = trim($new_password) !== '' || trim($confirm_password) !== '' || trim($current_password) !== '';
+        if ($password_requested) {
+            if (strlen($new_password) < 8) {
+                $this->session->set_flashdata('error', 'New password must be at least 8 characters.');
+                redirect($redirect_path);
+                return;
+            }
+            if ($new_password !== $confirm_password) {
+                $this->session->set_flashdata('error', 'New password and confirm password do not match.');
+                redirect($redirect_path);
+                return;
+            }
+
+            $latest_user = $this->User_model->find_by_id((int) $user['id']);
+            if (!$latest_user || !$this->User_model->verify_password($latest_user, $current_password)) {
+                $this->session->set_flashdata('error', 'Current password is incorrect.');
+                redirect($redirect_path);
+                return;
+            }
+        }
+
+        $this->User_model->update_profile((int) $user['id'], array(
+            'full_name' => $full_name,
+            'email' => $email,
+        ));
+
+        if ($password_requested) {
+            $this->User_model->update_password((int) $user['id'], $new_password);
+        }
+
+        $this->session->set_userdata('user_name', $full_name);
+        $this->audit_event($user, 'account.profile_update', array('email' => $email, 'password_changed' => $password_requested));
+        $this->session->set_flashdata('success', $password_requested ? 'Profile and password updated successfully.' : 'Profile updated successfully.');
+        redirect($redirect_path);
     }
 
     private function build_console_session($service)
@@ -577,10 +748,16 @@ class Dashboard extends MY_Controller
             return;
         }
         $cfg = $this->get_solus_config();
+        $os_options = $this->os_label_map();
+        $location_options = $this->location_options();
+        $application_options = $this->application_label_map();
         $this->render_admin('portal/admin_server_create', array(
             'title' => 'Create Server',
             'user' => $user,
             'plans' => $this->Service_model->list_plans(),
+            'os_options' => $os_options,
+            'location_options' => $location_options,
+            'application_options' => $application_options,
             'solus_base_url' => isset($cfg['base_url']) ? (string) $cfg['base_url'] : '',
             'solus_configured' => !empty($cfg['base_url']) && !empty($cfg['api_token']),
             'flash_success' => $this->session->flashdata('success'),
@@ -602,9 +779,24 @@ class Dashboard extends MY_Controller
 
         $hostname = trim((string) $this->input->post('hostname', true));
         $local_plan_id = (int) $this->input->post('local_plan_id', true);
+        $location_id = (int) $this->input->post('location_id', true);
+        $os_id = (int) $this->input->post('os_id', true);
+        $application_id = (int) $this->input->post('application_id', true);
         $location_label = trim((string) $this->input->post('location_label', true));
         $os_label = trim((string) $this->input->post('os_label', true));
         $vps_password = trim((string) $this->input->post('vps_password', true));
+
+        $location_options = $this->location_options();
+        $os_options = $this->os_label_map();
+        $application_options = $this->application_label_map();
+
+        if ($location_label === '' && isset($location_options[$location_id])) {
+            $location_label = (string) $location_options[$location_id];
+        }
+        if ($os_label === '' && isset($os_options[$os_id])) {
+            $os_label = (string) $os_options[$os_id];
+        }
+        $application_label = isset($application_options[$application_id]) ? (string) $application_options[$application_id] : '';
 
         if ($hostname === '' || $local_plan_id <= 0) {
             $this->session->set_flashdata('error', 'Please fill all required fields.');
@@ -629,24 +821,8 @@ class Dashboard extends MY_Controller
             $solus_plan_id = (int) $cfg['default_plan_id'];
         }
 
-        // Fixed UI options => deterministic local IDs
-        $location_key = 0;
-        if (strcasecmp($location_label, 'Frankfurt') === 0) {
-            $location_key = 1;
-        } elseif (strcasecmp($location_label, 'Amsterdam') === 0) {
-            $location_key = 2;
-        } elseif (strcasecmp($location_label, 'New York') === 0) {
-            $location_key = 3;
-        }
-
-        $os_key = 0;
-        if (stripos($os_label, 'Ubuntu 22.04') !== false) {
-            $os_key = 1;
-        } elseif (stripos($os_label, 'Debian 12') !== false) {
-            $os_key = 2;
-        } elseif (stripos($os_label, 'AlmaLinux 9') !== false) {
-            $os_key = 3;
-        }
+        $location_key = $location_id > 0 ? $location_id : 0;
+        $os_key = $os_id > 0 ? $os_id : 0;
 
         $solus_location_id = $this->mapped_solus_id($location_key, $location_map);
         $solus_os_id = $this->mapped_solus_id($os_key, $os_map);
@@ -814,7 +990,7 @@ class Dashboard extends MY_Controller
             'name' => $hostname,
             'hostname' => $hostname,
             'status' => 'active',
-            'os' => $os_label,
+            'os' => $application_label !== '' ? ($os_label.' | App: '.$application_label) : $os_label,
             'location' => $location_label,
             'ip_address' => '',
             'created_at' => date('c'),
@@ -830,110 +1006,6 @@ class Dashboard extends MY_Controller
         redirect('admin/servers/create');
     }
 
-    public function admin_server_detail($service_id)
-    {
-        $user = $this->ensure_admin();
-        if (!$user) {
-            return;
-        }
-        $service = $this->Service_model->find_for_user((int) $service_id, array('role' => 'admin', 'id' => 0));
-        if (!$service) {
-            show_404();
-            return;
-        }
-
-        $provider_server = NULL;
-        $provider_ip = isset($service['ip_address']) ? (string) $service['ip_address'] : '';
-        $provider_os_name = isset($service['os']) ? (string) $service['os'] : '';
-        $provider_app_name = '';
-        $provider_ips = array();
-        $provider_ipv6 = '';
-        $provider_uptime = '';
-        $provider_resources = array('vcpu' => 0, 'memory' => 0, 'disk' => 0);
-        $provider_bandwidth_limit = 0;
-        $provider_bandwidth_used = 0;
-        $provider_is_processing = false;
-        $provider_app_login_link = '';
-        $available_os = array();
-        $applications = array();
-        $os_dropdown_note = '';
-        $provider_server_id = (int) (isset($service['provider_server_id']) ? $service['provider_server_id'] : 0);
-        if ($provider_server_id > 0) {
-            $this->load->library('Solusvm_client');
-            if ($this->solusvm_client->is_configured()) {
-                $sres = $this->solusvm_client->get_server($provider_server_id);
-                if ($sres['ok'] && isset($sres['data']['data']) && is_array($sres['data']['data'])) {
-                    $provider_server = $sres['data']['data'];
-                    if (!empty($provider_server['status'])) {
-                        $provider_is_processing = in_array(strtolower((string) $provider_server['status']), array('processing', 'building', 'reinstalling', 'restarting', 'migrating'), true);
-                    }
-                    if (isset($provider_server['name']) && is_scalar($provider_server['name']) && trim((string) $provider_server['name']) !== '') {
-                        $service['name'] = (string) $provider_server['name'];
-                    }
-                    if (!empty($provider_server['ips'][0])) {
-                        if (is_scalar($provider_server['ips'][0])) {
-                            $provider_ip = (string) $provider_server['ips'][0];
-                        } elseif (is_array($provider_server['ips'][0])) {
-                            foreach (array('address', 'ip', 'ipv4') as $ip_key) {
-                                if (!empty($provider_server['ips'][0][$ip_key]) && is_scalar($provider_server['ips'][0][$ip_key])) {
-                                    $provider_ip = (string) $provider_server['ips'][0][$ip_key];
-                                    break;
-                                }
-                            }
-                        }
-                        $provider_ips = $provider_server['ips'];
-                    }
-                    if (!empty($provider_server['ip']) && is_scalar($provider_server['ip'])) {
-                        $provider_ip = (string) $provider_server['ip'];
-                    }
-                    if (!empty($provider_server['plan']['name']) && is_scalar($provider_server['plan']['name'])) {
-                        $service['plan_name'] = (string) $provider_server['plan']['name'];
-                    }
-                    if (!empty($provider_server['location']['name']) && is_scalar($provider_server['location']['name'])) {
-                        $service['location'] = (string) $provider_server['location']['name'];
-                    }
-                }
-                $os_res = $this->solusvm_client->list_os_images();
-                if ($os_res['ok'] && isset($os_res['data']['data']) && is_array($os_res['data']['data'])) {
-                    $available_os = $os_res['data']['data'];
-                } else {
-                    $os_dropdown_note = 'OS list could not be fetched from provider.';
-                }
-                $app_res = $this->solusvm_client->list_applications();
-                if ($app_res['ok'] && isset($app_res['data']['data']) && is_array($app_res['data']['data'])) {
-                    $applications = $app_res['data']['data'];
-                }
-            }
-        }
-
-        if ($provider_ip !== '') {
-            $service['ip_address'] = $provider_ip;
-        }
-
-        $this->render_admin('portal/admin_server_detail', array(
-            'title' => 'Server Detail',
-            'user' => $user,
-            'service' => $service,
-            'vps_password' => isset($service['root_password']) ? $service['root_password'] : '',
-            'provider_ip' => $provider_ip,
-            'provider_os_name' => $provider_os_name,
-            'provider_app_name' => $provider_app_name,
-            'provider_ips' => $provider_ips,
-            'provider_ipv6' => $provider_ipv6,
-            'provider_uptime' => $provider_uptime,
-            'provider_resources' => $provider_resources,
-            'provider_bandwidth_limit' => $provider_bandwidth_limit,
-            'provider_bandwidth_used' => $provider_bandwidth_used,
-            'provider_server' => $provider_server,
-            'provider_is_processing' => $provider_is_processing,
-            'provider_app_login_link' => $provider_app_login_link,
-            'available_os' => $available_os,
-            'applications' => $applications,
-            'os_dropdown_note' => $os_dropdown_note,
-            'flash_success' => $this->session->flashdata('admin_service_success'),
-            'flash_error' => $this->session->flashdata('admin_service_error'),
-        ));
-    }
 
     public function admin_service_console($service_id)
     {
@@ -1145,13 +1217,98 @@ class Dashboard extends MY_Controller
     {
         $user = $this->ensure_admin(); if (!$user) { return; }
         $rows = $this->seed_rows('os_images');
-        $this->render_admin('portal/admin_os_images', array('title' => 'OS Images', 'user' => $user, 'rows' => $rows));
+        $app_rows = $this->seed_rows('applications');
+
+        $cfg = $this->get_solus_config();
+        $this->load->library('Solusvm_client');
+        if (!empty($cfg['base_url']) && !empty($cfg['api_token']) && $this->solusvm_client->is_configured()) {
+            $os_result = $this->solusvm_client->list_os_images();
+            $provider_os_rows = $this->extract_provider_rows($os_result);
+            if (!empty($provider_os_rows)) {
+                foreach ($provider_os_rows as $provider_row) {
+                    if (!is_array($provider_row)) {
+                        continue;
+                    }
+                    $provider_name = '';
+                    foreach (array('label', 'name', 'title', 'version_name') as $nkey) {
+                        if (!empty($provider_row[$nkey])) {
+                            $provider_name = strtolower(trim((string) $provider_row[$nkey]));
+                            break;
+                        }
+                    }
+                    if ($provider_name === '') {
+                        $rows[] = $provider_row;
+                        continue;
+                    }
+
+                    $found = false;
+                    foreach ($rows as $existing_row) {
+                        if (!is_array($existing_row)) {
+                            continue;
+                        }
+                        foreach (array('label', 'name', 'title', 'version_name') as $ekey) {
+                            if (!empty($existing_row[$ekey]) && strtolower(trim((string) $existing_row[$ekey])) === $provider_name) {
+                                $found = true;
+                                break 2;
+                            }
+                        }
+                    }
+                    if (!$found) {
+                        $rows[] = $provider_row;
+                    }
+                }
+            }
+
+            $app_result = $this->solusvm_client->list_applications();
+            $provider_app_rows = $this->extract_provider_rows($app_result);
+            if (!empty($provider_app_rows)) {
+                foreach ($provider_app_rows as $provider_row) {
+                    if (!is_array($provider_row)) {
+                        continue;
+                    }
+                    $provider_name = '';
+                    foreach (array('label', 'name', 'title') as $nkey) {
+                        if (!empty($provider_row[$nkey])) {
+                            $provider_name = strtolower(trim((string) $provider_row[$nkey]));
+                            break;
+                        }
+                    }
+                    if ($provider_name === '') {
+                        $app_rows[] = $provider_row;
+                        continue;
+                    }
+
+                    $found = false;
+                    foreach ($app_rows as $existing_row) {
+                        if (!is_array($existing_row)) {
+                            continue;
+                        }
+                        foreach (array('label', 'name', 'title') as $ekey) {
+                            if (!empty($existing_row[$ekey]) && strtolower(trim((string) $existing_row[$ekey])) === $provider_name) {
+                                $found = true;
+                                break 2;
+                            }
+                        }
+                    }
+                    if (!$found) {
+                        $app_rows[] = $provider_row;
+                    }
+                }
+            }
+        }
+
+        $this->render_admin('portal/admin_os_images', array(
+            'title' => 'OS Images',
+            'user' => $user,
+            'rows' => $rows,
+            'app_rows' => $app_rows,
+        ));
     }
 
     public function admin_users()
     {
         $user = $this->ensure_admin(); if (!$user) { return; }
-        $this->render_admin('portal/admin_users', array('title' => 'Users', 'user' => $user, 'rows' => $this->User_model->list_all()));
+        redirect('admin/clients');
     }
 
     public function admin_projects()
@@ -1173,6 +1330,25 @@ class Dashboard extends MY_Controller
             'orders' => $this->Service_model->list_orders_for_user($user),
             'invoices' => $this->Service_model->list_invoices_for_user($user),
         ));
+    }
+
+    public function client_profile()
+    {
+        $user = $this->ensure_client(); if (!$user) { return; }
+        $this->render_client('portal/account_profile', array(
+            'title' => 'My Profile',
+            'user' => $user,
+            'profile_mode' => 'client',
+            'submit_url' => site_url('client/profile/update'),
+            'flash_success' => $this->session->flashdata('success'),
+            'flash_error' => $this->session->flashdata('error'),
+        ));
+    }
+
+    public function client_profile_update()
+    {
+        $user = $this->ensure_client(); if (!$user) { return; }
+        $this->handle_profile_update($user, 'client/profile');
     }
 
     public function services()
@@ -1262,6 +1438,13 @@ class Dashboard extends MY_Controller
                     $applications = $application_rows;
                 }
             }
+        }
+
+        if (empty($available_os)) {
+            $available_os = $this->seed_rows('os_images');
+        }
+        if (empty($applications)) {
+            $applications = $this->seed_rows('applications');
         }
 
         if ($provider_ip !== '') {
@@ -1438,69 +1621,94 @@ class Dashboard extends MY_Controller
         redirect('client/services/'.(int) $service_id);
     }
 
-    public function client_service_change_password($service_id)
+    public function client_service_install_request($service_id)
     {
         $user = $this->ensure_client(); if (!$user) { return; }
         $service = $this->Service_model->find_for_user((int) $service_id, $user);
         if (!$service) { show_404(); return; }
 
-        $password = trim((string) $this->input->post('password', true));
-        if ($password === '' || strlen($password) < 8) {
-            $this->session->set_flashdata('client_service_error', 'Password must be at least 8 characters.');
-            redirect('client/services/'.(int) $service_id);
-            return;
+        $note = trim((string) $this->input->post('note', true));
+        $subject = '[Install Request] Service #'.(int) $service['id'].' ('.(string) ($service['hostname'] ? $service['hostname'] : $service['name']).')';
+        if ($note !== '') {
+            $subject .= ' | '.$note;
         }
+
+        $ticket_id = $this->Service_model->create_ticket((int) $user['id'], $subject);
+        if ($ticket_id) {
+            $this->audit_event($user, 'service.install_request', array(
+                'service_id' => (int) $service['id'],
+                'ticket_id' => (int) $ticket_id,
+            ));
+            $this->session->set_flashdata('client_service_success', 'Install request sent to admin successfully (Ticket #'.(int) $ticket_id.').');
+        } else {
+            $this->session->set_flashdata('client_service_error', 'Unable to create install request right now.');
+        }
+
+        redirect('client/services/'.(int) $service_id);
+    }
+
+    public function admin_server_detail($service_id)
+    {
+        $user = $this->ensure_admin(); if (!$user) { return; }
+        $service = $this->Service_model->find_for_user((int) $service_id, array('role' => 'admin', 'id' => 0));
+        if (!$service) { show_404(); return; }
 
         $provider_server_id = (int) (isset($service['provider_server_id']) ? $service['provider_server_id'] : 0);
+        $provider_server = array();
+        $provider_os_name = '';
+        $provider_app_name = '';
+        $provider_ip = '';
+        $provider_bandwidth_limit = 0;
+        $provider_bandwidth_used = 0;
+        $provider_resources = array();
+        $provider_is_processing = false;
+        $provider_app_login_link = '';
         if ($provider_server_id > 0) {
             $this->load->library('Solusvm_client');
-            $result = $this->solusvm_client->change_root_password($provider_server_id, $password);
-            if (!$result['ok']) {
-                $this->session->set_flashdata('client_service_error', 'Provider password change failed: '.(string) $result['error']);
-                redirect('client/services/'.(int) $service_id);
-                return;
+            $result = $this->solusvm_client->get_server($provider_server_id);
+            if ($result['ok'] && isset($result['data']['data']) && is_array($result['data']['data'])) {
+                $provider_server = $result['data']['data'];
+                $provider_os_name = isset($provider_server['os']['name']) ? $provider_server['os']['name'] : '';
+                $provider_app_name = isset($provider_server['application']['name']) ? $provider_server['application']['name'] : '';
+                $provider_ip = isset($provider_server['ip_address']) ? $provider_server['ip_address'] : '';
+                $provider_bandwidth_limit = isset($provider_server['bandwidth_limit']) ? (float) $provider_server['bandwidth_limit'] : 0;
+                $provider_bandwidth_used = isset($provider_server['bandwidth_used']) ? (float) $provider_server['bandwidth_used'] : 0;
+                // Always use provider values if present, never fallback to local
+                $provider_resources = array(
+                    'vcpu' => isset($provider_server['vcpu']) ? (int) $provider_server['vcpu'] : null,
+                    'memory' => isset($provider_server['memory']) ? (int) $provider_server['memory'] : null,
+                    'disk' => isset($provider_server['disk']) ? (int) $provider_server['disk'] : null,
+                );
+                $provider_is_processing = isset($provider_server['is_processing']) ? (bool) $provider_server['is_processing'] : false;
+                $provider_app_login_link = isset($provider_server['application_login_link']) ? $provider_server['application_login_link'] : '';
             }
         }
 
-        $this->Service_model->set_root_password((int) $service_id, $password);
-        $this->session->set_flashdata('client_service_success', 'Root password updated successfully.');
-        redirect('client/services/'.(int) $service_id);
-    }
+        $available_os = $this->seed_rows('os_images');
+        $applications = $this->seed_rows('applications');
+        $os_dropdown_note = '';
+        $vps_password = isset($service['root_password']) ? $service['root_password'] : '';
 
-    public function client_service_provision($service_id)
-    {
-        $user = $this->ensure_client(); if (!$user) { return; }
-        $service = $this->Service_model->find_for_user((int) $service_id, $user);
-        if (!$service) { show_404(); return; }
-
-        if ((int) (isset($service['provider_server_id']) ? $service['provider_server_id'] : 0) > 0) {
-            $this->session->set_flashdata('client_service_success', 'Service is already linked with provider.');
-            redirect('client/services/'.(int) $service_id);
-            return;
-        }
-
-        $provision = $this->provision_service_on_provider($service);
-        if (!empty($provision['ok']) && (int) $provision['remote_id'] > 0) {
-            $this->Service_model->set_provider_server_id((int) $service_id, (int) $provision['remote_id']);
-            if (!empty($provision['password'])) {
-                $this->Service_model->set_root_password((int) $service_id, $provision['password']);
-            }
-            $this->session->set_flashdata('client_service_success', 'Provider linked successfully: '.$provision['remote_id']);
-        } else {
-            $this->session->set_flashdata('client_service_error', isset($provision['message']) ? $provision['message'] : 'Provider provisioning failed.');
-        }
-        redirect('client/services/'.(int) $service_id);
-    }
-
-    public function plans()
-    {
-        if (!$this->require_login_web()) { return; }
-        $user = $this->current_user();
-        if ($this->is_admin($user)) {
-            $this->admin_plans();
-            return;
-        }
-        $this->render_client('portal/client_store', array('title' => 'Store', 'user' => $user, 'plans' => $this->Service_model->list_plans()));
+        $this->render_admin('portal/admin_server_detail', array(
+            'title' => 'Server Detail',
+            'user' => $user,
+            'service' => $service,
+            'provider_server' => $provider_server,
+            'provider_os_name' => $provider_os_name,
+            'provider_app_name' => $provider_app_name,
+            'provider_ip' => $provider_ip,
+            'provider_bandwidth_limit' => $provider_bandwidth_limit,
+            'provider_bandwidth_used' => $provider_bandwidth_used,
+            'provider_resources' => $provider_resources,
+            'provider_is_processing' => $provider_is_processing,
+            'provider_app_login_link' => $provider_app_login_link,
+            'available_os' => $available_os,
+            'applications' => $applications,
+            'os_dropdown_note' => $os_dropdown_note,
+            'vps_password' => $vps_password,
+            'flash_success' => $this->session->flashdata('admin_service_success'),
+            'flash_error' => $this->session->flashdata('admin_service_error'),
+        ));
     }
 
     public function client_checkout()
@@ -1514,7 +1722,14 @@ class Dashboard extends MY_Controller
                 break;
             }
         }
-        $this->render_client('portal/client_checkout', array('title' => 'Checkout', 'user' => $user, 'plan' => $plan));
+        $this->render_client('portal/client_checkout', array(
+            'title' => 'Checkout',
+            'user' => $user,
+            'plan' => $plan,
+            'location_options' => $this->location_options(),
+            'os_options' => $this->os_label_map(),
+            'application_options' => $this->application_label_map(),
+        ));
     }
 
     public function create_order()
@@ -1529,9 +1744,12 @@ class Dashboard extends MY_Controller
         $hostname = trim((string) $this->input->post('hostname', true));
         $location_id = (int) $this->input->post('location_id', true);
         $os_id = (int) $this->input->post('os_id', true);
+        $application_id = (int) $this->input->post('application_id', true);
+        $root_password = trim((string) $this->input->post('root_password', true));
 
-        $location_map = array(1 => 'USA - New York', 2 => 'USA - Los Angeles', 3 => 'Europe - Amsterdam', 4 => 'Asia - Singapore');
-        $os_map = array(1 => 'Ubuntu 22.04 LTS', 2 => 'Ubuntu 20.04 LTS', 3 => 'CentOS 8', 4 => 'Debian 11');
+        $location_map = $this->location_options();
+        $os_map = $this->os_label_map();
+        $application_map = $this->application_label_map();
 
         if ($plan_id <= 0 || $hostname === '') {
             $this->session->set_flashdata('error', 'Please select a plan and hostname.');
@@ -1539,12 +1757,24 @@ class Dashboard extends MY_Controller
             return;
         }
 
+        if ($root_password !== '' && strlen($root_password) < 8) {
+            $this->session->set_flashdata('error', 'Root password must be at least 8 characters, or leave blank to auto-generate.');
+            redirect('checkout?plan='.$plan_id);
+            return;
+        }
+
+        $selected_os = isset($os_map[$os_id]) ? $os_map[$os_id] : 'Auto OS';
+        if (isset($application_map[$application_id]) && trim((string) $application_map[$application_id]) !== '') {
+            $selected_os .= ' | App: '.(string) $application_map[$application_id];
+        }
+
         $res = $this->Service_model->create_checkout_order(
             (int) $user['id'],
             $plan_id,
             $hostname,
             isset($location_map[$location_id]) ? $location_map[$location_id] : 'Auto Location',
-            isset($os_map[$os_id]) ? $os_map[$os_id] : 'Auto OS'
+            $selected_os,
+            $root_password
         );
 
         if (!$res || empty($res['invoice_id'])) {
@@ -1593,6 +1823,20 @@ class Dashboard extends MY_Controller
         $service_id = (int) (isset($result['service_id']) ? $result['service_id'] : 0);
         $msg = !empty($result['already_paid']) ? 'Invoice was already paid.' : 'Invoice paid successfully (demo).';
 
+        if (!empty($result['credits_added'])) {
+            $balance = isset($result['balance']) ? (float) $result['balance'] : $this->Service_model->get_user_credit_balance((int) $user['id']);
+            $msg = (!empty($result['already_paid']) ? 'Invoice was already paid.' : 'Credits purchased successfully.')
+                .' | Wallet balance: $'.number_format($balance, 2);
+            $this->audit_event($user, 'invoice.credits_topup_paid_demo', array(
+                'invoice_id' => $invoice_id,
+                'transaction_id' => isset($result['transaction_id']) ? $result['transaction_id'] : NULL,
+                'balance' => $balance,
+            ));
+            $this->session->set_flashdata('success', $msg);
+            redirect('client/credits');
+            return;
+        }
+
         $service = $this->Service_model->find_for_user($service_id, $user);
         if ($service && (int) (isset($service['provider_server_id']) ? $service['provider_server_id'] : 0) <= 0) {
             $provision = $this->provision_service_on_provider($service);
@@ -1613,7 +1857,98 @@ class Dashboard extends MY_Controller
             'transaction_id' => isset($result['transaction_id']) ? $result['transaction_id'] : NULL,
         ));
         $this->session->set_flashdata('success', $msg);
+        if ($service_id > 0) {
+            redirect('client/services/'.(int) $service_id);
+            return;
+        }
         redirect('client/services');
+    }
+
+    public function client_invoice_pay_with_credits($invoice_id)
+    {
+        $user = $this->ensure_client(); if (!$user) { return; }
+        $invoice_id = (int) $invoice_id;
+        $result = $this->Service_model->pay_invoice_with_credits($invoice_id, $user);
+        if (empty($result['ok'])) {
+            $this->session->set_flashdata('error', isset($result['message']) ? $result['message'] : 'Unable to pay invoice with credits.');
+            redirect('client/invoices');
+            return;
+        }
+
+        $balance = isset($result['balance']) ? (float) $result['balance'] : $this->Service_model->get_user_credit_balance((int) $user['id']);
+        $service_id = (int) (isset($result['service_id']) ? $result['service_id'] : 0);
+
+        if (!empty($result['credits_added'])) {
+            $msg = (!empty($result['already_paid']) ? 'Invoice was already paid.' : 'Credits purchased from wallet successfully.')
+                .' | Wallet balance: $'.number_format($balance, 2);
+            $this->session->set_flashdata('success', $msg);
+            $this->audit_event($user, 'invoice.credits_topup_paid_wallet', array(
+                'invoice_id' => $invoice_id,
+                'balance' => $balance,
+                'transaction_id' => isset($result['transaction_id']) ? $result['transaction_id'] : NULL,
+            ));
+            redirect('client/credits');
+            return;
+        }
+
+        $msg = (!empty($result['already_paid']) ? 'Invoice was already paid.' : 'Invoice paid with wallet credits.')
+            .' | Wallet balance: $'.number_format($balance, 2);
+        $this->session->set_flashdata('success', $msg);
+        $this->audit_event($user, 'invoice.paid_wallet', array(
+            'invoice_id' => $invoice_id,
+            'service_id' => $service_id,
+            'balance' => $balance,
+            'transaction_id' => isset($result['transaction_id']) ? $result['transaction_id'] : NULL,
+        ));
+
+        if ($service_id > 0) {
+            redirect('client/services/'.(int) $service_id);
+            return;
+        }
+        redirect('client/services');
+    }
+
+    public function client_credits()
+    {
+        $user = $this->ensure_client(); if (!$user) { return; }
+        $this->render_client('portal/client_credits', array(
+            'title' => 'Wallet Credits',
+            'user' => $user,
+            'balance' => $this->Service_model->get_user_credit_balance((int) $user['id']),
+            'rows' => $this->Service_model->list_credit_transactions_for_user($user),
+            'flash_success' => $this->session->flashdata('success'),
+            'flash_error' => $this->session->flashdata('error'),
+        ));
+    }
+
+    public function client_credits_topup()
+    {
+        $user = $this->ensure_client(); if (!$user) { return; }
+        if (strtoupper((string) $this->input->method()) !== 'POST') {
+            redirect('client/credits');
+            return;
+        }
+
+        $amount = round((float) $this->input->post('amount', true), 2);
+        if ($amount < 1) {
+            $this->session->set_flashdata('error', 'Minimum topup amount is $1.00');
+            redirect('client/credits');
+            return;
+        }
+
+        $invoice_id = $this->Service_model->create_credit_topup_invoice((int) $user['id'], $amount);
+        if (!$invoice_id) {
+            $this->session->set_flashdata('error', 'Unable to create topup invoice right now.');
+            redirect('client/credits');
+            return;
+        }
+
+        $this->audit_event($user, 'credits.topup_invoice_created', array(
+            'invoice_id' => (int) $invoice_id,
+            'amount' => $amount,
+        ));
+        $this->session->set_flashdata('success', 'Topup invoice #'.(int) $invoice_id.' created. Pay it from invoices page.');
+        redirect('client/invoices');
     }
 
     public function client_tickets()
@@ -1650,7 +1985,129 @@ class Dashboard extends MY_Controller
     public function clients()
     {
         $user = $this->ensure_admin(); if (!$user) { return; }
-        $this->render_admin('portal/admin_clients', array('title' => 'Clients', 'user' => $user, 'rows' => $this->User_model->list_clients()));
+        $this->render_admin('portal/admin_clients', array(
+            'title' => 'Users & Clients',
+            'user' => $user,
+            'rows' => $this->User_model->list_all(),
+            'flash_success' => $this->session->flashdata('success'),
+            'flash_error' => $this->session->flashdata('error'),
+        ));
+    }
+
+    public function admin_client_send_credit($client_id)
+    {
+        $user = $this->ensure_admin(); if (!$user) { return; }
+        if (strtoupper((string) $this->input->method()) !== 'POST') {
+            redirect('admin/clients');
+            return;
+        }
+
+        $client_id = (int) $client_id;
+        $amount = round((float) $this->input->post('amount', true), 2);
+        $note = trim((string) $this->input->post('note', true));
+
+        if ($client_id <= 0 || $amount <= 0) {
+            $this->session->set_flashdata('error', 'Please enter a valid credit amount.');
+            redirect('admin/clients');
+            return;
+        }
+
+        $client = $this->User_model->find_by_id($client_id);
+        if (!$client || (isset($client['role']) && $client['role'] !== 'client')) {
+            $this->session->set_flashdata('error', 'Client not found.');
+            redirect('admin/clients');
+            return;
+        }
+
+        $res = $this->Service_model->admin_grant_credit($client_id, (int) $user['id'], $amount, $note);
+        if (empty($res['ok'])) {
+            $this->session->set_flashdata('error', isset($res['message']) ? $res['message'] : 'Unable to send credits.');
+            redirect('admin/clients');
+            return;
+        }
+
+        $this->audit_event($user, 'admin.credit_sent', array(
+            'client_id' => $client_id,
+            'amount' => $amount,
+            'balance' => isset($res['balance']) ? $res['balance'] : NULL,
+        ));
+        $this->session->set_flashdata('success', 'Credits sent successfully.');
+        redirect('admin/clients');
+    }
+
+    public function admin_client_detail($client_id)
+    {
+        $user = $this->ensure_admin(); if (!$user) { return; }
+        $client_id = (int) $client_id;
+
+        $client = $this->User_model->find_by_id($client_id);
+        if (!$client || (isset($client['role']) && $client['role'] !== 'client')) {
+            show_404();
+            return;
+        }
+
+        $client_scope = array('id' => $client_id, 'role' => 'client');
+        $services = $this->Service_model->list_for_user($client_scope);
+        $orders = $this->Service_model->list_orders_for_user($client_scope);
+        $invoices = $this->Service_model->list_invoices_for_user($client_scope);
+        $domains = $this->Service_model->list_table_for_user('domains', $client_scope);
+        $tickets = $this->Service_model->list_table_for_user('tickets', $client_scope);
+        $credit_transactions = $this->Service_model->list_credit_transactions_for_user($client_scope);
+        $audit_logs = $this->Service_model->list_audit_logs_for_user($client_id);
+
+        $paid_total = 0.0;
+        $unpaid_total = 0.0;
+        foreach ($invoices as $invoice) {
+            $total = isset($invoice['total']) ? (float) $invoice['total'] : 0.0;
+            if (isset($invoice['status']) && strtolower((string) $invoice['status']) === 'paid') {
+                $paid_total += $total;
+            } else {
+                $unpaid_total += $total;
+            }
+        }
+
+        $this->render_admin('portal/admin_client_detail', array(
+            'title' => 'Client Detail',
+            'user' => $user,
+            'client' => $this->User_model->shape_user($client),
+            'client_created_at' => isset($client['created_at']) ? (string) $client['created_at'] : '',
+            'stats' => array(
+                'services' => count($services),
+                'orders' => count($orders),
+                'invoices' => count($invoices),
+                'tickets' => count($tickets),
+                'domains' => count($domains),
+                'credits' => $this->Service_model->get_user_credit_balance($client_id),
+                'paid_total' => $paid_total,
+                'unpaid_total' => $unpaid_total,
+            ),
+            'services' => $services,
+            'orders' => $orders,
+            'invoices' => $invoices,
+            'domains' => $domains,
+            'tickets' => $tickets,
+            'credit_transactions' => $credit_transactions,
+            'audit_logs' => $audit_logs,
+        ));
+    }
+
+    public function admin_profile()
+    {
+        $user = $this->ensure_admin(); if (!$user) { return; }
+        $this->render_admin('portal/account_profile', array(
+            'title' => 'Admin Profile',
+            'user' => $user,
+            'profile_mode' => 'admin',
+            'submit_url' => site_url('admin/profile/update'),
+            'flash_success' => $this->session->flashdata('success'),
+            'flash_error' => $this->session->flashdata('error'),
+        ));
+    }
+
+    public function admin_profile_update()
+    {
+        $user = $this->ensure_admin(); if (!$user) { return; }
+        $this->handle_profile_update($user, 'admin/profile');
     }
 
     public function admin_invoices()

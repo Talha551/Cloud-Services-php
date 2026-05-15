@@ -172,10 +172,15 @@
                 <a href="<?php echo site_url('client/services'); ?>" class="text-sm transition-colors <?php echo ($active_nav === 'services') ? 'text-slate-200' : 'text-slate-400 hover:text-slate-200'; ?>">My Services</a>
                 <a href="<?php echo site_url('client/orders'); ?>" class="text-sm transition-colors <?php echo ($active_nav === 'orders') ? 'text-slate-200' : 'text-slate-400 hover:text-slate-200'; ?>">Orders</a>
                 <a href="<?php echo site_url('client/invoices'); ?>" class="text-sm transition-colors <?php echo ($active_nav === 'invoices') ? 'text-slate-200' : 'text-slate-400 hover:text-slate-200'; ?>">Invoices</a>
+                <a href="<?php echo site_url('client/credits'); ?>" class="text-sm transition-colors <?php echo ($active_nav === 'credits') ? 'text-slate-200' : 'text-slate-400 hover:text-slate-200'; ?>">Credits</a>
                 <a href="<?php echo site_url('client/tickets'); ?>" class="text-sm transition-colors <?php echo ($active_nav === 'tickets') ? 'text-slate-200' : 'text-slate-400 hover:text-slate-200'; ?>">Support</a>
                 <a href="<?php echo site_url('store'); ?>" class="text-sm transition-colors <?php echo ($active_nav === 'store') ? 'text-slate-200' : 'text-slate-400 hover:text-slate-200'; ?>">Store</a>
+                <a href="<?php echo site_url('client/profile'); ?>" class="text-sm transition-colors <?php echo ($active_nav === 'profile') ? 'text-slate-200' : 'text-slate-400 hover:text-slate-200'; ?>">Profile</a>
             </div>
             <div class="flex items-center gap-3">
+                <span class="hidden md:inline-flex items-center rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-300">
+                    Credits: $<?php echo number_format((float) (isset($credit_balance) ? $credit_balance : 0), 2); ?>
+                </span>
                 <span class="text-xs text-slate-400 hidden sm:inline"><?php echo html_escape($user['email']); ?></span>
                 <a href="<?php echo site_url('logout'); ?>" class="inline-flex items-center gap-1.5 px-2 py-1.5 rounded-lg hover:bg-[#1e2130] text-slate-400 hover:text-slate-200 transition-colors text-xs" title="Logout">
                     <i data-lucide="log-out" class="w-4 h-4"></i>

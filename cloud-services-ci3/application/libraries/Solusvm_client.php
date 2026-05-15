@@ -68,6 +68,7 @@ class Solusvm_client
         foreach ($endpoints as $path) {
             foreach ($unique_payloads as $fp) {
                 $result = $this->request('POST', $path, $fp);
+                $this->log_request_and_response('POST', $path, $fp, $result); // Log request and response
                 $last_result = $result;
                 if ($result['ok']) {
                     return $result;
@@ -405,7 +406,7 @@ class Solusvm_client
                 $st = strtolower(trim($decoded['status']));
                 if (in_array($st, array('error', 'failed', 'failure'), true)) {
                     $ok = false;
-                    $business_error = isset($decoded['message']) ? (string) $decoded['message'] : ('Provider status: '.$decoded['status']);
+                    $business_error = isset($decoded['message']) ? (string) $decoded['message'] : (' Provider status: '.$decoded['status']);
                 }
             }
         }
@@ -416,5 +417,10 @@ class Solusvm_client
             'error' => $ok ? null : ($business_error !== null ? $business_error : ('HTTP '.$status)),
             'data' => is_array($decoded) ? $decoded : array('raw' => $raw),
         );
+    }
+
+    private function log_request_and_response($method, $endpoint, $payload, $response) {
+        log_message('debug', "[SolusVM] Method: $method, Endpoint: $endpoint, Payload: " . json_encode($payload));
+        log_message('debug', "[SolusVM] Response: " . json_encode($response));
     }
 }

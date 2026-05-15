@@ -145,6 +145,7 @@ class Service_model extends CI_Model
             hostname TEXT,
             location TEXT,
             os TEXT,
+            root_password TEXT,
             invoice_id INTEGER,
             service_id INTEGER,
             provider_server_id INTEGER,
@@ -182,15 +183,21 @@ class Service_model extends CI_Model
         if (!isset($order_existing['updated_at'])) {
             $this->db->query('ALTER TABLE orders ADD COLUMN updated_at TEXT');
         }
+        if (!isset($order_existing['root_password'])) {
+            $this->db->query('ALTER TABLE orders ADD COLUMN root_password TEXT');
+        }
 
         $this->db->query('CREATE TABLE IF NOT EXISTS invoices (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             user_id INTEGER NOT NULL,
             order_id INTEGER,
+            invoice_type TEXT,
+            credit_amount REAL,
             plan_id INTEGER,
             hostname TEXT,
             location TEXT,
             os TEXT,
+            root_password TEXT,
             service_id INTEGER,
             total REAL NOT NULL,
             status TEXT NOT NULL,
@@ -210,6 +217,12 @@ class Service_model extends CI_Model
         }
         if (!isset($invoice_existing['order_id'])) {
             $this->db->query('ALTER TABLE invoices ADD COLUMN order_id INTEGER');
+        }
+        if (!isset($invoice_existing['invoice_type'])) {
+            $this->db->query('ALTER TABLE invoices ADD COLUMN invoice_type TEXT');
+        }
+        if (!isset($invoice_existing['credit_amount'])) {
+            $this->db->query('ALTER TABLE invoices ADD COLUMN credit_amount REAL');
         }
         if (!isset($invoice_existing['plan_id'])) {
             $this->db->query('ALTER TABLE invoices ADD COLUMN plan_id INTEGER');
@@ -238,6 +251,9 @@ class Service_model extends CI_Model
         if (!isset($invoice_existing['paid_at'])) {
             $this->db->query('ALTER TABLE invoices ADD COLUMN paid_at TEXT');
         }
+        if (!isset($invoice_existing['root_password'])) {
+            $this->db->query('ALTER TABLE invoices ADD COLUMN root_password TEXT');
+        }
 
         $this->db->query('CREATE TABLE IF NOT EXISTS domains (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -263,6 +279,23 @@ class Service_model extends CI_Model
             ip_address TEXT,
             created_at TEXT NOT NULL
         )');
+
+        $this->db->query('CREATE TABLE IF NOT EXISTS credit_transactions (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL,
+            amount REAL NOT NULL,
+            type TEXT NOT NULL,
+            note TEXT,
+            reference_invoice_id INTEGER,
+            reference_order_id INTEGER,
+            admin_user_id INTEGER,
+            created_at TEXT NOT NULL
+        )');
+
+        $user_columns = $this->db->list_fields('users');
+        if (!in_array('credit_balance', $user_columns, true)) {
+            $this->db->query('ALTER TABLE users ADD COLUMN credit_balance REAL NOT NULL DEFAULT 0');
+        }
 
         $plan_count = (int) $this->db->count_all('plans');
         if ($plan_count === 0) {
@@ -312,7 +345,7 @@ class Service_model extends CI_Model
 
     public function list_for_user($user)
     {
-        $query = 'SELECT s.*, p.vcpu, p.memory, p.disk, p.bandwidth, p.price, p.name as plan_name FROM services s LEFT JOIN plans p ON s.plan_id = p.id';
+        $query = 'SELECT s.*, p.vcpu, p.memory, p.disk, p.bandwidth, p.price, p.name as plan_name, u.full_name as client_name, u.email as client_email FROM services s LEFT JOIN plans p ON s.plan_id = p.id LEFT JOIN users u ON s.user_id = u.id';
         if ($user['role'] === 'admin') {
             return $this->db->query($query.' ORDER BY s.id DESC')->result_array();
         }
@@ -322,7 +355,7 @@ class Service_model extends CI_Model
     public function find_for_user($service_id, $user)
     {
         $service_id = (int) $service_id;
-        $query = 'SELECT s.*, p.vcpu, p.memory, p.disk, p.bandwidth, p.price, p.name as plan_name FROM services s LEFT JOIN plans p ON s.plan_id = p.id WHERE s.id = ?';
+        $query = 'SELECT s.*, p.vcpu, p.memory, p.disk, p.bandwidth, p.price, p.name as plan_name, u.full_name as client_name, u.email as client_email FROM services s LEFT JOIN plans p ON s.plan_id = p.id LEFT JOIN users u ON s.user_id = u.id WHERE s.id = ?';
         if ($user['role'] === 'admin') {
             return $this->db->query($query, array($service_id))->row_array();
         }
@@ -374,7 +407,7 @@ class Service_model extends CI_Model
         return $service_id;
     }
 
-    public function create_checkout_order($user_id, $plan_id, $hostname, $location, $os)
+    public function create_checkout_order($user_id, $plan_id, $hostname, $location, $os, $root_password = '')
     {
         $plan = $this->db->get_where('plans', array('id' => (int) $plan_id))->row_array();
         if (!$plan) {
@@ -388,6 +421,7 @@ class Service_model extends CI_Model
             'hostname' => $hostname,
             'location' => $location,
             'os' => $os,
+            'root_password' => $root_password !== '' ? $root_password : NULL,
             'total' => (float) $plan['price'],
             'status' => 'pending',
             'created_at' => $now,
@@ -398,10 +432,12 @@ class Service_model extends CI_Model
         $this->db->insert('invoices', array(
             'user_id' => (int) $user_id,
             'order_id' => $order_id,
+            'invoice_type' => 'service_order',
             'plan_id' => (int) $plan_id,
             'hostname' => $hostname,
             'location' => $location,
             'os' => $os,
+            'root_password' => $root_password !== '' ? $root_password : NULL,
             'total' => (float) $plan['price'],
             'status' => 'unpaid',
             'provisioning_status' => 'awaiting_payment',
@@ -414,11 +450,310 @@ class Service_model extends CI_Model
         return array('order_id' => $order_id, 'invoice_id' => $invoice_id);
     }
 
+    public function get_user_credit_balance($user_id)
+    {
+        $row = $this->db->select('credit_balance')->get_where('users', array('id' => (int) $user_id))->row_array();
+        if (!$row) {
+            return 0.0;
+        }
+        return round((float) (isset($row['credit_balance']) ? $row['credit_balance'] : 0), 2);
+    }
+
+    public function list_credit_transactions_for_user($user)
+    {
+        $sql = 'SELECT c.*, u.full_name as admin_name, u.email as admin_email
+                FROM credit_transactions c
+                LEFT JOIN users u ON c.admin_user_id = u.id';
+        if ($user['role'] === 'admin') {
+            return $this->db->query($sql.' ORDER BY c.id DESC')->result_array();
+        }
+        return $this->db->query($sql.' WHERE c.user_id = ? ORDER BY c.id DESC', array((int) $user['id']))->result_array();
+    }
+
+    public function create_credit_topup_invoice($user_id, $amount)
+    {
+        $amount = round((float) $amount, 2);
+        if ($amount <= 0) {
+            return NULL;
+        }
+
+        $now = date('c');
+        $this->db->insert('invoices', array(
+            'user_id' => (int) $user_id,
+            'invoice_type' => 'credit_topup',
+            'credit_amount' => $amount,
+            'total' => $amount,
+            'status' => 'unpaid',
+            'provisioning_status' => 'awaiting_payment',
+            'created_at' => $now,
+        ));
+
+        return (int) $this->db->insert_id();
+    }
+
+    public function admin_grant_credit($client_id, $admin_user_id, $amount, $note = '')
+    {
+        $client_id = (int) $client_id;
+        $admin_user_id = (int) $admin_user_id;
+        $amount = round((float) $amount, 2);
+        if ($client_id <= 0 || $amount <= 0) {
+            return array('ok' => false, 'message' => 'Invalid credit request.');
+        }
+
+        $this->db->trans_begin();
+        $this->db->query('UPDATE users SET credit_balance = COALESCE(credit_balance, 0) + ? WHERE id = ?', array($amount, $client_id));
+        $affected = (int) $this->db->affected_rows();
+        if ($affected <= 0) {
+            $this->db->trans_rollback();
+            return array('ok' => false, 'message' => 'Client not found.');
+        }
+
+        $this->db->insert('credit_transactions', array(
+            'user_id' => $client_id,
+            'amount' => $amount,
+            'type' => 'admin_grant',
+            'note' => trim((string) $note) !== '' ? (string) $note : 'Credit sent by admin',
+            'admin_user_id' => $admin_user_id > 0 ? $admin_user_id : NULL,
+            'created_at' => date('c'),
+        ));
+
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            return array('ok' => false, 'message' => 'Unable to add credits right now.');
+        }
+
+        $this->db->trans_commit();
+        return array(
+            'ok' => true,
+            'balance' => $this->get_user_credit_balance($client_id),
+        );
+    }
+
+    public function pay_invoice_with_credits($invoice_id, $user)
+    {
+        $invoice = $this->find_invoice_for_user((int) $invoice_id, $user);
+        if (!$invoice) {
+            return array('ok' => false, 'message' => 'Invoice not found');
+        }
+
+        if (isset($invoice['status']) && strtolower((string) $invoice['status']) === 'paid') {
+            return array(
+                'ok' => true,
+                'already_paid' => true,
+                'service_id' => isset($invoice['service_id']) ? (int) $invoice['service_id'] : 0,
+                'balance' => $this->get_user_credit_balance((int) $user['id']),
+            );
+        }
+
+        $invoice_total = round((float) (isset($invoice['total']) ? $invoice['total'] : 0), 2);
+        if ($invoice_total <= 0) {
+            return array('ok' => false, 'message' => 'Invoice amount is invalid.');
+        }
+
+        $balance = $this->get_user_credit_balance((int) $user['id']);
+        if ($balance < $invoice_total) {
+            return array(
+                'ok' => false,
+                'message' => 'Insufficient credits. Please top up credits first.',
+                'balance' => $balance,
+            );
+        }
+
+        $invoice_type = isset($invoice['invoice_type']) && trim((string) $invoice['invoice_type']) !== ''
+            ? strtolower((string) $invoice['invoice_type'])
+            : 'service_order';
+
+        $transaction_id = 'CREDIT-TXN-'.strtoupper(substr(md5(uniqid((string) $invoice['id'], true)), 0, 12));
+        $now = date('c');
+
+        $this->db->trans_begin();
+        $this->db->query('UPDATE users SET credit_balance = COALESCE(credit_balance, 0) - ? WHERE id = ?', array($invoice_total, (int) $user['id']));
+        $this->db->insert('credit_transactions', array(
+            'user_id' => (int) $user['id'],
+            'amount' => -1 * $invoice_total,
+            'type' => 'invoice_payment',
+            'note' => 'Paid invoice #'.(int) $invoice['id'].' with wallet credits',
+            'reference_invoice_id' => (int) $invoice['id'],
+            'reference_order_id' => !empty($invoice['order_id']) ? (int) $invoice['order_id'] : NULL,
+            'created_at' => $now,
+        ));
+
+        if ($invoice_type === 'credit_topup') {
+            $credit_amount = round((float) (!empty($invoice['credit_amount']) ? $invoice['credit_amount'] : $invoice_total), 2);
+            $this->db->query('UPDATE users SET credit_balance = COALESCE(credit_balance, 0) + ? WHERE id = ?', array($credit_amount, (int) $user['id']));
+            $this->db->insert('credit_transactions', array(
+                'user_id' => (int) $user['id'],
+                'amount' => $credit_amount,
+                'type' => 'credit_topup',
+                'note' => 'Credits added from topup invoice #'.(int) $invoice['id'],
+                'reference_invoice_id' => (int) $invoice['id'],
+                'created_at' => $now,
+            ));
+
+            $this->db->where('id', (int) $invoice['id'])->update('invoices', array(
+                'status' => 'paid',
+                'paid_at' => $now,
+                'provisioning_status' => 'credits_added',
+                'payment_method' => 'wallet_credits',
+                'transaction_id' => $transaction_id,
+            ));
+
+            if ($this->db->trans_status() === false) {
+                $this->db->trans_rollback();
+                return array('ok' => false, 'message' => 'Credits payment failed.');
+            }
+
+            $this->db->trans_commit();
+            return array(
+                'ok' => true,
+                'credits_added' => true,
+                'already_paid' => false,
+                'balance' => $this->get_user_credit_balance((int) $user['id']),
+                'transaction_id' => $transaction_id,
+            );
+        }
+
+        $plan_id = isset($invoice['plan_id']) ? (int) $invoice['plan_id'] : 0;
+        if ($plan_id <= 0 && !empty($invoice['order_id'])) {
+            $order = $this->db->get_where('orders', array('id' => (int) $invoice['order_id']))->row_array();
+            if ($order && isset($order['plan_id'])) {
+                $plan_id = (int) $order['plan_id'];
+            }
+        }
+        if ($plan_id <= 0) {
+            $this->db->trans_rollback();
+            return array('ok' => false, 'message' => 'Invoice is missing plan details.');
+        }
+
+        $hostname = isset($invoice['hostname']) ? (string) $invoice['hostname'] : '';
+        if ($hostname === '') {
+            $hostname = 'service-'.$invoice['id'];
+        }
+        $location = isset($invoice['location']) ? (string) $invoice['location'] : 'Auto Location';
+        $os = isset($invoice['os']) ? (string) $invoice['os'] : 'Auto OS';
+        $root_password = isset($invoice['root_password']) ? trim((string) $invoice['root_password']) : '';
+        if ($root_password === '' && !empty($invoice['order_id'])) {
+            $order = $this->db->get_where('orders', array('id' => (int) $invoice['order_id']))->row_array();
+            if ($order && !empty($order['root_password'])) {
+                $root_password = trim((string) $order['root_password']);
+            }
+        }
+        if ($root_password === '') {
+            $root_password = 'Vp$'.substr(md5(uniqid((string) $invoice['id'], true)), 0, 10);
+        }
+
+        $this->db->insert('services', array(
+            'user_id' => (int) $user['id'],
+            'plan_id' => $plan_id,
+            'name' => $hostname,
+            'hostname' => $hostname,
+            'status' => 'active',
+            'os' => $os,
+            'location' => $location,
+            'ip_address' => '192.168.1.'.mt_rand(2, 254),
+            'root_password' => $root_password,
+            'created_at' => $now,
+        ));
+        $service_id = (int) $this->db->insert_id();
+
+        $this->db->where('id', (int) $invoice['id'])->update('invoices', array(
+            'status' => 'paid',
+            'paid_at' => $now,
+            'service_id' => $service_id,
+            'provisioning_status' => 'completed',
+            'payment_method' => 'wallet_credits',
+            'transaction_id' => $transaction_id,
+        ));
+
+        if (!empty($invoice['order_id'])) {
+            $this->db->where('id', (int) $invoice['order_id'])->update('orders', array(
+                'status' => 'active',
+                'service_id' => $service_id,
+                'updated_at' => $now,
+            ));
+        }
+
+        if ($this->db->trans_status() === false) {
+            $this->db->trans_rollback();
+            return array('ok' => false, 'message' => 'Credits charged but provisioning failed.');
+        }
+
+        $this->db->trans_commit();
+        return array(
+            'ok' => true,
+            'service_id' => $service_id,
+            'already_paid' => false,
+            'transaction_id' => $transaction_id,
+            'payment_method' => 'wallet_credits',
+            'balance' => $this->get_user_credit_balance((int) $user['id']),
+        );
+    }
+
     public function pay_invoice_and_provision($invoice_id, $user, $payment_meta = array())
     {
         $invoice = $this->find_invoice_for_user((int) $invoice_id, $user);
         if (!$invoice) {
             return array('ok' => false, 'message' => 'Invoice not found');
+        }
+
+        $invoice_type = isset($invoice['invoice_type']) && trim((string) $invoice['invoice_type']) !== ''
+            ? strtolower((string) $invoice['invoice_type'])
+            : 'service_order';
+
+        if ($invoice_type === 'credit_topup') {
+            if (isset($invoice['status']) && strtolower((string) $invoice['status']) === 'paid') {
+                return array(
+                    'ok' => true,
+                    'already_paid' => true,
+                    'credits_added' => true,
+                    'balance' => $this->get_user_credit_balance((int) $user['id']),
+                );
+            }
+
+            $credit_amount = round((float) (!empty($invoice['credit_amount']) ? $invoice['credit_amount'] : $invoice['total']), 2);
+            if ($credit_amount <= 0) {
+                return array('ok' => false, 'message' => 'Credit amount is invalid.');
+            }
+
+            $now = date('c');
+            $update_payload = array(
+                'status' => 'paid',
+                'paid_at' => $now,
+                'provisioning_status' => 'credits_added',
+            );
+            if (isset($payment_meta['method'])) {
+                $update_payload['payment_method'] = (string) $payment_meta['method'];
+            }
+            if (isset($payment_meta['transaction_id'])) {
+                $update_payload['transaction_id'] = (string) $payment_meta['transaction_id'];
+            }
+
+            $this->db->trans_begin();
+            $this->db->query('UPDATE users SET credit_balance = COALESCE(credit_balance, 0) + ? WHERE id = ?', array($credit_amount, (int) $user['id']));
+            $this->db->where('id', (int) $invoice['id'])->update('invoices', $update_payload);
+            $this->db->insert('credit_transactions', array(
+                'user_id' => (int) $user['id'],
+                'amount' => $credit_amount,
+                'type' => 'credit_topup',
+                'note' => 'Credits purchased via invoice #'.(int) $invoice['id'],
+                'reference_invoice_id' => (int) $invoice['id'],
+                'created_at' => $now,
+            ));
+
+            if ($this->db->trans_status() === false) {
+                $this->db->trans_rollback();
+                return array('ok' => false, 'message' => 'Payment captured but credits were not added.');
+            }
+
+            $this->db->trans_commit();
+            return array(
+                'ok' => true,
+                'already_paid' => false,
+                'credits_added' => true,
+                'balance' => $this->get_user_credit_balance((int) $user['id']),
+                'transaction_id' => isset($update_payload['transaction_id']) ? $update_payload['transaction_id'] : NULL,
+                'payment_method' => isset($update_payload['payment_method']) ? $update_payload['payment_method'] : NULL,
+            );
         }
 
         if (isset($invoice['status']) && strtolower((string) $invoice['status']) === 'paid' && !empty($invoice['service_id'])) {
@@ -447,6 +782,16 @@ class Service_model extends CI_Model
         }
         $location = isset($invoice['location']) ? (string) $invoice['location'] : 'Auto Location';
         $os = isset($invoice['os']) ? (string) $invoice['os'] : 'Auto OS';
+        $root_password = isset($invoice['root_password']) ? trim((string) $invoice['root_password']) : '';
+        if ($root_password === '' && !empty($invoice['order_id'])) {
+            $order = $this->db->get_where('orders', array('id' => (int) $invoice['order_id']))->row_array();
+            if ($order && !empty($order['root_password'])) {
+                $root_password = trim((string) $order['root_password']);
+            }
+        }
+        if ($root_password === '') {
+            $root_password = 'Vp$'.substr(md5(uniqid((string) $invoice['id'], true)), 0, 10);
+        }
 
         $this->db->trans_begin();
         $this->db->insert('services', array(
@@ -458,6 +803,7 @@ class Service_model extends CI_Model
             'os' => $os,
             'location' => $location,
             'ip_address' => '192.168.1.'.mt_rand(2, 254),
+            'root_password' => $root_password,
             'created_at' => date('c'),
         ));
         $service_id = (int) $this->db->insert_id();
@@ -566,6 +912,48 @@ class Service_model extends CI_Model
             return array();
         }
 
+        if ($table === 'orders') {
+            $sql = 'SELECT o.*, p.name as plan_name, u.full_name as client_name, u.email as client_email
+                    FROM orders o
+                    LEFT JOIN plans p ON o.plan_id = p.id
+                    LEFT JOIN users u ON o.user_id = u.id
+                    ORDER BY o.id DESC';
+            return $this->db->query($sql)->result_array();
+        }
+
+        if ($table === 'invoices') {
+            $sql = 'SELECT i.*, p.name as plan_name, u.full_name as client_name, u.email as client_email
+                    FROM invoices i
+                    LEFT JOIN plans p ON i.plan_id = p.id
+                    LEFT JOIN users u ON i.user_id = u.id
+                    ORDER BY i.id DESC';
+            return $this->db->query($sql)->result_array();
+        }
+
+        if ($table === 'tickets') {
+            $sql = 'SELECT t.*, u.full_name as client_name, u.email as client_email
+                    FROM tickets t
+                    LEFT JOIN users u ON t.user_id = u.id
+                    ORDER BY t.id DESC';
+            return $this->db->query($sql)->result_array();
+        }
+
+        if ($table === 'domains') {
+            $sql = 'SELECT d.*, u.full_name as client_name, u.email as client_email
+                    FROM domains d
+                    LEFT JOIN users u ON d.user_id = u.id
+                    ORDER BY d.id DESC';
+            return $this->db->query($sql)->result_array();
+        }
+
+        if ($table === 'audit_logs') {
+            $sql = 'SELECT a.*, u.full_name as user_name, u.email as user_email
+                    FROM audit_logs a
+                    LEFT JOIN users u ON a.user_id = u.id
+                    ORDER BY a.id DESC';
+            return $this->db->query($sql)->result_array();
+        }
+
         return $this->db->order_by('id', 'desc')->get($table)->result_array();
     }
 
@@ -634,6 +1022,16 @@ class Service_model extends CI_Model
             'ip_address' => (string) $ip_address,
             'created_at' => date('c')
         ));
+    }
+
+    public function list_audit_logs_for_user($user_id)
+    {
+        $sql = 'SELECT a.*, u.full_name as user_name, u.email as user_email
+                FROM audit_logs a
+                LEFT JOIN users u ON a.user_id = u.id
+                WHERE a.user_id = ?
+                ORDER BY a.id DESC';
+        return $this->db->query($sql, array((int) $user_id))->result_array();
     }
 
     public function run_billing_automation($cycle_days = 30, $grace_days = 3)

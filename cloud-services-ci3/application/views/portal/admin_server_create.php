@@ -26,21 +26,37 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-medium text-slate-400 mb-1.5">Location Label (UI)</label>
-                        <select name="location_label" class="w-full bg-[#0f1117] border border-[#2a2d3e] rounded-lg px-3 py-2.5 text-sm text-slate-200">
-                            <option value="Frankfurt">Frankfurt</option>
-                            <option value="Amsterdam">Amsterdam</option>
-                            <option value="New York">New York</option>
+                        <select name="location_id" class="w-full bg-[#0f1117] border border-[#2a2d3e] rounded-lg px-3 py-2.5 text-sm text-slate-200">
+                            <?php if (!empty($location_options) && is_array($location_options)): ?>
+                                <?php foreach ($location_options as $loc_id => $loc_label): ?>
+                                    <option value="<?php echo (int) $loc_id; ?>"><?php echo html_escape($loc_label); ?></option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </select>
                     </div>
                     <div>
                         <label class="block text-xs font-medium text-slate-400 mb-1.5">OS Label (UI)</label>
-                        <select name="os_label" class="w-full bg-[#0f1117] border border-[#2a2d3e] rounded-lg px-3 py-2.5 text-sm text-slate-200">
-                            <option value="Ubuntu 22.04">Ubuntu 22.04</option>
-                            <option value="Debian 12">Debian 12</option>
-                            <option value="AlmaLinux 9">AlmaLinux 9</option>
+                        <select name="os_id" class="w-full bg-[#0f1117] border border-[#2a2d3e] rounded-lg px-3 py-2.5 text-sm text-slate-200">
+                            <?php if (!empty($os_options) && is_array($os_options)): ?>
+                                <?php foreach ($os_options as $os_id => $os_label): ?>
+                                    <option value="<?php echo (int) $os_id; ?>"><?php echo html_escape($os_label); ?></option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </select>
                     </div>
                 </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-400 mb-1.5">Application (optional, metadata)</label>
+                    <select name="application_id" class="w-full bg-[#0f1117] border border-[#2a2d3e] rounded-lg px-3 py-2.5 text-sm text-slate-200">
+                        <option value="0">No application</option>
+                        <?php if (!empty($application_options) && is_array($application_options)): ?>
+                            <?php foreach ($application_options as $app_id => $app_label): ?>
+                                <option value="<?php echo (int) $app_id; ?>"><?php echo html_escape($app_label); ?></option>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        </select>
+                    </div>
 
                 <div>
                     <label class="block text-xs font-medium text-slate-400 mb-1.5">Local Plan (for dashboard tracking)</label>

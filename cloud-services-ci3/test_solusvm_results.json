@@ -6,6 +6,278 @@
         "data": {
             "data": [
                 {
+                    "id": 19,
+                    "name": "Trenton-VFlebB",
+                    "description": "",
+                    "specifications": {
+                        "vcpu": 4,
+                        "ram": 2147483648,
+                        "disk": 100
+                    },
+                    "uuid": "2dd7b955-84a1-492c-b06e-aa8c9970230d",
+                    "os_type": "Linux",
+                    "settings": {
+                        "firmware": "bios",
+                        "os_image": {
+                            "url": "https:\/\/images.prod.solus.io\/CentOS-8-GenericCloud-8.1.1911-20200113.3.x86_64.qcow2",
+                            "icon": "https:\/\/45.82.65.93\/shared\/icons\/centos.svg",
+                            "name": "CentOS 8",
+                            "type": "os_image",
+                            "cloud_init_version": "v2-centos"
+                        },
+                        "disk_driver": "scsi",
+                        "mac_address": "52:54:00:ae:86:05",
+                        "vnc_enabled": true,
+                        "vnc_password": "FCJJvW6o",
+                        "disk_cache_mode": "none",
+                        "guest_agent_available": true,
+                        "guest_tools_installed": true,
+                        "application_login_link": [],
+                        "user": "root"
+                    },
+                    "status": "started",
+                    "real_status": "started",
+                    "plan": {
+                        "id": 1,
+                        "name": "Pakistan VPS Basic",
+                        "params": {
+                            "vcpu": 4,
+                            "ram": 2147483648,
+                            "disk": 100
+                        },
+                        "virtualization_type": "kvm",
+                        "storage_type": "fb",
+                        "image_format": "qcow2",
+                        "is_default": false,
+                        "is_snapshot_available": true,
+                        "is_snapshots_enabled": false,
+                        "is_backup_available": false,
+                        "backup_settings": {
+                            "is_incremental_backup_enabled": false,
+                            "incremental_backups_limit": 3
+                        },
+                        "is_additional_ips_available": true,
+                        "is_visible": true,
+                        "is_thin_provisioned": true,
+                        "is_custom": false,
+                        "position": 16384,
+                        "reset_limit_policy": "never",
+                        "network_traffic_limit_type": "separate",
+                        "limits": {
+                            "disk_iops": {
+                                "unit": "iops",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "backups_number": {
+                                "unit": "units",
+                                "limit": 7,
+                                "is_enabled": true
+                            },
+                            "disk_bandwidth": {
+                                "unit": "Bps",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "snapshots_size": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "snapshots_count": {
+                                "unit": "units",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_total_traffic": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "additional_disks_number": {
+                                "unit": "units",
+                                "limit": 7,
+                                "is_enabled": true
+                            },
+                            "network_incoming_traffic": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_outgoing_traffic": {
+                                "unit": "GiB",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_reduce_bandwidth": {
+                                "unit": "Kbps",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_incoming_bandwidth": {
+                                "unit": "Mbps",
+                                "limit": 1,
+                                "is_enabled": false
+                            },
+                            "network_outgoing_bandwidth": {
+                                "unit": "Mbps",
+                                "limit": 1,
+                                "is_enabled": false
+                            }
+                        },
+                        "tokens_per_hour": 0,
+                        "tokens_per_month": 0,
+                        "ip_tokens_per_month": 0,
+                        "ip_tokens_per_hour": 0,
+                        "iso_image_tokens_per_hour": 0,
+                        "iso_image_tokens_per_month": 0,
+                        "backup_price": 0,
+                        "is_disaster_recovery_enabled": false,
+                        "disaster_recovery_price": 0
+                    },
+                    "fqdns": [],
+                    "boot_mode": "disk",
+                    "user": {
+                        "id": 2,
+                        "email": "support@pace-tel.com"
+                    },
+                    "usage": {
+                        "cpu": 0,
+                        "network": {
+                            "incoming": {
+                                "value": 289559024,
+                                "prev": 289559024,
+                                "is_exceeded": false
+                            },
+                            "outgoing": {
+                                "value": 340948505,
+                                "prev": 340948505,
+                                "is_exceeded": false
+                            }
+                        },
+                        "disk": {
+                            "actual_size": 1852375040
+                        }
+                    },
+                    "is_suspended": false,
+                    "backup_settings": {
+                        "enabled": false,
+                        "schedule": {
+                            "type": "daily",
+                            "time": {
+                                "hour": 0,
+                                "minutes": 0
+                            },
+                            "days": []
+                        },
+                        "limit": {
+                            "limit": 7,
+                            "is_enabled": true,
+                            "unit": "units"
+                        },
+                        "next_backup_type": null
+                    },
+                    "is_processing": false,
+                    "progress": 0,
+                    "next_scheduled_backup_at": null,
+                    "ips": [
+                        {
+                            "id": 18,
+                            "ip": "38.117.65.6",
+                            "issued_for": "vm",
+                            "is_reverse_dns_enabled": false,
+                            "is_primary": true,
+                            "is_reserved": true,
+                            "comment": null,
+                            "ip_block": {
+                                "id": 3,
+                                "name": "Cogent-SatTown1",
+                                "gateway": "38.117.65.1",
+                                "netmask": "255.255.255.128",
+                                "ns_1": "8.8.8.8",
+                                "ns_2": "8.8.4.4",
+                                "from": "38.117.65.3",
+                                "to": "38.117.65.126",
+                                "type": "IPv4",
+                                "list_type": "range",
+                                "range": "38.117.65.0\/25",
+                                "subnet": null,
+                                "reverse_dns": {
+                                    "zone": "",
+                                    "enabled": false,
+                                    "template": ""
+                                },
+                                "reserved_ips_count": 4,
+                                "total_ips_count": "38.117.65.3 - 38.117.65.126"
+                            }
+                        }
+                    ],
+                    "ip_addresses": {
+                        "ipv4": [
+                            {
+                                "id": 18,
+                                "ip": "38.117.65.6",
+                                "is_primary": true,
+                                "issued_for": "vm",
+                                "is_reverse_dns_enabled": false,
+                                "gateway": "38.117.65.1",
+                                "netmask": "255.255.255.128",
+                                "cidr": "38.117.65.3\/25",
+                                "ns_1": "8.8.8.8",
+                                "ns_2": "8.8.4.4"
+                            }
+                        ],
+                        "ipv6": []
+                    },
+                    "created_at": "2026-05-13T18:50:00.000000Z",
+                    "has_incremental_backups": false,
+                    "virtualization_type": "kvm",
+                    "vnc_url": "M2I4ZjU1YzlkZGY3MmQ4MzQyYzU2NWY1NDg3OGViMDY1NThhOTQ3NTc5YzllYTc5NzQzZTUxYTQ0MjNkMDY1MDY1OGQ3NzgwYmM5ZjNmZTIxMWRjYzZmNDA1NWJhNjRmNTkwZmQwZWIyOTg5MWE3ODNlOTJkNmYxODg4YTc5Mjc3YmI1ZGVkMzdkNDkxNmMxNjU2YmM5YTk0ODI1MjgwYjRkMmE0OWY5MzliNTdlOGM",
+                    "product": "solusvm2",
+                    "is_disaster_recovery_enabled": false,
+                    "storage_id": 8,
+                    "cpu_usage": 0.63,
+                    "last_backup_date": null,
+                    "ha_priority": 0,
+                    "compute_resource": {
+                        "id": 7,
+                        "name": "SAT-TOWN1",
+                        "host": "38.117.65.2",
+                        "capabilities": {
+                            "kvm": true,
+                            "vz": false,
+                            "is_management_node": false,
+                            "is_mem_balloon_free_page_reporting_supported": true,
+                            "is_virtio_discard_supported": true
+                        },
+                        "is_in_maintenance": false,
+                        "status": "active",
+                        "storages": [
+                            {
+                                "id": 8,
+                                "name": null,
+                                "type": {
+                                    "name": "fb",
+                                    "formats": [
+                                        "raw",
+                                        "qcow2"
+                                    ]
+                                },
+                                "mount": "\/",
+                                "path": "\/var\/lib\/libvirt\/images\/",
+                                "thin_pool": null,
+                                "is_available_for_balancing": true,
+                                "credentials": null,
+                                "free_space": 10493.38,
+                                "storage_tag": null,
+                                "status": "available",
+                                "status_details": null
+                            }
+                        ]
+                    },
+                    "compute_resource_name": "SAT-TOWN1"
+                },
+                {
                     "id": 18,
                     "name": "testr.example.com",
                     "description": "",
@@ -152,13 +424,13 @@
                         "cpu": 0,
                         "network": {
                             "incoming": {
-                                "value": 241502124,
-                                "prev": 241502124,
+                                "value": 302479589,
+                                "prev": 302479589,
                                 "is_exceeded": false
                             },
                             "outgoing": {
-                                "value": 2434365,
-                                "prev": 2434365,
+                                "value": 26038345,
+                                "prev": 26038345,
                                 "is_exceeded": false
                             }
                         },
@@ -214,7 +486,7 @@
                                     "enabled": false,
                                     "template": ""
                                 },
-                                "reserved_ips_count": 3,
+                                "reserved_ips_count": 4,
                                 "total_ips_count": "38.117.65.3 - 38.117.65.126"
                             }
                         }
@@ -239,11 +511,11 @@
                     "created_at": "2026-05-13T09:37:39.000000Z",
                     "has_incremental_backups": false,
                     "virtualization_type": "kvm",
-                    "vnc_url": "ZTAwNGY4ZDZiYjFkYjllNDYwYmVjMWM2N2E3ZTIzYjE2MzAxMGYxYmVmMWYxMTk3MjQ2MDhmMTVmYzYyNGYwOGQzYjk2MGRmNWQ3OTIxZGY2NGVlNjgwMzEzYmE5Mjk5MWZjY2Y1ZTE0MTE2MmI1YjI5NjNiZDg1YmNjMDRhZWExNWQ3YzQ3NjViMzM1ZDAxZDNhNzc3NDVkYmE5ZjM1ODU1ZDEyOTg4N2Y2YzQ1NzQ",
+                    "vnc_url": "Y2MzMTNlZTdkM2FmOWM5MDYwZjg4NmM5ZWM0MDhkYzFhNTY1YWRlNTIyODVkNWIwY2ExNzhkYzRhZmFhYTY0NTY2MjM2ZDA0NmU4NGJkOGUyM2ZjNGJkY2ExYTdhMzk3MWM3ZmFjMjg1OWI4ZmIzMzgxZTJmOTFlMGI3ZjcxZjQ5ZWI4YTI0YmJkNjNjYmI2NDA2ODBiNGI0M2JlMmZhMTMyOGYwZWE3ZDA0MWJlYzU",
                     "product": "solusvm2",
                     "is_disaster_recovery_enabled": false,
                     "storage_id": 8,
-                    "cpu_usage": 0.25,
+                    "cpu_usage": 0.96,
                     "last_backup_date": null,
                     "ha_priority": 0,
                     "compute_resource": {
@@ -275,7 +547,7 @@
                                 "thin_pool": null,
                                 "is_available_for_balancing": true,
                                 "credentials": null,
-                                "free_space": 10497.77,
+                                "free_space": 10493.38,
                                 "storage_tag": null,
                                 "status": "available",
                                 "status_details": null
@@ -424,18 +696,18 @@
                         "cpu": 0,
                         "network": {
                             "incoming": {
-                                "value": 241396049,
-                                "prev": 241396049,
+                                "value": 287492532,
+                                "prev": 287492532,
                                 "is_exceeded": false
                             },
                             "outgoing": {
-                                "value": 9718995,
-                                "prev": 9718995,
+                                "value": 42534619,
+                                "prev": 42534619,
                                 "is_exceeded": false
                             }
                         },
                         "disk": {
-                            "actual_size": 2964979712
+                            "actual_size": 2976907264
                         }
                     },
                     "is_suspended": false,
@@ -486,7 +758,7 @@
                                     "enabled": false,
                                     "template": ""
                                 },
-                                "reserved_ips_count": 3,
+                                "reserved_ips_count": 4,
                                 "total_ips_count": "38.117.65.3 - 38.117.65.126"
                             }
                         }
@@ -511,11 +783,11 @@
                     "created_at": "2026-05-12T11:55:41.000000Z",
                     "has_incremental_backups": false,
                     "virtualization_type": "kvm",
-                    "vnc_url": "ZGVlYzhkZGFlZDk2ZGY0OTU1ZDIxNjZkMTIxYTMxOWNiODg2N2ZhOWQ1M2RlMDlmZmM5YzY3NjY0ZWM3OTk2YjA0MGVmNDA3MmEzMjI5MjJlOTE4ZDdlMGFmNzU0MTljYzc2ZWRlODc2MjhlYzI5YWFjYTQwNTc2NTVlMGQ2ZmVmOWVhMDRmNDU4NTVlZmVjNWY2NzcxNTNkMmE4ZmQxMGFkOGY1NjNiNTM0Zjc0YjA",
+                    "vnc_url": "NmY5M2I0ODUwY2ZjZTZmYmJkODA0YjQ5ZWRjODcxZDZiMzgyYmE5YWRkZjIzOWFkNTFmNDM0NWI2ZWEwM2I0MzdiMTI2ZTVmNzY1M2Q4YjkxYzhjODlhN2E2ZjcwN2M1ODJlNmU0YjNiZmQxYmQzZGMzMGMyZTQ4ZjIzNmI4MzExYTczZDcxZjkyNTFiOWFhNmEzMjkxZGY3ZjVkZjE0MGRkZGViYmJiNGMwNzhkNTE",
                     "product": "solusvm2",
                     "is_disaster_recovery_enabled": false,
                     "storage_id": 8,
-                    "cpu_usage": 0.12,
+                    "cpu_usage": 0.27,
                     "last_backup_date": null,
                     "ha_priority": 0,
                     "compute_resource": {
@@ -547,7 +819,7 @@
                                 "thin_pool": null,
                                 "is_available_for_balancing": true,
                                 "credentials": null,
-                                "free_space": 10497.77,
+                                "free_space": 10493.38,
                                 "storage_tag": null,
                                 "status": "available",
                                 "status_details": null
@@ -703,18 +975,18 @@
                         "cpu": 0,
                         "network": {
                             "incoming": {
-                                "value": 294343508,
-                                "prev": 294343508,
+                                "value": 340253902,
+                                "prev": 340253902,
                                 "is_exceeded": false
                             },
                             "outgoing": {
-                                "value": 15503267,
-                                "prev": 15503267,
+                                "value": 49374485,
+                                "prev": 49374485,
                                 "is_exceeded": false
                             }
                         },
                         "disk": {
-                            "actual_size": 3034382336
+                            "actual_size": 3050504192
                         }
                     },
                     "is_suspended": false,
@@ -765,7 +1037,7 @@
                                     "enabled": false,
                                     "template": ""
                                 },
-                                "reserved_ips_count": 3,
+                                "reserved_ips_count": 4,
                                 "total_ips_count": "38.117.65.3 - 38.117.65.126"
                             }
                         }
@@ -790,11 +1062,11 @@
                     "created_at": "2026-05-12T11:08:05.000000Z",
                     "has_incremental_backups": false,
                     "virtualization_type": "kvm",
-                    "vnc_url": "YmI5ZjY3ZjExOGZhMGY3MTA4YWZhZTRiM2FhNWRmZWZmOTZhZTAxZWEyY2I1Yjc1NDViNzg5NTkyMGYxYTA1MjlmMWY5MDQ1NGU2YWUyYTlhNzRlYWI2NDA1ZWZjYzU2MWVlNDFkZTY1OTJhOGRhYjQ5YzZlZjFlNjMwNzQ0N2U1YTk4YjUxMTdlZDFlOGY0Y2JkYzdmMWJhMzQzZDRjOGE3NzFhYTkyY2YxYjcwZmU",
+                    "vnc_url": "YjQyZWQ4NDU0ZjNkNTY5OGNlZDExZTMyOWYyNGIxOTFhZDA3NDgwMDEyNTRlYzdjMWJiMTZiYzU5YTFhZTJmMTc1NDc4YTQ0YzY4OWJkYTlkYTY4YjY2NTU5MzVlZjkwMmM0ZWVkODA1OWUzY2U3NDUzZTJhYzUyY2U5ZjI0M2U2Njk5Mjk0ODUwZmMzZjc0NzcxYmJhNmVlNTNiYzdkNTAzYWE2YzJmZWJjNmUxYmI",
                     "product": "solusvm2",
                     "is_disaster_recovery_enabled": false,
                     "storage_id": 8,
-                    "cpu_usage": 0.06,
+                    "cpu_usage": 0.1,
                     "last_backup_date": null,
                     "ha_priority": 0,
                     "compute_resource": {
@@ -826,7 +1098,7 @@
                                 "thin_pool": null,
                                 "is_available_for_balancing": true,
                                 "credentials": null,
-                                "free_space": 10497.77,
+                                "free_space": 10493.38,
                                 "storage_tag": null,
                                 "status": "available",
                                 "status_details": null
@@ -865,8 +1137,8 @@
                 ],
                 "path": "https:\/\/45.82.65.93\/api\/v1\/servers",
                 "per_page": 50,
-                "to": 3,
-                "total": 3
+                "to": 4,
+                "total": 4
             }
         }
     },
@@ -3262,7 +3534,7 @@
                                     "thin_pool": null,
                                     "is_available_for_balancing": true,
                                     "credentials": null,
-                                    "free_space": 10497.77,
+                                    "free_space": 10493.38,
                                     "storage_tag": null,
                                     "status": "available",
                                     "status_details": null
@@ -3277,11 +3549,11 @@
                             },
                             "is_locked": false,
                             "is_in_maintenance": false,
-                            "last_seen_online": "2026-05-13 18:48:05",
+                            "last_seen_online": "2026-05-15 11:31:05",
                             "gpu_driver_version": null,
                             "has_unhealthy_storages": false,
                             "has_unknown_status_storages": false,
-                            "vms_count": 3,
+                            "vms_count": 4,
                             "backup_enabled_servers_count": 0,
                             "disaster_recovery_enabled_servers_count": 0,
                             "settings": {
@@ -3292,22 +3564,22 @@
                                 "limits": {
                                     "vm": {
                                         "total": 0,
-                                        "used": 3,
+                                        "used": 4,
                                         "unlimited": true
                                     },
                                     "hdd": {
                                         "total": 0,
-                                        "used": 300,
+                                        "used": 400,
                                         "unlimited": true
                                     },
                                     "ram": {
                                         "total": 0,
-                                        "used": 6442450944,
+                                        "used": 8589934592,
                                         "unlimited": true
                                     },
                                     "vcpu": {
                                         "total": 0,
-                                        "used": 12,
+                                        "used": 16,
                                         "unlimited": true
                                     }
                                 },

@@ -21,21 +21,21 @@
     <style>
         * { box-sizing: border-box; }
         :root {
-            --bg-main: #f3f7fd;
-            --bg-sidebar: #ffffff;
-            --bg-panel: #fcfdff;
-            --bg-soft: #edf3fb;
-            --line: #cad9ee;
-            --text-main: #1c2f48;
-            --text-strong: #0f223a;
-            --text-muted: #4f6788;
-            --brand: #1f86e3;
-            --brand-soft: rgba(31, 134, 227, 0.12);
-            --card-bg: #ffffff;
-            --table-stripe: rgba(14, 76, 150, 0.05);
-            --input-bg: #ffffff;
-            --toggle-bg: #0f172a;
-            --toggle-text: #f8fafc;
+            --bg-main: #f6f8fa;
+            --bg-sidebar: #fdfcff;
+            --bg-panel: #ffffff;
+            --bg-soft: #eaf1fb;
+            --line: #c3d0e6;
+            --text-main: #1a2940;
+            --text-strong: #0a1a2f;
+            --text-muted: #5c6e8c;
+            --brand: #2563eb;
+            --brand-soft: rgba(37, 99, 235, 0.10);
+            --card-bg: linear-gradient(120deg, #fafdff 80%, #eaf1fb 100%);
+            --table-stripe: rgba(37, 99, 235, 0.04);
+            --input-bg: #f7faff;
+            --toggle-bg: #2563eb;
+            --toggle-text: #fff;
         }
         html[data-theme='dark'] {
             --bg-main: #0b1220;
@@ -75,8 +75,13 @@
         .bg-white {
             background: var(--card-bg) !important;
             border: 1px solid var(--line) !important;
-            border-radius: 14px !important;
-            box-shadow: 0 12px 24px rgba(5, 10, 18, 0.08);
+            border-radius: 16px !important;
+            box-shadow: 0 6px 32px 0 rgba(37,99,235,0.07), 0 1.5px 4px 0 rgba(60,72,88,0.04);
+            transition: box-shadow 0.2s, border-color 0.2s;
+        }
+        .app-card:hover {
+            box-shadow: 0 12px 48px 0 rgba(37,99,235,0.13), 0 2px 8px 0 rgba(60,72,88,0.07);
+            border-color: var(--brand);
         }
         .text-dark, .text-black { color: var(--text-main) !important; }
         .text-secondary, .text-muted { color: var(--text-muted) !important; }
@@ -180,9 +185,9 @@
                 'compute-resources' => array('admin/compute-resources', 'Compute Resources', 'cpu'),
                 'plans' => array('admin/plans', 'Plans', 'package'),
                 'os-images' => array('admin/os-images', 'OS Images', 'hard-drive'),
-                'users' => array('admin/users', 'Users', 'users'),
                 'projects' => array('admin/projects', 'Projects', 'folder-kanban'),
-                'clients' => array('admin/clients', 'Clients', 'user-round'),
+                'clients' => array('admin/clients', 'Users & Clients', 'users'),
+                'profile' => array('admin/profile', 'My Profile', 'user-cog'),
                 'invoices' => array('admin/invoices', 'Invoices', 'receipt-text'),
                 'orders' => array('admin/orders', 'Orders', 'shopping-cart'),
                 'domains' => array('admin/domains', 'Domains', 'globe-2'),
