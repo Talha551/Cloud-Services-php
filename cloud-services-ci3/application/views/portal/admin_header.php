@@ -11,71 +11,103 @@
     <script>
         tailwind.config = { theme: { extend: { fontFamily: { sans: ['Manrope', 'sans-serif'], display: ['Sora', 'sans-serif'] } } } };
     </script>
+    <script>
+        (function () {
+            var saved = null;
+            try { saved = localStorage.getItem('cp_theme'); } catch (e) { saved = null; }
+            document.documentElement.setAttribute('data-theme', saved || 'light');
+        }());
+    </script>
     <style>
         * { box-sizing: border-box; }
         :root {
+            --bg-main: #eef3fb;
+            --bg-sidebar: #ffffff;
+            --bg-panel: #f7faff;
+            --bg-soft: #e8f0fb;
+            --line: #d4e1f2;
+            --text-main: #223650;
+            --text-strong: #12243d;
+            --text-muted: #5e7597;
+            --brand: #1f86e3;
+            --brand-soft: rgba(31, 134, 227, 0.12);
+            --card-bg: #ffffff;
+            --table-stripe: rgba(14, 76, 150, 0.05);
+            --input-bg: #ffffff;
+            --toggle-bg: #0f172a;
+            --toggle-text: #f8fafc;
+        }
+        html[data-theme='dark'] {
             --bg-main: #0b1220;
             --bg-sidebar: #0f172a;
             --bg-panel: #162238;
             --bg-soft: #1d2c48;
             --line: #2a3a58;
             --text-main: #e5edf8;
+            --text-strong: #ffffff;
             --text-muted: #91a5c2;
             --brand: #22c1ee;
             --brand-soft: rgba(34, 193, 238, 0.16);
+            --card-bg: linear-gradient(180deg, rgba(19, 31, 53, 0.92) 0%, rgba(15, 25, 43, 0.94) 100%);
+            --table-stripe: rgba(31, 49, 79, 0.55);
+            --input-bg: rgba(20, 33, 56, 0.85);
+            --toggle-bg: #f8fafc;
+            --toggle-text: #0f172a;
         }
-        body { margin: 0; font-family: Manrope, sans-serif; background: radial-gradient(900px 420px at 20% -20%, #173156 0%, transparent 70%), var(--bg-main); color: var(--text-main); }
+        body { margin: 0; font-family: Manrope, sans-serif; background: radial-gradient(900px 420px at 20% -20%, color-mix(in srgb, var(--brand-soft) 70%, transparent) 0%, transparent 70%), var(--bg-main); color: var(--text-main); }
         h1, h2, h3, h4, h5, h6 { font-family: Sora, sans-serif; }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #10192c; }
-        ::-webkit-scrollbar-thumb { background: #39527c; border-radius: 999px; }
+        ::-webkit-scrollbar-track { background: color-mix(in srgb, var(--bg-main) 80%, #64748b); }
+        ::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--line) 80%, #334155); border-radius: 999px; }
         .bg-\[\#0f1117\] { background: var(--bg-main) !important; }
-        .bg-\[\#13151f\] { background: linear-gradient(180deg, #121d31 0%, var(--bg-sidebar) 100%) !important; }
+        .bg-\[\#13151f\] { background: var(--bg-sidebar) !important; }
         .bg-\[\#1e2130\] { background: var(--bg-soft) !important; }
         .border-\[\#2a2d3e\] { border-color: var(--line) !important; }
         .text-slate-400 { color: var(--text-muted) !important; }
-        .text-slate-500, .text-slate-600 { color: #7e93b3 !important; }
+        .text-slate-500, .text-slate-600 { color: var(--text-muted) !important; }
+        .text-slate-200, .text-slate-300 { color: var(--text-main) !important; }
+        .text-white { color: var(--text-strong) !important; }
         .hover\:bg-\[\#1e2130\]:hover, .hover\:bg-\[\#252938\]:hover { background: #253958 !important; }
-        .bg-indigo-600 { background-color: #0891b2 !important; }
-        .text-indigo-400 { color: #66e3ff !important; }
+        .bg-indigo-600 { background-color: var(--brand) !important; }
+        .text-indigo-400 { color: var(--brand) !important; }
         .bg-indigo-600\/20 { background-color: var(--brand-soft) !important; }
         .app-card,
         .bg-white {
-            background: linear-gradient(180deg, rgba(19, 31, 53, 0.92) 0%, rgba(15, 25, 43, 0.94) 100%) !important;
-            border: 1px solid rgba(77, 110, 157, 0.42) !important;
+            background: var(--card-bg) !important;
+            border: 1px solid var(--line) !important;
             border-radius: 14px !important;
-            box-shadow: 0 12px 24px rgba(5, 10, 18, 0.3);
+            box-shadow: 0 12px 24px rgba(5, 10, 18, 0.08);
         }
-        .text-dark, .text-black { color: #e5edf8 !important; }
-        .text-secondary, .text-muted { color: #94a8c7 !important; }
+        .text-dark, .text-black { color: var(--text-main) !important; }
+        .text-secondary, .text-muted { color: var(--text-muted) !important; }
         .table {
-            color: #d7e5fa !important;
-            --bs-table-color: #d7e5fa;
-            --bs-table-striped-color: #d7e5fa;
-            --bs-table-striped-bg: rgba(31, 49, 79, 0.55);
+            color: var(--text-main) !important;
+            --bs-table-color: var(--text-main);
+            --bs-table-striped-color: var(--text-main);
+            --bs-table-striped-bg: var(--table-stripe);
             --bs-table-bg: transparent;
-            --bs-table-border-color: rgba(83, 112, 152, 0.5);
+            --bs-table-border-color: var(--line);
         }
         .table thead th {
-            color: #9eb6da !important;
-            border-bottom-color: rgba(83, 112, 152, 0.6) !important;
+            color: var(--text-muted) !important;
+            border-bottom-color: var(--line) !important;
             font-size: 12px;
             letter-spacing: 0.06em;
             text-transform: uppercase;
         }
-        .table > :not(caption) > * > * { border-color: rgba(83, 112, 152, 0.4) !important; }
+        .table > :not(caption) > * > * { border-color: var(--line) !important; }
         .form-control,
         .form-select,
         .form-check-input {
-            background: rgba(20, 33, 56, 0.85) !important;
-            border-color: rgba(83, 112, 152, 0.6) !important;
-            color: #e5edf8 !important;
+            background: var(--input-bg) !important;
+            border-color: var(--line) !important;
+            color: var(--text-main) !important;
         }
-        .form-control::placeholder { color: #8ca4c7 !important; }
+        .form-control::placeholder { color: var(--text-muted) !important; }
         .form-control:focus,
         .form-select:focus {
-            border-color: #30c8f0 !important;
-            box-shadow: 0 0 0 0.2rem rgba(48, 200, 240, 0.22) !important;
+            border-color: var(--brand) !important;
+            box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--brand) 28%, transparent) !important;
         }
         .btn {
             border-radius: 10px !important;
@@ -84,30 +116,50 @@
         }
         .btn-primary,
         .bg-primary {
-            background: linear-gradient(90deg, #0ea5c6 0%, #1782e8 100%) !important;
-            border-color: #27a6d9 !important;
+            background: linear-gradient(90deg, color-mix(in srgb, var(--brand) 86%, #0891b2) 0%, #1782e8 100%) !important;
+            border-color: color-mix(in srgb, var(--brand) 80%, #1f7ae0) !important;
             color: #fff !important;
         }
         .btn-outline-primary {
-            color: #79e3ff !important;
-            border-color: rgba(66, 194, 232, 0.7) !important;
+            color: var(--brand) !important;
+            border-color: color-mix(in srgb, var(--brand) 70%, #64748b) !important;
         }
-        .btn-outline-primary:hover { background: rgba(34, 193, 238, 0.18) !important; }
+        .btn-outline-primary:hover { background: color-mix(in srgb, var(--brand-soft) 70%, transparent) !important; }
         .btn-outline-secondary,
         .btn-outline-info,
         .btn-outline-success,
         .btn-outline-danger {
-            border-color: rgba(103, 132, 175, 0.65) !important;
-            color: #b8cae8 !important;
+            border-color: color-mix(in srgb, var(--line) 80%, #64748b) !important;
+            color: var(--text-muted) !important;
         }
         .btn-outline-secondary:hover,
         .btn-outline-info:hover,
         .btn-outline-success:hover,
-        .btn-outline-danger:hover { background: rgba(72, 99, 140, 0.24) !important; }
+        .btn-outline-danger:hover { background: color-mix(in srgb, var(--bg-soft) 80%, transparent) !important; }
         .badge { font-weight: 700; letter-spacing: 0.02em; }
         .alert {
             border-radius: 12px !important;
-            border: 1px solid rgba(83, 112, 152, 0.48) !important;
+            border: 1px solid var(--line) !important;
+        }
+        .theme-toggle-fab {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            z-index: 70;
+            border: 1px solid color-mix(in srgb, var(--line) 75%, #64748b);
+            background: var(--toggle-bg);
+            color: var(--toggle-text);
+            border-radius: 999px;
+            height: 44px;
+            min-width: 44px;
+            padding: 0 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            font-weight: 700;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.2);
+            cursor: pointer;
         }
     </style>
 </head>
