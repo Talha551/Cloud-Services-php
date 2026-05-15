@@ -20,15 +20,16 @@
             <div>
                 <p class="text-xs font-semibold text-white uppercase tracking-[0.18em] mb-3">Platform</p>
                 <div class="space-y-2">
-                    <a href="<?php echo site_url('/'); ?>#features" class="block text-sm text-slate-400 hover:text-slate-200 transition-colors">Core Features</a>
-                    <a href="<?php echo site_url('/'); ?>#pricing" class="block text-sm text-slate-400 hover:text-slate-200 transition-colors">Pricing Overview</a>
-                    <a href="<?php echo site_url('features'); ?>" class="block text-sm text-slate-400 hover:text-slate-200 transition-colors">Feature Details</a>
+                    <a href="<?php echo site_url('features'); ?>" class="block text-sm text-slate-400 hover:text-slate-200 transition-colors">Core Features</a>
+                    <a href="<?php echo site_url('pricing'); ?>" class="block text-sm text-slate-400 hover:text-slate-200 transition-colors">Pricing Overview</a>
+                    <a href="<?php echo site_url('faq'); ?>" class="block text-sm text-slate-400 hover:text-slate-200 transition-colors">FAQs</a>
                 </div>
             </div>
             <div>
                 <p class="text-xs font-semibold text-white uppercase tracking-[0.18em] mb-3">Company</p>
                 <div class="space-y-2">
-                    <a href="<?php echo site_url('/'); ?>#faqs" class="block text-sm text-slate-400 hover:text-slate-200 transition-colors">FAQs</a>
+                    <a href="<?php echo site_url('about'); ?>" class="block text-sm text-slate-400 hover:text-slate-200 transition-colors">About</a>
+                    <a href="<?php echo site_url('contact'); ?>" class="block text-sm text-slate-400 hover:text-slate-200 transition-colors">Contact</a>
                     <a href="<?php echo site_url('pricing'); ?>" class="block text-sm text-slate-400 hover:text-slate-200 transition-colors">Plans</a>
                     <a href="<?php echo site_url('/'); ?>" class="block text-sm text-slate-400 hover:text-slate-200 transition-colors">Home</a>
                 </div>

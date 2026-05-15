@@ -1,46 +1,46 @@
-<div class="min-h-screen bg-[#0a0c12] text-slate-200 flex flex-col">
+<div class="min-h-screen text-slate-800 flex flex-col">
     <?php $this->load->view('public_site/navbar', array('active_page' => 'pricing')); ?>
 
-    <section class="relative pt-32 pb-16 overflow-hidden">
-        <div class="absolute rounded-full blur-3xl opacity-20 pointer-events-none w-[500px] h-[500px] bg-indigo-600 -top-20 left-1/2 -translate-x-1/2"></div>
+    <section class="relative pt-28 pb-12 overflow-hidden">
+        <div class="absolute rounded-full blur-3xl opacity-70 pointer-events-none w-[500px] h-[340px] bg-sky-200 -top-20 left-1/2 -translate-x-1/2"></div>
         <div class="relative max-w-6xl mx-auto px-5 text-center">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-green-500/10 border border-green-500/20 rounded-full text-xs text-green-400 mb-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-100 rounded-full text-xs text-emerald-700 mb-5">
                 <i data-lucide="zap" class="w-3 h-3"></i> Simple, transparent pricing
             </div>
-            <h1 class="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight">Plans for every scale</h1>
-            <p class="text-slate-400 max-w-xl mx-auto">No hidden fees. No contracts. Deploy as many servers as you need and only pay for what you use.</p>
+            <h1 class="text-4xl md:text-6xl text-slate-900 mb-4 tracking-tight">Plans for every growth stage</h1>
+            <p class="text-slate-600 max-w-xl mx-auto">No hidden fees and no setup charges. Start small, then scale resources instantly as demand grows.</p>
         </div>
     </section>
 
     <section class="max-w-6xl mx-auto px-5 pb-20">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
             <?php foreach ($plans as $plan): ?>
-                <div class="relative rounded-2xl border p-6 flex flex-col <?php echo !empty($plan['highlight']) ? 'bg-indigo-600/10 border-indigo-500/40 shadow-xl shadow-indigo-500/10' : 'bg-white/[0.02] border-white/[0.07]'; ?>">
+                <div class="relative rounded-2xl border p-6 flex flex-col <?php echo !empty($plan['highlight']) ? 'bg-sky-600 text-white border-sky-600 shadow-xl shadow-sky-600/25' : 'bg-white border-slate-200'; ?>">
                     <?php if (!empty($plan['badge'])): ?>
-                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-indigo-600 rounded-full text-xs font-semibold text-white whitespace-nowrap"><?php echo html_escape($plan['badge']); ?></div>
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-slate-900 rounded-full text-xs font-semibold text-white whitespace-nowrap"><?php echo html_escape($plan['badge']); ?></div>
                     <?php endif; ?>
                     <div class="mb-5">
-                        <p class="text-sm font-semibold text-white mb-1"><?php echo html_escape($plan['name']); ?></p>
+                        <p class="text-sm font-semibold <?php echo !empty($plan['highlight']) ? 'text-sky-100' : 'text-slate-900'; ?> mb-1"><?php echo html_escape($plan['name']); ?></p>
                         <div class="flex items-end gap-1 mb-2">
-                            <span class="text-3xl font-bold text-white"><?php echo html_escape($plan['price']); ?></span>
-                            <span class="text-sm text-slate-500 mb-1"><?php echo html_escape($plan['period']); ?></span>
+                            <span class="text-3xl font-bold <?php echo !empty($plan['highlight']) ? 'text-white' : 'text-slate-900'; ?>"><?php echo html_escape($plan['price']); ?></span>
+                            <span class="text-sm <?php echo !empty($plan['highlight']) ? 'text-sky-100' : 'text-slate-500'; ?> mb-1"><?php echo html_escape($plan['period']); ?></span>
                         </div>
-                        <p class="text-xs text-slate-500"><?php echo html_escape($plan['desc']); ?></p>
+                        <p class="text-xs <?php echo !empty($plan['highlight']) ? 'text-sky-100' : 'text-slate-600'; ?>"><?php echo html_escape($plan['desc']); ?></p>
                     </div>
                     <ul class="space-y-2.5 flex-1 mb-6">
                         <?php foreach ($plan['features'] as $feature): ?>
-                            <li class="flex items-center gap-2 text-xs text-slate-400"><i data-lucide="check-circle-2" class="w-3 h-3 <?php echo !empty($plan['highlight']) ? 'text-indigo-400' : 'text-slate-600'; ?>"></i><?php echo html_escape($feature); ?></li>
+                            <li class="flex items-center gap-2 text-xs <?php echo !empty($plan['highlight']) ? 'text-white' : 'text-slate-700'; ?>"><i data-lucide="check-circle-2" class="w-3 h-3 <?php echo !empty($plan['highlight']) ? 'text-sky-100' : 'text-emerald-600'; ?>"></i><?php echo html_escape($feature); ?></li>
                         <?php endforeach; ?>
                     </ul>
-                    <a href="<?php echo site_url('register'); ?>" class="text-center py-2.5 rounded-xl text-sm font-medium transition-colors <?php echo !empty($plan['highlight']) ? 'bg-indigo-600 hover:bg-indigo-500 text-white' : 'bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white'; ?>">Get Started</a>
+                    <a href="<?php echo site_url('register'); ?>" class="text-center py-2.5 rounded-xl text-sm font-semibold transition-colors <?php echo !empty($plan['highlight']) ? 'bg-white text-sky-700 hover:bg-sky-50' : 'bg-slate-900 text-white hover:bg-slate-700'; ?>">Get Started</a>
                 </div>
             <?php endforeach; ?>
         </div>
 
-        <div class="mt-12 bg-white/[0.02] border border-white/[0.05] rounded-2xl p-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div><p class="text-sm font-semibold text-white mb-2">Can I upgrade anytime?</p><p class="text-xs text-slate-500 leading-relaxed">Yes. Resize your server to a larger plan at any time directly from the dashboard with zero downtime.</p></div>
-            <div><p class="text-sm font-semibold text-white mb-2">What payment methods?</p><p class="text-xs text-slate-500 leading-relaxed">We accept all major credit cards and PayPal. Monthly billing with no long-term contracts required.</p></div>
-            <div><p class="text-sm font-semibold text-white mb-2">Is there a free trial?</p><p class="text-xs text-slate-500 leading-relaxed">New accounts get a 3-day free trial on the Starter plan. No credit card required to start.</p></div>
+        <div class="mt-12 bg-white border border-slate-200 rounded-2xl p-8 grid grid-cols-1 md:grid-cols-3 gap-6 shadow-sm">
+            <div><p class="text-sm font-semibold text-slate-900 mb-2">Can I upgrade anytime?</p><p class="text-xs text-slate-600 leading-relaxed">Yes. Resize your server to a larger plan at any time directly from the dashboard with minimal operational effort.</p></div>
+            <div><p class="text-sm font-semibold text-slate-900 mb-2">What payment methods?</p><p class="text-xs text-slate-600 leading-relaxed">Major cards and online payment options are supported with monthly recurring billing.</p></div>
+            <div><p class="text-sm font-semibold text-slate-900 mb-2">Is trial available?</p><p class="text-xs text-slate-600 leading-relaxed">New customers can begin with starter resources and scale up once validated.</p></div>
         </div>
     </section>
 

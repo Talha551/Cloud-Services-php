@@ -54,4 +54,55 @@ class Home extends MY_Controller
         $this->load->view('public_site/features', $data);
         $this->load->view('public_site/closing');
     }
+
+    public function about()
+    {
+        $data = array(
+            'title' => 'CloudPanel - About Us',
+            'highlights' => array(
+                'High-performance infrastructure with transparent pricing',
+                'Production-ready deployment workflows for teams',
+                '24/7 expert support and proactive monitoring',
+                'SolusVM2-powered lifecycle automation'
+            )
+        );
+
+        $this->load->view('public_site/header', $data);
+        $this->load->view('public_site/about', $data);
+        $this->load->view('public_site/closing');
+    }
+
+    public function faq()
+    {
+        $data = array(
+            'title' => 'CloudPanel - FAQs',
+            'faqs' => array(
+                array('q' => 'Can I scale my server later?', 'a' => 'Yes. You can upgrade RAM, CPU, and storage from the dashboard based on your workload growth.'),
+                array('q' => 'Do I get full root access?', 'a' => 'Yes. Every VPS includes complete root/administrator access with console availability.'),
+                array('q' => 'How does billing work?', 'a' => 'Billing is monthly and transparent, with no setup fees and clear plan-based charges.'),
+                array('q' => 'Do you provide backups?', 'a' => 'Yes. Automated backups and snapshots are available depending on your plan.'),
+                array('q' => 'Which operating systems are supported?', 'a' => 'Ubuntu, Debian, AlmaLinux, and multiple additional templates are supported.'),
+                array('q' => 'How can I contact support?', 'a' => 'You can open tickets from your client panel or use the contact page for sales/support questions.'),
+            )
+        );
+
+        $this->load->view('public_site/header', $data);
+        $this->load->view('public_site/faq', $data);
+        $this->load->view('public_site/closing');
+    }
+
+    public function contact()
+    {
+        $data = array('title' => 'CloudPanel - Contact');
+
+        if ($this->input->method(TRUE) === 'POST') {
+            $this->session->set_flashdata('success', 'Thank you! Your message has been received. Our team will contact you soon.');
+            redirect('contact');
+            return;
+        }
+
+        $this->load->view('public_site/header', $data);
+        $this->load->view('public_site/contact', $data);
+        $this->load->view('public_site/closing');
+    }
 }

@@ -9,11 +9,11 @@
 
         <div class="hidden md:flex items-center gap-1">
             <a href="<?php echo site_url('/'); ?>" class="px-4 py-2 rounded-lg text-sm transition-colors <?php echo ($active_page === 'home') ? 'text-blue-700 font-semibold bg-blue-50' : 'text-slate-600 hover:text-slate-900'; ?>">Home</a>
-            <a href="<?php echo site_url('/'); ?>#features" class="px-4 py-2 rounded-lg text-sm transition-colors text-slate-600 hover:text-slate-900">Features</a>
-            <a href="<?php echo site_url('/'); ?>#pricing" class="px-4 py-2 rounded-lg text-sm transition-colors text-slate-600 hover:text-slate-900">Pricing</a>
-            <a href="<?php echo site_url('/'); ?>#faqs" class="px-4 py-2 rounded-lg text-sm transition-colors text-slate-600 hover:text-slate-900">FAQs</a>
-            <a href="<?php echo site_url('features'); ?>" class="px-4 py-2 rounded-lg text-sm transition-colors <?php echo ($active_page === 'features') ? 'text-blue-700 font-semibold bg-blue-50' : 'text-slate-600 hover:text-slate-900'; ?>">All Features</a>
-            <a href="<?php echo site_url('pricing'); ?>" class="px-4 py-2 rounded-lg text-sm transition-colors <?php echo ($active_page === 'pricing') ? 'text-blue-700 font-semibold bg-blue-50' : 'text-slate-600 hover:text-slate-900'; ?>">Pricing Page</a>
+            <a href="<?php echo site_url('features'); ?>" class="px-4 py-2 rounded-lg text-sm transition-colors <?php echo ($active_page === 'features') ? 'text-blue-700 font-semibold bg-blue-50' : 'text-slate-600 hover:text-slate-900'; ?>">Features</a>
+            <a href="<?php echo site_url('pricing'); ?>" class="px-4 py-2 rounded-lg text-sm transition-colors <?php echo ($active_page === 'pricing') ? 'text-blue-700 font-semibold bg-blue-50' : 'text-slate-600 hover:text-slate-900'; ?>">Pricing</a>
+            <a href="<?php echo site_url('about'); ?>" class="px-4 py-2 rounded-lg text-sm transition-colors <?php echo ($active_page === 'about') ? 'text-blue-700 font-semibold bg-blue-50' : 'text-slate-600 hover:text-slate-900'; ?>">About</a>
+            <a href="<?php echo site_url('faq'); ?>" class="px-4 py-2 rounded-lg text-sm transition-colors <?php echo ($active_page === 'faq') ? 'text-blue-700 font-semibold bg-blue-50' : 'text-slate-600 hover:text-slate-900'; ?>">FAQs</a>
+            <a href="<?php echo site_url('contact'); ?>" class="px-4 py-2 rounded-lg text-sm transition-colors <?php echo ($active_page === 'contact') ? 'text-blue-700 font-semibold bg-blue-50' : 'text-slate-600 hover:text-slate-900'; ?>">Contact</a>
         </div>
 
         <div class="hidden md:flex items-center gap-3">
@@ -28,9 +28,11 @@
 
     <div id="mobile-nav-panel" class="hidden md:hidden bg-white border-t border-slate-200 px-5 py-4 space-y-1">
         <a href="<?php echo site_url('/'); ?>" class="block py-2 text-sm text-slate-700 hover:text-blue-700">Home</a>
-        <a href="<?php echo site_url('/'); ?>#features" class="block py-2 text-sm text-slate-700 hover:text-blue-700">Features</a>
-        <a href="<?php echo site_url('/'); ?>#pricing" class="block py-2 text-sm text-slate-700 hover:text-blue-700">Pricing</a>
-        <a href="<?php echo site_url('/'); ?>#faqs" class="block py-2 text-sm text-slate-700 hover:text-blue-700">FAQs</a>
+        <a href="<?php echo site_url('features'); ?>" class="block py-2 text-sm text-slate-700 hover:text-blue-700">Features</a>
+        <a href="<?php echo site_url('pricing'); ?>" class="block py-2 text-sm text-slate-700 hover:text-blue-700">Pricing</a>
+        <a href="<?php echo site_url('about'); ?>" class="block py-2 text-sm text-slate-700 hover:text-blue-700">About</a>
+        <a href="<?php echo site_url('faq'); ?>" class="block py-2 text-sm text-slate-700 hover:text-blue-700">FAQs</a>
+        <a href="<?php echo site_url('contact'); ?>" class="block py-2 text-sm text-slate-700 hover:text-blue-700">Contact</a>
         <div class="pt-3 flex gap-3">
             <a href="<?php echo site_url('login'); ?>" class="flex-1 text-center py-2 text-sm border border-slate-300 rounded-lg text-slate-700 hover:text-slate-900">Sign In</a>
             <a href="<?php echo site_url('register'); ?>" class="flex-1 text-center py-2 text-sm bg-orange-500 rounded-lg text-white">Get Started</a>
