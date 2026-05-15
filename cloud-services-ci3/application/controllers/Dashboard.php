@@ -140,6 +140,75 @@ class Dashboard extends MY_Controller
         return 0;
     }
 
+    private function extract_provider_rows($result)
+    {
+        if (!is_array($result) || empty($result['ok']) || !isset($result['data']) || !is_array($result['data'])) {
+            return array();
+        }
+
+        $data = $result['data'];
+        if (isset($data['data']) && is_array($data['data'])) {
+            $nested = $data['data'];
+            if (array_keys($nested) === range(0, count($nested) - 1)) {
+                return $nested;
+            }
+            foreach (array('data', 'items', 'results', 'rows') as $k) {
+                if (isset($nested[$k]) && is_array($nested[$k]) && array_keys($nested[$k]) === range(0, count($nested[$k]) - 1)) {
+                    return $nested[$k];
+                }
+            }
+        }
+
+        foreach (array('items', 'results', 'rows') as $k) {
+            if (isset($data[$k]) && is_array($data[$k]) && array_keys($data[$k]) === range(0, count($data[$k]) - 1)) {
+                return $data[$k];
+            }
+        }
+
+        if (array_keys($data) === range(0, count($data) - 1)) {
+            return $data;
+        }
+
+        return array();
+    }
+
+    private function extract_provider_object($result)
+    {
+        if (!is_array($result) || empty($result['ok']) || !isset($result['data']) || !is_array($result['data'])) {
+            return array();
+        }
+
+        $data = $result['data'];
+        if (isset($data['data']) && is_array($data['data']) && array_keys($data['data']) !== range(0, count($data['data']) - 1)) {
+            return $data['data'];
+        }
+
+        return $data;
+    }
+
+    private function pick_provider_remote_id($result)
+    {
+        $obj = $this->extract_provider_object($result);
+        if (isset($obj['id']) && (int) $obj['id'] > 0) {
+            return (int) $obj['id'];
+        }
+        if (isset($obj['server_id']) && (int) $obj['server_id'] > 0) {
+            return (int) $obj['server_id'];
+        }
+        return 0;
+    }
+
+    private function pick_provider_password($result)
+    {
+        $obj = $this->extract_provider_object($result);
+        foreach (array('password', 'root_password', 'vnc_password') as $key) {
+            if (isset($obj[$key]) && is_scalar($obj[$key]) && trim((string) $obj[$key]) !== '') {
+                return (string) $obj[$key];
+            }
+        }
+        return null;
+    }
+
     private function get_solus_config()
     {
         $this->load->config('solusvm', true);
@@ -169,14 +238,6 @@ class Dashboard extends MY_Controller
         $solus_location_id = $this->mapped_solus_id($raw_location_id, $location_map);
         $solus_os_id = $this->mapped_solus_id($raw_os_id, $os_map);
 
-        if ($solus_plan_id <= 0 || $solus_location_id <= 0 || $solus_os_id <= 0) {
-            return array(
-                'ok' => false,
-                'message' => 'Provider provisioning skipped: missing Solus plan/location/os mapping.',
-                'remote_id' => 0,
-            );
-        }
-
         $hostname = trim((string) (isset($service['hostname']) ? $service['hostname'] : ''));
         if ($hostname === '') {
             $hostname = trim((string) (isset($service['name']) ? $service['name'] : ''));
@@ -197,20 +258,23 @@ class Dashboard extends MY_Controller
         // If IDs are still missing/invalid, pull provider catalogs and choose first valid IDs.
         if ($solus_plan_id <= 0) {
             $plans_result = $this->solusvm_client->list_plans();
-            if ($plans_result['ok'] && isset($plans_result['data']['data']) && is_array($plans_result['data']['data'])) {
-                $solus_plan_id = $this->first_provider_id_from_rows($plans_result['data']['data']);
+            $plan_rows = $this->extract_provider_rows($plans_result);
+            if (!empty($plan_rows)) {
+                $solus_plan_id = $this->first_provider_id_from_rows($plan_rows);
             }
         }
         if ($solus_location_id <= 0) {
             $locations_result = $this->solusvm_client->list_locations();
-            if ($locations_result['ok'] && isset($locations_result['data']['data']) && is_array($locations_result['data']['data'])) {
-                $solus_location_id = $this->first_provider_id_from_rows($locations_result['data']['data']);
+            $location_rows = $this->extract_provider_rows($locations_result);
+            if (!empty($location_rows)) {
+                $solus_location_id = $this->first_provider_id_from_rows($location_rows);
             }
         }
         if ($solus_os_id <= 0) {
             $os_result = $this->solusvm_client->list_os_images();
-            if ($os_result['ok'] && isset($os_result['data']['data']) && is_array($os_result['data']['data'])) {
-                $solus_os_id = $this->first_provider_id_from_rows($os_result['data']['data']);
+            $os_rows = $this->extract_provider_rows($os_result);
+            if (!empty($os_rows)) {
+                $solus_os_id = $this->first_provider_id_from_rows($os_rows);
             }
         }
 
@@ -222,11 +286,14 @@ class Dashboard extends MY_Controller
             );
         }
 
-        $this->session->set_flashdata('client_service_success', 'Reinstall/Install request accepted by SolusVM.');
         $payload = array(
             'plan' => $solus_plan_id,
             'location' => $solus_location_id,
             'os' => $solus_os_id,
+            'hostname' => $hostname,
+            'name' => $hostname,
+            'host_name' => $hostname,
+            'fqdn' => $hostname,
         );
         $result = $this->solusvm_client->create_server($payload);
 
@@ -239,20 +306,23 @@ class Dashboard extends MY_Controller
             if ($needs_location_retry || $needs_os_retry || $needs_plan_retry) {
                 if ($needs_plan_retry) {
                     $plans_result = $this->solusvm_client->list_plans();
-                    if ($plans_result['ok'] && isset($plans_result['data']['data']) && is_array($plans_result['data']['data'])) {
-                        $solus_plan_id = $this->first_provider_id_from_rows($plans_result['data']['data']);
+                    $plan_rows = $this->extract_provider_rows($plans_result);
+                    if (!empty($plan_rows)) {
+                        $solus_plan_id = $this->first_provider_id_from_rows($plan_rows);
                     }
                 }
                 if ($needs_location_retry) {
                     $locations_result = $this->solusvm_client->list_locations();
-                    if ($locations_result['ok'] && isset($locations_result['data']['data']) && is_array($locations_result['data']['data'])) {
-                        $solus_location_id = $this->first_provider_id_from_rows($locations_result['data']['data']);
+                    $location_rows = $this->extract_provider_rows($locations_result);
+                    if (!empty($location_rows)) {
+                        $solus_location_id = $this->first_provider_id_from_rows($location_rows);
                     }
                 }
                 if ($needs_os_retry) {
                     $os_result = $this->solusvm_client->list_os_images();
-                    if ($os_result['ok'] && isset($os_result['data']['data']) && is_array($os_result['data']['data'])) {
-                        $solus_os_id = $this->first_provider_id_from_rows($os_result['data']['data']);
+                    $os_rows = $this->extract_provider_rows($os_result);
+                    if (!empty($os_rows)) {
+                        $solus_os_id = $this->first_provider_id_from_rows($os_rows);
                     }
                 }
 
@@ -277,17 +347,8 @@ class Dashboard extends MY_Controller
             );
         }
 
-        $remote_id = 0;
-        if (isset($result['data']['data']['id'])) {
-            $remote_id = (int) $result['data']['data']['id'];
-        } elseif (isset($result['data']['id'])) {
-            $remote_id = (int) $result['data']['id'];
-        }
-
-        $created_password = null;
-        if (isset($result['data']['data']['password']) && trim((string) $result['data']['data']['password']) !== '') {
-            $created_password = (string) $result['data']['data']['password'];
-        }
+        $remote_id = $this->pick_provider_remote_id($result);
+        $created_password = $this->pick_provider_password($result);
 
         return array(
             'ok' => $remote_id > 0,
@@ -408,6 +469,20 @@ class Dashboard extends MY_Controller
                 : (rtrim($proxy, '/').'/'.ltrim($token, '/'));
         }
 
+        if (($http_console_url === '' && $ws_url === '') && $token !== '') {
+            if (preg_match('#^https?://#i', $token)) {
+                $http_console_url = $token;
+            } elseif (preg_match('#^wss?://#i', $token)) {
+                $ws_url = $token;
+            } else {
+                $cfg = $this->get_solus_config();
+                $base_url = isset($cfg['base_url']) ? trim((string) $cfg['base_url']) : '';
+                if ($base_url !== '') {
+                    $http_console_url = rtrim($base_url, '/').'/'.ltrim($token, '/');
+                }
+            }
+        }
+
         if ($ws_url === '' && $http_console_url !== '') {
             if (preg_match('#^wss?://#i', $http_console_url)) {
                 $ws_url = $http_console_url;
@@ -427,7 +502,7 @@ class Dashboard extends MY_Controller
         }
 
         $server_result = $this->solusvm_client->get_server($provider_server_id);
-        $server_data = isset($server_result['data']['data']) && is_array($server_result['data']['data']) ? $server_result['data']['data'] : array();
+        $server_data = $this->extract_provider_object($server_result);
         $settings = isset($server_data['settings']) && is_array($server_data['settings']) ? $server_data['settings'] : array();
 
         return array(
@@ -916,7 +991,7 @@ class Dashboard extends MY_Controller
         if (!$service) { show_404(); return; }
 
         $action = strtolower(trim((string) $action));
-        $local_status_map = array('start' => 'running', 'stop' => 'stopped', 'restart' => 'running');
+        $local_status_map = array('start' => 'running', 'stop' => 'stopped', 'restart' => 'running', 'delete' => 'terminated', 'terminate' => 'terminated');
         if (!isset($local_status_map[$action])) {
             $this->session->set_flashdata('admin_service_error', 'Unsupported action.');
             redirect('admin/servers/'.(int) $service_id);
@@ -934,6 +1009,8 @@ class Dashboard extends MY_Controller
                     $result = $this->solusvm_client->stop_server($provider_server_id);
                 } elseif ($action === 'restart') {
                     $result = $this->solusvm_client->restart_server($provider_server_id);
+                } elseif ($action === 'delete' || $action === 'terminate') {
+                    $result = $this->solusvm_client->delete_server($provider_server_id);
                 }
                 if (!$result['ok']) {
                     $this->session->set_flashdata('admin_service_error', 'Provider action failed: '.(string) $result['error']);
@@ -944,6 +1021,9 @@ class Dashboard extends MY_Controller
         }
 
         $this->Service_model->set_status((int) $service_id, $local_status_map[$action]);
+        if ($action === 'delete' || $action === 'terminate') {
+            $this->Service_model->set_provider_server_id((int) $service_id, NULL);
+        }
         $this->session->set_flashdata('admin_service_success', 'Action "'.$action.'" sent successfully.');
         redirect('admin/servers/'.(int) $service_id);
     }
@@ -1137,8 +1217,9 @@ class Dashboard extends MY_Controller
             $this->load->library('Solusvm_client');
             if ($this->solusvm_client->is_configured()) {
                 $sres = $this->solusvm_client->get_server($provider_server_id);
-                if ($sres['ok'] && isset($sres['data']['data']) && is_array($sres['data']['data'])) {
-                    $provider_server = $sres['data']['data'];
+                $provider_server_obj = $this->extract_provider_object($sres);
+                if (!empty($provider_server_obj)) {
+                    $provider_server = $provider_server_obj;
                     if (!empty($provider_server['status'])) {
                         $provider_is_processing = in_array(strtolower((string) $provider_server['status']), array('processing', 'building', 'reinstalling', 'restarting', 'migrating'), true);
                     }
@@ -1169,14 +1250,16 @@ class Dashboard extends MY_Controller
                     }
                 }
                 $os_res = $this->solusvm_client->list_os_images();
-                if ($os_res['ok'] && isset($os_res['data']['data']) && is_array($os_res['data']['data'])) {
-                    $available_os = $os_res['data']['data'];
+                $os_rows = $this->extract_provider_rows($os_res);
+                if (!empty($os_rows)) {
+                    $available_os = $os_rows;
                 } else {
                     $os_dropdown_note = 'OS list could not be fetched from provider.';
                 }
                 $app_res = $this->solusvm_client->list_applications();
-                if ($app_res['ok'] && isset($app_res['data']['data']) && is_array($app_res['data']['data'])) {
-                    $applications = $app_res['data']['data'];
+                $application_rows = $this->extract_provider_rows($app_res);
+                if (!empty($application_rows)) {
+                    $applications = $application_rows;
                 }
             }
         }
@@ -1265,7 +1348,7 @@ class Dashboard extends MY_Controller
         if (!$service) { show_404(); return; }
 
         $action = strtolower(trim((string) $action));
-        $local_status_map = array('start' => 'running', 'stop' => 'stopped', 'restart' => 'running');
+        $local_status_map = array('start' => 'running', 'stop' => 'stopped', 'restart' => 'running', 'delete' => 'terminated', 'terminate' => 'terminated');
         if (!isset($local_status_map[$action])) {
             $this->session->set_flashdata('client_service_error', 'Unsupported action.');
             redirect('client/services/'.(int) $service_id);
@@ -1283,6 +1366,8 @@ class Dashboard extends MY_Controller
                     $result = $this->solusvm_client->stop_server($provider_server_id);
                 } elseif ($action === 'restart') {
                     $result = $this->solusvm_client->restart_server($provider_server_id);
+                } elseif ($action === 'delete' || $action === 'terminate') {
+                    $result = $this->solusvm_client->delete_server($provider_server_id);
                 }
                 if (!$result['ok']) {
                     $this->session->set_flashdata('client_service_error', 'Provider action failed: '.(string) $result['error']);
@@ -1293,6 +1378,9 @@ class Dashboard extends MY_Controller
         }
 
         $this->Service_model->set_status((int) $service_id, $local_status_map[$action]);
+        if ($action === 'delete' || $action === 'terminate') {
+            $this->Service_model->set_provider_server_id((int) $service_id, NULL);
+        }
         $this->session->set_flashdata('client_service_success', 'Action "'.$action.'" sent successfully.');
         redirect('client/services/'.(int) $service_id);
     }

@@ -36,6 +36,7 @@
             <a href="<?php echo site_url('client/services/'.(int) $service['id'].'/action/start'); ?>" class="px-3 py-2 <?php echo $providerBusy ? 'bg-[#161926] text-slate-600 pointer-events-none' : 'bg-[#1e2130] hover:bg-[#252938] text-slate-300'; ?> text-sm rounded-lg transition-colors">Start</a>
             <a href="<?php echo site_url('client/services/'.(int) $service['id'].'/action/stop'); ?>" class="px-3 py-2 <?php echo $providerBusy ? 'bg-[#161926] text-slate-600 pointer-events-none' : 'bg-[#1e2130] hover:bg-[#252938] text-slate-300'; ?> text-sm rounded-lg transition-colors">Stop</a>
             <a href="<?php echo site_url('client/services/'.(int) $service['id'].'/action/restart'); ?>" class="px-3 py-2 <?php echo $providerBusy ? 'bg-[#161926] text-slate-600 pointer-events-none' : 'bg-[#1e2130] hover:bg-[#252938] text-slate-300'; ?> text-sm rounded-lg transition-colors">Restart</a>
+            <a href="<?php echo site_url('client/services/'.(int) $service['id'].'/action/delete'); ?>" onclick="return confirm('Delete this server permanently? This action cannot be undone.');" class="px-3 py-2 <?php echo $providerBusy ? 'bg-[#2c1720] text-red-900/60 pointer-events-none' : 'bg-red-600/20 hover:bg-red-600/30 text-red-300'; ?> text-sm rounded-lg transition-colors">Delete Server</a>
             <a href="<?php echo site_url('client/services/'.(int) $service['id'].'/console'); ?>" class="px-3 py-2 bg-[#1e2130] hover:bg-[#252938] text-slate-300 text-sm rounded-lg transition-colors">Console</a>
             <?php if ((int) (isset($service['provider_server_id']) ? $service['provider_server_id'] : 0) <= 0): ?>
                 <form method="post" action="<?php echo site_url('client/services/'.(int) $service['id'].'/provision'); ?>" class="inline">
@@ -53,6 +54,10 @@
     <?php endif; ?>
 
     <?php
+        // Resolve provider-backed values early because access cards use them below.
+        $resolvedAppName = !empty($provider_app_name) ? (string) $provider_app_name : '';
+        $resolvedIp      = !empty($provider_ip) ? (string) $provider_ip : '';
+
         // ---- App access map: name fragment => [label, port, path, protocol, icon_color] ----
         $app_access_map = array(
             'directadmin'   => array('DirectAdmin',       2222,  '/',              'http',  'text-blue-400'),
@@ -197,11 +202,9 @@
 
     <?php
         $isTransitional = in_array($status, array('reinstalling', 'restarting', 'provisioning', 'building', 'migrating', 'processing'), true);
-        $resolvedOsName  = !empty($provider_os_name)  ? $provider_os_name  : ($service['os']       ? $service['os']       : '-');
-        $resolvedAppName = !empty($provider_app_name) ? $provider_app_name : '';
-        $resolvedIp      = !empty($provider_ip)       ? $provider_ip       : '';
+        $resolvedOsName  = !empty($provider_os_name)  ? $provider_os_name  : ((isset($service['os']) && $service['os']) ? $service['os'] : '-');
         $resolvedPlan    = $provider_server && isset($provider_server['plan']['name']) ? $provider_server['plan']['name'] : (isset($service['plan_name']) ? $service['plan_name'] : '-');
-        $resolvedLoc     = $provider_server && isset($provider_server['location']['name']) ? $provider_server['location']['name'] : ($service['location'] ? $service['location'] : '-');
+        $resolvedLoc     = $provider_server && isset($provider_server['location']['name']) ? $provider_server['location']['name'] : ((isset($service['location']) && $service['location']) ? $service['location'] : '-');
         $resolvedStatus  = $provider_server && isset($provider_server['status']) ? $provider_server['status'] : $service['status'];
         $hasProvider     = !empty($provider_server);
         $hasBandwidth    = $provider_bandwidth_limit > 0;
@@ -240,7 +243,30 @@
                     $rows[] = array('IPv6',          '<span class="font-mono select-all text-xs">'.html_escape($provider_ipv6).'</span>', 'raw');
                 }
                 if (!empty($provider_ips)) {
-                    $rows[] = array('Additional IPs', '<span class="font-mono text-xs">'.html_escape(implode(', ', $provider_ips)).'</span>', 'raw');
+                    $ipList = array();
+                    foreach ((array) $provider_ips as $ipItem) {
+                        if (is_scalar($ipItem)) {
+                            $ipVal = trim((string) $ipItem);
+                            if ($ipVal !== '') {
+                                $ipList[] = $ipVal;
+                            }
+                            continue;
+                        }
+
+                        if (is_array($ipItem)) {
+                            foreach (array('ip', 'address', 'ipv4', 'value') as $ipKey) {
+                                if (isset($ipItem[$ipKey]) && is_scalar($ipItem[$ipKey]) && trim((string) $ipItem[$ipKey]) !== '') {
+                                    $ipList[] = trim((string) $ipItem[$ipKey]);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    $ipList = array_values(array_unique($ipList));
+                    if (!empty($ipList)) {
+                        $rows[] = array('Additional IPs', '<span class="font-mono text-xs">'.html_escape(implode(', ', $ipList)).'</span>', 'raw');
+                    }
                 }
                 if (!empty($vps_password)) {
                     $rows[] = array('Root Password', '<span class="font-mono select-all">'.html_escape($vps_password).'</span>', 'raw');
@@ -351,10 +377,18 @@
         <!-- Right: Resources + Bandwidth -->
         <div class="space-y-4">
             <?php
-                $vcpu   = (int) (($provider_resources['vcpu']   > 0) ? $provider_resources['vcpu']   : $service['vcpu']);
-                $memory = (int) (($provider_resources['memory'] > 0) ? $provider_resources['memory'] : $service['memory']);
-                $disk   = (int) (($provider_resources['disk']   > 0) ? $provider_resources['disk']   : $service['disk']);
-                $resLive = ($provider_resources['vcpu'] > 0 || $provider_resources['memory'] > 0 || $provider_resources['disk'] > 0);
+                $providerVcpu   = isset($provider_resources['vcpu']) ? (int) $provider_resources['vcpu'] : 0;
+                $providerMemory = isset($provider_resources['memory']) ? (int) $provider_resources['memory'] : 0;
+                $providerDisk   = isset($provider_resources['disk']) ? (int) $provider_resources['disk'] : 0;
+
+                $localVcpu   = isset($service['vcpu']) ? (int) $service['vcpu'] : 0;
+                $localMemory = isset($service['memory']) ? (int) $service['memory'] : 0;
+                $localDisk   = isset($service['disk']) ? (int) $service['disk'] : 0;
+
+                $vcpu   = $providerVcpu > 0 ? $providerVcpu : $localVcpu;
+                $memory = $providerMemory > 0 ? $providerMemory : $localMemory;
+                $disk   = $providerDisk > 0 ? $providerDisk : $localDisk;
+                $resLive = ($providerVcpu > 0 || $providerMemory > 0 || $providerDisk > 0);
             ?>
             <div class="bg-[#13151f] border border-[#2a2d3e] rounded-xl p-5">
                 <h3 class="text-lg font-semibold text-white mb-4">

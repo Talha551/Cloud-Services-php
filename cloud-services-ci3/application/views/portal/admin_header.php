@@ -21,14 +21,14 @@
     <style>
         * { box-sizing: border-box; }
         :root {
-            --bg-main: #eef3fb;
+            --bg-main: #f3f7fd;
             --bg-sidebar: #ffffff;
-            --bg-panel: #f7faff;
-            --bg-soft: #e8f0fb;
-            --line: #d4e1f2;
-            --text-main: #223650;
-            --text-strong: #12243d;
-            --text-muted: #5e7597;
+            --bg-panel: #fcfdff;
+            --bg-soft: #edf3fb;
+            --line: #cad9ee;
+            --text-main: #1c2f48;
+            --text-strong: #0f223a;
+            --text-muted: #4f6788;
             --brand: #1f86e3;
             --brand-soft: rgba(31, 134, 227, 0.12);
             --card-bg: #ffffff;
@@ -67,7 +67,7 @@
         .text-slate-500, .text-slate-600 { color: var(--text-muted) !important; }
         .text-slate-200, .text-slate-300 { color: var(--text-main) !important; }
         .text-white { color: var(--text-strong) !important; }
-        .hover\:bg-\[\#1e2130\]:hover, .hover\:bg-\[\#252938\]:hover { background: #253958 !important; }
+        .hover\:bg-\[\#1e2130\]:hover, .hover\:bg-\[\#252938\]:hover { background: color-mix(in srgb, var(--bg-soft) 82%, #20334f 18%) !important; }
         .bg-indigo-600 { background-color: var(--brand) !important; }
         .text-indigo-400 { color: var(--brand) !important; }
         .bg-indigo-600\/20 { background-color: var(--brand-soft) !important; }

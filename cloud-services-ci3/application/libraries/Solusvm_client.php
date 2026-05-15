@@ -28,7 +28,62 @@ class Solusvm_client
 
     public function create_server($payload)
     {
-        return $this->request('POST', '/servers', $payload);
+        $base = is_array($payload) ? $payload : array();
+
+        $fallback_payloads = array();
+        $fallback_payloads[] = $base;
+
+        if (isset($base['plan']) && !isset($base['plan_id'])) {
+            $p = $base;
+            $p['plan_id'] = (int) $base['plan'];
+            $fallback_payloads[] = $p;
+        }
+        if (isset($base['location']) && !isset($base['location_id'])) {
+            $p = $base;
+            $p['location_id'] = (int) $base['location'];
+            $fallback_payloads[] = $p;
+        }
+        if (isset($base['os']) && !isset($base['os_image_version'])) {
+            $p = $base;
+            $p['os_image_version'] = (int) $base['os'];
+            $fallback_payloads[] = $p;
+        }
+        if (isset($base['os']) && !isset($base['os_image_id'])) {
+            $p = $base;
+            $p['os_image_id'] = (int) $base['os'];
+            $fallback_payloads[] = $p;
+        }
+
+        $unique_payloads = array();
+        foreach ($fallback_payloads as $fp) {
+            $key = json_encode($fp);
+            if (!isset($unique_payloads[$key])) {
+                $unique_payloads[$key] = $fp;
+            }
+        }
+
+        $endpoints = array('/servers', '/servers/create');
+        $last_result = null;
+
+        foreach ($endpoints as $path) {
+            foreach ($unique_payloads as $fp) {
+                $result = $this->request('POST', $path, $fp);
+                $last_result = $result;
+                if ($result['ok']) {
+                    return $result;
+                }
+                if (in_array((int) $result['status'], array(401, 403), true)) {
+                    return $result;
+                }
+            }
+        }
+
+        return $last_result ?: array(
+            'ok' => false,
+            'status' => 0,
+            'error' => 'Provider create request failed before response.',
+            'data' => null,
+        );
     }
 
     public function reinstall_server($server_id, $payload)
@@ -38,7 +93,6 @@ class Solusvm_client
             return $result;
         }
 
-        // Fallback for providers that expect alternate field names.
         $fallback_payloads = array();
         if (is_array($payload) && isset($payload['os']) && (int) $payload['os'] > 0) {
             $p1 = $payload;
@@ -93,6 +147,35 @@ class Solusvm_client
         return $this->request('POST', '/servers/'.(int) $server_id.'/restart');
     }
 
+    public function delete_server($server_id)
+    {
+        $sid = (int) $server_id;
+        $attempts = array(
+            array('DELETE', '/servers/'.$sid),
+            array('POST', '/servers/'.$sid.'/delete'),
+            array('POST', '/servers/'.$sid.'/destroy'),
+        );
+
+        $last_result = null;
+        foreach ($attempts as $attempt) {
+            $result = $this->request($attempt[0], $attempt[1]);
+            $last_result = $result;
+            if ($result['ok']) {
+                return $result;
+            }
+            if (in_array((int) $result['status'], array(401, 403), true)) {
+                return $result;
+            }
+        }
+
+        return $last_result ?: array(
+            'ok' => false,
+            'status' => 0,
+            'error' => 'Provider delete request failed before response.',
+            'data' => null,
+        );
+    }
+
     public function vnc_up($server_id)
     {
         return $this->request('POST', '/servers/'.(int) $server_id.'/vnc_up');
@@ -103,43 +186,40 @@ class Solusvm_client
         $sid = (int) $server_id;
         $payload = array('password' => (string) $password);
 
-        // Try known SolusVM 2.x endpoints for root password change.
         $endpoints = array(
-            array('POST',  '/servers/'.$sid.'/reset_password', array(
+            array('POST', '/servers/'.$sid.'/reset_password', array(
                 'password' => (string) $password,
                 'send_password_to_current_user' => false,
             )),
-            array('POST',  '/servers/'.$sid.'/change-root-password'),
-            array('POST',  '/servers/'.$sid.'/change_root_password'),
-            array('POST',  '/servers/'.$sid.'/change_password'),
-            array('PUT',   '/servers/'.$sid.'/password'),
+            array('POST', '/servers/'.$sid.'/change-root-password'),
+            array('POST', '/servers/'.$sid.'/change_root_password'),
+            array('POST', '/servers/'.$sid.'/change_password'),
+            array('PUT', '/servers/'.$sid.'/password'),
             array('PATCH', '/servers/'.$sid, $payload),
         );
 
         $last_result = null;
         foreach ($endpoints as $ep) {
             $method = $ep[0];
-            $path   = $ep[1];
-            $body   = isset($ep[2]) ? $ep[2] : $payload;
+            $path = $ep[1];
+            $body = isset($ep[2]) ? $ep[2] : $payload;
             $result = $this->request($method, $path, $body);
             $last_result = $result;
             if ($result['ok']) {
                 return $result;
             }
-            // Stop on auth/validation errors — no point trying other endpoints.
-            if (in_array($result['status'], array(401, 403, 422, 400), true)) {
+            if (in_array((int) $result['status'], array(401, 403, 422, 400), true)) {
                 return $result;
             }
-            // Only continue on 404/405 (endpoint not found on this provider).
         }
 
-        // DO NOT fall back to reinstall — that would wipe the OS.
-        // Return the last failure with a clear message.
         if ($last_result !== null && empty($last_result['error'])) {
             $last_result['error'] = 'This SolusVM installation does not expose a root password change endpoint.';
         }
+
         return $last_result ?: array(
-            'ok' => false, 'status' => 0,
+            'ok' => false,
+            'status' => 0,
             'error' => 'Password change not supported by provider API.',
             'data' => null,
         );
@@ -153,16 +233,30 @@ class Solusvm_client
 
     public function list_applications()
     {
+        $paths = array('/applications', '/apps');
+        foreach ($paths as $path) {
+            $result = $this->request('GET', $path);
+            if ($result['ok']) {
+                $rows = $this->extract_rows_from_decoded(isset($result['data']) ? $result['data'] : array());
+                if (!empty($rows)) {
+                    return $result;
+                }
+            }
+        }
+
         return $this->request('GET', '/applications');
     }
 
     public function list_os_images()
     {
-        $paths = array('/os-image-versions', '/os_images', '/os-images');
+        $paths = array('/os-image-versions', '/os_images', '/os-images', '/os-images/versions');
         foreach ($paths as $path) {
             $result = $this->request('GET', $path);
-            if ($result['ok'] && isset($result['data']['data']) && is_array($result['data']['data'])) {
-                return $result;
+            if ($result['ok']) {
+                $rows = $this->extract_rows_from_decoded(isset($result['data']) ? $result['data'] : array());
+                if (!empty($rows)) {
+                    return $result;
+                }
             }
         }
 
@@ -179,8 +273,11 @@ class Solusvm_client
         $paths = array('/plans', '/plan-versions');
         foreach ($paths as $path) {
             $result = $this->request('GET', $path);
-            if ($result['ok'] && isset($result['data']['data']) && is_array($result['data']['data'])) {
-                return $result;
+            if ($result['ok']) {
+                $rows = $this->extract_rows_from_decoded(isset($result['data']) ? $result['data'] : array());
+                if (!empty($rows)) {
+                    return $result;
+                }
             }
         }
 
@@ -197,8 +294,11 @@ class Solusvm_client
         $paths = array('/locations');
         foreach ($paths as $path) {
             $result = $this->request('GET', $path);
-            if ($result['ok'] && isset($result['data']['data']) && is_array($result['data']['data'])) {
-                return $result;
+            if ($result['ok']) {
+                $rows = $this->extract_rows_from_decoded(isset($result['data']) ? $result['data'] : array());
+                if (!empty($rows)) {
+                    return $result;
+                }
             }
         }
 
@@ -208,6 +308,37 @@ class Solusvm_client
             'error' => 'Location list endpoint not available on provider',
             'data' => null,
         );
+    }
+
+    private function extract_rows_from_decoded($decoded)
+    {
+        if (!is_array($decoded) || empty($decoded)) {
+            return array();
+        }
+
+        if (array_keys($decoded) === range(0, count($decoded) - 1)) {
+            return $decoded;
+        }
+
+        if (isset($decoded['data']) && is_array($decoded['data'])) {
+            $nested = $decoded['data'];
+            if (array_keys($nested) === range(0, count($nested) - 1)) {
+                return $nested;
+            }
+            foreach (array('data', 'items', 'results', 'rows') as $k) {
+                if (isset($nested[$k]) && is_array($nested[$k]) && array_keys($nested[$k]) === range(0, count($nested[$k]) - 1)) {
+                    return $nested[$k];
+                }
+            }
+        }
+
+        foreach (array('items', 'results', 'rows') as $k) {
+            if (isset($decoded[$k]) && is_array($decoded[$k]) && array_keys($decoded[$k]) === range(0, count($decoded[$k]) - 1)) {
+                return $decoded[$k];
+            }
+        }
+
+        return array();
     }
 
     public function request($method, $path, $payload = null)
